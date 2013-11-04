@@ -1,3 +1,6 @@
+
+DB tables
+=======================
 CREATE TABLE popcliqs_users(
 user_id INT AUTO_INCREMENT,
 email varchar(30),
@@ -48,3 +51,4 @@ pref_cd INT,
 update_ts datetime,
 create_ts datetime,
 primary key(preference_id))
+=======================
