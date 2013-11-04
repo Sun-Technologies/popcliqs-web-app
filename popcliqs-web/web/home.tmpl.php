@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
 <html>
-<title>Popcliqs</title>
-<link rel="stylesheet" type="text/css" href="web/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="web/css/popcliqs.css">
-<meta name="viewport" content="width=device-width">
+<head>
+  <title>Popcliqs - Home</title>
+  <link rel="stylesheet" type="text/css" href="web/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="web/css/popcliqs.css">
+  <meta name="viewport" content="width=device-width">
+</head>
 <body onresize="redraw()">
 <!-- nav bar--> 
 <div class="navbar-fixed-top navbar-green" >
@@ -20,17 +22,16 @@
        <span class="glyphicon glyphicon-search"></span>
       </button>
        <div class="container" style="height:60px;">
-            <a class="brand" href="index.html"> <span  style="position:relative;top:-20px;" ><img src="web/img/4.png"/></span></a>
+            <a class="brand" href="home.php"> <span  style="position:relative;top:-20px;" ><img src="web/img/4.png"/></span></a>
       </div>
     </div>
     <div class="navbar-collapse collapse backgroundColor" style="height:1px;">
-
-        <form class="navbar-form navbar-right" method="post" action="logout.php">
-          <button type="submit" class="btn backgroundColor1"> 
-            <span class="glyphicon glyphicon-off"></span>
-          </button>
-        </form>
-         &nbsp;&nbsp;&nbsp;
+      <form class="navbar-form navbar-right" method="post" action="logout.php">
+        <button type="submit" class="btn backgroundColor1"> 
+          <span class="glyphicon glyphicon-off"></span>
+        </button>
+      </form>
+      &nbsp;&nbsp;&nbsp;
       <form class="navbar-form navbar-right" >
         <div class="form-group">
           <select name="category" id="category" onchange="this.form.submit()" class="form-control">
@@ -58,15 +59,11 @@
         <button type="submit" class="btn backgroundColor1">
           <span class="glyphicon glyphicon-search"></span>
         </button>
-        </form>
-        
-        
-      
+      </form>
     </div>
-</div>
-
-<br>
- <div class="container">
+  </div>
+  <br>
+  <div class="container">
    <div class="row" style="margin-top:80px;">
     <div class="col-lg-12 visible-lg" id ="wapper-canvas-lg">
        <canvas   width="1200" height="500" style="background:;" id="mainCanvas-lg"></canvas>     
@@ -111,11 +108,16 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+
+
+
+
+
 <!-- Modal -->
 <div class="modal fade" id="newEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="form-horizontal">
+      <form class="form-horizontal" method="post" action="event.php">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel">PopcliQ! - Create New Event</h4>
@@ -134,57 +136,57 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-msg" class="col-lg-2 control-label">Category</label>
+            <label for="category_id" class="col-lg-2 control-label">Category</label>
             <div class="col-lg-8">
-              <select id="ecategory" class="form-control" >
+              <select id="category_id" name="category_id" class="form-control" >
                 <option value="">[Select]</option>
-                <option value="4">Sports</option>
-                <option value="6">Professional</option>
-                <option value="7">Education</option>
-                <option value="5">Support Group</option>
-                <option value="1">Arts</option>
-                <option value="3">Outdoor</option>
-                <option value="2">Party</option>
+                <option value="1">Sports</option>
+                <option value="2">Professional</option>
+                <option value="3">Education</option>
+                <option value="4">Support Group</option>
+                <option value="5">Arts</option>
+                <option value="6">Outdoor</option>
+                <option value="7">Party</option>
               </select>
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-email" class="col-lg-2 control-label">Location</label>
+            <label for="location" class="col-lg-2 control-label">Location</label>
             <div class="col-lg-8">
-              <input type="text" id="contact-name"  class="form-control" placeholder="" />
+              <input type="text" id="location" name="location"  class="form-control" placeholder="" />
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-email" class="col-lg-2 control-label">Address</label>
+            <label for="address" class="col-lg-2 control-label">Address</label>
             <div class="col-lg-8">
-              <textarea class="form-control" rows="4"></textarea>
+              <textarea class="form-control" name="address" rows="4"></textarea>
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-email" class="col-lg-2 control-label">Zip</label>
+            <label for="postal_code" class="col-lg-2 control-label">Zip</label>
             <div class="col-lg-8">
-              <input type="text" id="contact-name"  class="form-control" placeholder=""  />
+              <input type="text" id="postal_code" name="postal_code" class="form-control" placeholder=""  />
             </div>
           </div>
           <div class="form-group">
             <label for="contact-email" class="col-lg-2 control-label" style="padding-top:0px;">Age limit</label>
             <div class="col-lg-8" style="padding-top:0px;">
-              <input type="radio" id="contact-name"   placeholder=""> Anyone    &nbsp;
-              <input type="radio" id="contact-name"   placeholder=""> Above 18  &nbsp;
-              <input type="radio" id="contact-name"   placeholder=""> Above 21  &nbsp;
+              <input type="radio" id="age_limit" value="1"  placeholder=""> Anyone    &nbsp;
+              <input type="radio" id="age_limit" value="2" placeholder=""> Above 18  &nbsp;
+              <input type="radio" id="age_limit" value="3"  placeholder=""> Above 21  &nbsp;
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-email" class="col-lg-2 control-label">Capacity</label>
+            <label for="capacity" class="col-lg-2 control-label">Capacity</label>
             <div class="col-lg-8">
-              <input type="text" id="contact-name"  class="form-control" placeholder="" />
+              <input type="text" id="capacity" value="capacity" class="form-control" placeholder="" />
             </div>
           </div>
            <div class="form-group">
-            <label for="contact-email" class="col-lg-2 control-label" style="padding-left:0px;">Start time</label>
+            <label for="start_date" class="col-lg-2 control-label" style="padding-left:0px;">Start time</label>
             <div class="col-lg-8">
-              <input type="text" id="contact-name"  class="form-control" placeholder="" style="width:192px;display:inline-block;" />
-              <select id="st_hr" class="form-control" style="width:150px;display:inline-block;">
+              <input type="text" id="start_date" name="start_date" class="form-control" placeholder="" style="width:192px;display:inline-block;" />
+              <select id="start_time" name="start_time" class="form-control" style="width:150px;display:inline-block;">
                   <option value="00:00">12:00 AM</option>
                   <option value="00:30">12:30 AM</option>
                   <option value="01:00">1:00 AM</option>
@@ -237,10 +239,10 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-email" class="col-lg-2 control-label">End time</label>
+            <label for="end_date" class="col-lg-2 control-label">End time</label>
             <div class="col-lg-8">
-              <input type="text" id="contact-name"  class="form-control" placeholder="" style="width:190px;display:inline-block;"/>
-              <select id="st_hr" class="form-control" style="width:150px;display:inline-block;">
+              <input type="text" id="end_date" name="end_date" class="form-control" placeholder="" style="width:190px;display:inline-block;"/>
+              <select id="end_time" name="end_name" class="form-control" style="width:150px;display:inline-block;">
                 <option value="00:00">12:00 AM</option>
                 <option value="00:30">12:30 AM</option>
                 <option value="01:00">1:00 AM</option>
@@ -295,7 +297,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
       </div>
      </form>
     </div><!-- /.modal-content -->

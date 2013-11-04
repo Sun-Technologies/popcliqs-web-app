@@ -1,9 +1,11 @@
 <!DOCTYPE HTML>
 <html>
-<title>Popcliqs</title>
-<link rel="stylesheet" type="text/css" href="web/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="web/css/popcliqs.css">
-<meta name="viewport" content="width=device-width">
+<head>
+  <title>Popcliqs - Login</title>
+  <link rel="stylesheet" type="text/css" href="web/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="web/css/popcliqs.css">
+  <meta name="viewport" content="width=device-width">
+</head>
 <body>
 <!-- nav bar--> 
 
@@ -16,7 +18,7 @@
         Sign In
       </button>
       <div class="container" style="height:70px;">
-            <a class="brand" href="index.html"> <span  style="position:relative;top:-15px;" ><img src="web/img/4.png"/></span></a>
+            <a class="brand" href="home.php"> <span  style="position:relative;top:-15px;" ><img src="web/img/4.png"/></span></a>
       </div>
     </div>
     <div class="navbar-collapse collapse backgroundColor" style="height:1px;">

@@ -4,6 +4,11 @@ require 'functions/user_functions.php';
 require 'functions/db_functions.php';
 require 'pdo/user_class.php';
 
+if(isset($_SESSION['user_id'])){
+	header('Location:home.php');
+	die();
+}
+
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
     $conn = connect ($config);
@@ -15,11 +20,11 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$month      =  isset($_POST['month'])    ? trim($_POST['month']):null;
 	$day        =  isset($_POST['day'])      ? trim($_POST['day']):null;
 	$year       =  isset($_POST['year'])     ? trim($_POST['year']):null;
+	$sex 		=  isset($_POST['sex'])      ? $_POST['sex']:null;
 	$created_ts	=  time(); 
 	$status 	=  1;
 	$type 		=  1;
-	$sex 		=  isset($_POST['sex'])     ? $_POST['sex']:null;
-
+	
 
 	if( empty($email) || empty($reemail) || !valid_email($reemail) ){
 
@@ -30,34 +35,34 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 		$status = "email match not found";
 	
 	}else if(empty($password)){
+
 		$status = "enter password";
+
 	}
 	else if (empty($sex)) {
 
 		$status = "select the gender"; 
-		# code...
+
 	} else if (empty($month)) {
 
-	$status = "enter a valid date of birth mm";
-	# code...
+		$status = "enter a valid date of birth mm";
+
 	}else if (empty($day)) {
 
-	$status = "enter a valid date of birth /dd/";
-	# code...
+		$status = "enter a valid date of birth /dd/";
+	
 	}else if (empty($year)) {
 
-	$status = "enter a valid date of birth yyyy";
-	# code...
+		$status = "enter a valid date of birth yyyy";
+	
 	}else if (empty($zip) || !is_numeric($zip) || strlen($zip)!= 5 ) {
 
 		$status = "enter valid zip";
 
-		# code...
 	}else if (is_user_exist( $conn, $email )){
 
 		$status  = "email already exists,,,try another email id";
 	}
-
 	else{
 
      	$dob = $month.'/'.$day.'/'.$year;
@@ -70,18 +75,11 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
         $user->type = $type;
         $user->sex = $sex;
         $user->dob = $dob;
-
 		
 		$user_id = add_registered_user($conn  ,$user);
 		$_SESSION['email'] = $email;
 		$_SESSION['user_id'] = $user_id;
 		header('Location:home.php');
-
 	}
-	
-	
-	}
-		require 'web/index.tmpl.php';
-	
-
-	//require 'index.tmpl.php';
+}
+require 'web/index.tmpl.php';
