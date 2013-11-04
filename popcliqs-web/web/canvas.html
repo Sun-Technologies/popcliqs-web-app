@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<title>Popcliqs</title>
+<link rel="stylesheet" type="text/css" href="css/popcliqs.css">
+<body>
+
+
+ <canvas width="960" height="650" style="position:relative;top:-8px;" id="mainCanvas"></canvas>     
+
+<hr>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/easeljs-0.6.0.min.js"></script>
+<script type="text/javascript" src="js/tweenjs-0.4.0.min.js"></script>
+<script type="text/javascript">
+      function draw() {
+
+        canvas = document.getElementById("mainCanvas");
+        stage = new createjs.Stage(canvas);
+        
+        stage.clear();
+        stage.update();
+
+         var arc = new createjs.Shape();
+        arc.graphics.setStrokeStyle(2);
+        arc.graphics.beginStroke("#ccc");
+        arc.graphics.beginFill("#141C5C").arc(400, 650, 100, Math.PI*1.5, Math.PI*0.5, false);
+
+
+        stage.addChild(arc);
+        stage.update();
+        createjs.Ticker.setFPS(20);
+                
+        // in order for the stage to continue to redraw when the Ticker is paused we need to add it with
+        // the second ("pauseable") param set to false.
+        createjs.Ticker.addEventListener("tick", tick); 
+
+      }
+  $(function() { 
+      draw();
+  });
+</script>
+</script>
+</body>
+</html>
