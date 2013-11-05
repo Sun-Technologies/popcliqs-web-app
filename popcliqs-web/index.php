@@ -10,7 +10,7 @@ if(isset($_SESSION['user_id'])){
 }
 
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
-
+  
     $conn = connect ($config);
 
 	$email    	=  isset($_POST['email'])    ? trim($_POST['email']): null;
@@ -77,8 +77,10 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
         $user->dob = $dob;
 		
 		$user_id = add_registered_user($conn  ,$user);
+		send_welcome_mail($email);
 		$_SESSION['email'] = $email;
 		$_SESSION['user_id'] = $user_id;
+		setcookie('user_id', $user_id , time()+60*60);
 		header('Location:home.php');
 	}
 }

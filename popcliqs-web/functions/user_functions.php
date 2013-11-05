@@ -70,3 +70,8 @@ function authenticate_user( $conn, $email, $password ){
 		return false;
 	}
 }
+function send_welcome_mail($email){
+	$subject ="Mail from popcliqs.";
+	$messege  = "thankyou for registering.";
+	mail($email, $subject,$messege)
+}
