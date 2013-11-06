@@ -546,6 +546,7 @@ function drawEvent(  event , time_inc  ){
     eventtypeimg.src = '/web/img/arts.png'; 
     
   } else if ( event.type ==  "7"){
+
     eventtypeimg.src = '/web/img/education.png';  
   } else if ( event.type ==  "5"){
     eventtypeimg.src = '/web/img/help.png'; 
@@ -615,4 +616,3 @@ function popup_evt_details(evt){
 $('#eventdetails').on('hidden.bs.modal', function () {
      poppedBubble.gotoAndStop('stand');
 });
-

@@ -51,4 +51,5 @@ pref_cd INT,
 update_ts datetime,
 create_ts datetime,
 primary key(preference_id))
+
 =======================

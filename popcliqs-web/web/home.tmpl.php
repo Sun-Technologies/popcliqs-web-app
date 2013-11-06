@@ -4,6 +4,8 @@
   <title>Popcliqs - Home</title>
   <link rel="stylesheet" type="text/css" href="web/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="web/css/popcliqs.css">
+  <link rel="stylesheet" type="text/css" href=" http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css">
+ 
   <meta name="viewport" content="width=device-width">
 </head>
 <body onresize="redraw()">
@@ -108,31 +110,26 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
-
-
-
-
 <!-- Modal -->
 <div class="modal fade" id="newEvent" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      <form class="form-horizontal" method="post" action="event.php">
+      <form class="form-horizontal" id="event_form" name="event_form" method="post" action="event.php">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel">PopcliQ! - Create New Event</h4>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="contact-name" class="col-lg-2 control-label">Title</label>
+            <label for="title" class="col-lg-2 control-label">Title</label>
             <div class="col-lg-8">
-              <input type="text" id="contact-name"  class="form-control" placeholder="" />
+              <input type="text" id="title" name="title" class="form-control" placeholder="" />
             </div>
           </div>
           <div class="form-group">
-            <label for="contact-email" class="col-lg-2 control-label">Description</label>
+            <label for="description" class="col-lg-2 control-label">Description</label>
             <div class="col-lg-8">
-              <textarea class="form-control" rows="4"></textarea>
+              <textarea class="form-control" id="description" name="description" rows="4"></textarea>
             </div>
           </div>
           <div class="form-group">
@@ -159,7 +156,7 @@
           <div class="form-group">
             <label for="address" class="col-lg-2 control-label">Address</label>
             <div class="col-lg-8">
-              <textarea class="form-control" name="address" rows="4"></textarea>
+              <textarea class="form-control" name="address" id="address" rows="4"></textarea>
             </div>
           </div>
           <div class="form-group">
@@ -179,7 +176,7 @@
           <div class="form-group">
             <label for="capacity" class="col-lg-2 control-label">Capacity</label>
             <div class="col-lg-8">
-              <input type="text" id="capacity" value="capacity" class="form-control" placeholder="" />
+              <input type="text" id="capacity" name=="capacity" value="" class="form-control" placeholder="" />
             </div>
           </div>
            <div class="form-group">
@@ -242,7 +239,7 @@
             <label for="end_date" class="col-lg-2 control-label">End time</label>
             <div class="col-lg-8">
               <input type="text" id="end_date" name="end_date" class="form-control" placeholder="" style="width:190px;display:inline-block;"/>
-              <select id="end_time" name="end_name" class="form-control" style="width:150px;display:inline-block;">
+              <select id="end_time" name="end_time" class="form-control" style="width:150px;display:inline-block;">
                 <option value="00:00">12:00 AM</option>
                 <option value="00:30">12:30 AM</option>
                 <option value="01:00">1:00 AM</option>
@@ -297,7 +294,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" onclick="create_event();">Save</button>
       </div>
      </form>
     </div><!-- /.modal-content -->
@@ -350,20 +347,29 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-
-
 <!--script src="js/jquery.js" ></script-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="web/js/easeljs-0.6.0.min.js"></script>
 <script type="text/javascript" src="web/js/tweenjs-0.4.0.min.js"></script>
 <script src="web/js/bootstrap.js" ></script>
 <script src="web/js/popcliqs_canvas.js" ></script>
+<script src="web/js/popcliqs_actions.js" ></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript">
+  
   $(function() { 
      redraw();
   });
   $('#historyTab').click(function (e) {
     alert("history" + e.target);
+  });
+
+  $(function() {
+    $( "#start_date" ).datepicker();
+  });
+
+  $(function() {
+    $( "#end_date" ).datepicker();
   });
 
 </script>

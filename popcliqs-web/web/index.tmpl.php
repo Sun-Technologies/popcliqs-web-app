@@ -261,11 +261,10 @@
                 <label for="zip" class="control-label">Home Zip</label>
               </div>
               <div class="col-lg-8">
-                <input type="password" id="zip"  name="zip" class="form-control" placeholder="" />
+                <input type="text" id="zip"  name="zip" class="form-control" placeholder="" />
               </div>
             </div>
           </div>
-             
           <div class="row" style="padding-left:20px;padding-top:20px;"> 
               <button type="submit" class="btn btn-success backgroundColor1 col-lg-offset-3 col-lg-6">Submit</button>
           </div>
