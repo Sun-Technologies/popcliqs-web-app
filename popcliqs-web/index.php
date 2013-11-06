@@ -2,7 +2,9 @@
 session_start();
 require 'functions/user_functions.php';
 require 'functions/db_functions.php';
+require 'functions/pref_functions.php';
 require 'pdo/user_class.php';
+require 'pdo/user_preferences_class.php';
 
 if(isset($_SESSION['user_id'])){
 	header('Location:home.php');
@@ -81,6 +83,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 		$_SESSION['email'] = $email;
 		$_SESSION['user_id'] = $user_id;
 		setcookie('user_id', $user_id , time()+60*60);
+
+		insert_default_pref( $conn  , $user_id);
 		header('Location:home.php');
 	}
 }

@@ -52,3 +52,26 @@ function fetch_pref($conn,$user_id){
     return $pref_list;
 }
 
+
+function insert_default_pref($conn  , $user_id){
+	$query = " 
+		   		insert into user_cat_pref(user_id, 
+				category_id , pref_cd,  create_ts ,update_ts
+				)
+				VALUES (:user_id ,
+				 	:category_id , :preference_cd,:create_ts, :update_ts 
+				) 
+			";
+
+    for ($index = 1 ;  $index < 8 ; $index++) {
+		$binding = array(
+		             'user_id'      => $user_id,
+	     			 'category_id'  => $index  ,
+	     			 'preference_cd'=> 4,
+	    			 'create_ts'    => date( "Y-m-d H:i:s" ),
+					 'update_ts' 	=> date( "Y-m-d H:i:s" )
+	     );
+		insert_query_execute($query,$conn,$binding);
+	}
+}
+
