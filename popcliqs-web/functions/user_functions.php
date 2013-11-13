@@ -65,7 +65,10 @@ function authenticate_user( $conn, $email, $password ){
 
 	$results = query( $query, $conn , $binding );
 	if( $results ){
-		return true;
+		foreach( $results as $row){
+			extract($row);
+			return $user_id;
+		}
 	} else{
 		return false;
 	}
@@ -76,3 +79,44 @@ function send_welcome_mail($email){
 	$messege  = "thankyou for registering.";
 	mail($email, $subject,$messege);
 }
+
+function get_user($conn , $user_id ){
+
+
+	$query = "select * from popcliqs_users where user_id = :user_id";
+
+	$binding = array( 
+		'user_id'    => $user_id
+	);
+
+	$results = query( $query, $conn , $binding );
+
+	if( $results ){
+		
+		foreach( $results as $row){
+			extract($row);
+			$user = new User;
+			$user->email  = $email;
+			$user->zip    = $zip;
+			$user->status = $status;
+			$user->type   = $type;
+			$user->sex    = $gender;
+			$user->dob    = $dob;
+
+			return $user;
+		}
+
+	} else{
+		return false;
+	}
+}
+
+function get_user_age($date_of_birth){
+	
+	$bday  = new DateTime($date_of_birth);
+	$today = new DateTime('00:00:00');
+	$diff  = $today->diff($bday);
+	return $diff->y; 
+}
+
+

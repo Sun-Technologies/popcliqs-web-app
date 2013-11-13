@@ -27,6 +27,7 @@ function add_pref($conn,$pref_list,$user_id ){
 
 function fetch_pref($conn,$user_id){
 
+
 	$query = "select * from user_cat_pref where user_id = :user_id";
 
 	$binding = array( 
@@ -67,7 +68,7 @@ function insert_default_pref($conn  , $user_id){
 		$binding = array(
 		             'user_id'      => $user_id,
 	     			 'category_id'  => $index  ,
-	     			 'preference_cd'=> 4,
+	     			 'preference_cd'=> 2,
 	    			 'create_ts'    => date( "Y-m-d H:i:s" ),
 					 'update_ts' 	=> date( "Y-m-d H:i:s" )
 	     );
@@ -75,3 +76,35 @@ function insert_default_pref($conn  , $user_id){
 	}
 }
 
+function get_user_cat_pref($conn , $user_id){
+
+	$query = "select * from user_cat_pref where user_id = :uid and pref_cd <> 0 ";
+
+	$binding = array(
+		'uid' => $user_id 
+	);
+	
+	$results = query( $query, $conn , $binding);
+	
+	if ($results) { 
+		return $results;
+	}
+	return false;
+}
+
+function update_pref($conn,$pref_list,$user_id ){
+
+	$query = " update user_cat_pref set pref_cd= :preference_cd, update_ts= :update_ts 
+					where user_id = :user_id and category_id = :category_id ";
+
+	foreach ($pref_list as $pref) {
+
+		$binding = array(
+		        'user_id'       => $user_id,
+	     	    'category_id'   => $pref->category_id , 
+	     		'preference_cd' => $pref->preference_cd,
+				'update_ts' 	=> date( "Y-m-d H:i:s" )
+	    );
+		update_query_execute($query,$conn,$binding);
+	}
+}

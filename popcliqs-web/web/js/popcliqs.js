@@ -729,3 +729,7 @@ function popup_evt_details(evt){
 	centerPopup("popupeventdetails");
 	loadPopup("popupeventdetails" , evt.target.name , $user_id);
 }
+
+function create_event(){
+	alert("here i am ");
+}

@@ -275,10 +275,8 @@
 <hr>
 <div class="container">
   <footer>
-     
         <p>&copy; 2013 Popcliqs.com, <a href="#">About</a> | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
-
-  </footer>
+ </footer>
 </div>
 <!--script src="js/jquery.js" ></script-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

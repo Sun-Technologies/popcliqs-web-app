@@ -10,6 +10,9 @@ require 'functions/db_functions.php';
 require 'pdo/user_event_class.php';
 require 'pdo/exit_code_class.php';
 require 'pdo/exitcode_constants.php';
+require 'functions/geo_functions.php';
+
+date_default_timezone_set("UTC");
 
 $status_obj    = $_SUCCESS;
 
@@ -34,6 +37,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
     $created_ts		=  time(); 
     $type 			=  1;
     $status         =  1;
+    $tz             = isset($_POST["tz"]) ? $_POST["tz"] : 0;
 
     if( empty($event_title) ){
 
@@ -60,17 +64,23 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
     	
         $status = $_ERROR_INVALID_EVENT_END_TIME;
     } else{
-        
+       
         $start_timestamp = strtotime( $start_date . " " . $start_time );
         $end_timestamp   = strtotime( $end_date   . " " . $end_time );
 
+        $start_timestamp = ($tz * 60 ) + $start_timestamp;
+        $end_timestamp   = ($tz * 60 ) + $end_timestamp;
+
+        // error_log(" $start_timestamp $end_timestamp ", 0);
         if( $start_timestamp >  $end_timestamp ){
 
         	$status_obj = $_ERROR_INVALID_EVENT_TIME;
             
         }else{
 
-            $event = new User_Event;
+            $event_lat_log = get_lat_lon_zip( $zip ,  $conn);
+            
+            $event                  = new User_Event;
             $event->title           = $event_title;
             $event->category_id     = $category_id;
             $event->description 	= $description;
@@ -85,6 +95,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
             $event->age_limit 		= $age_limit;
             $event->status 		    = $status;
             $event->creator         = $_SESSION['user_id'];
+            $event->lat             = $event_lat_log['lat'];
+            $event->lon             = $event_lat_log['lon'];
 
             add_event( $conn ,$event);
         }

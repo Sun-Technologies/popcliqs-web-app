@@ -37,12 +37,15 @@ $cat_type = 0;
 var maxL = 500;
 var eventlist ;
 
+
+
 /*
  * Redraw 
  */
-function redraw(){
+function redraw(eventarr){
   
-  eventlist = new Array(event1,event2,event3);
+  // eventlist = new Array(event1,event2,event3);
+  eventlist = eventarr;
  
   if( $("#wapper-canvas-lg").css('display') == 'block'){
       newcanvas = "mainCanvas-lg";
@@ -60,7 +63,7 @@ function redraw(){
   if(canvasstr != newcanvas){
     //alert(" change in canvas");
     canvasstr = newcanvas;
-    draw(eventlist);
+    draw();
   }
 }
 
@@ -190,9 +193,10 @@ function drawBody(canvas){
     displayTime(timex , getTime(now_l) , stage );
   }
   //drawVertTimeLine( timex , canvas ,bg );
-  
+  // alert(eventlist.length);
   //Draw all the events.
-  for (var i=0; i<eventlist.length; i++){
+  for (var i=0; i < eventlist.length ; i++){
+
      drawEvent( eventlist[i] , time_inc ); 
   }
 }
@@ -292,7 +296,8 @@ function drawFooter(){
 }
 
 function open_pref(){
-  $('#mypref').modal('show');
+
+   fetch_pref();
 }
 
 function open_newEvent(){
@@ -318,9 +323,9 @@ function addtime ( time ,  addhr ){
 }
 
 function getTime(time){
-  
+ 
   var timeStr; 
-  var parts = time.split(':'),
+  var parts = time.split(':');
   hour      = parts[0],
   minutes   = parts[1];
   
@@ -337,7 +342,8 @@ function getTime(time){
 }
 
 function getHour(time){
-    
+  
+  // alert(time);
   var timeStr; 
   var parts = time.split(':'),
   hour = parts[0];  
@@ -403,13 +409,14 @@ function hide_actions(){
 
 function drawEvent(  event , time_inc  ){
 
+
   if($cat_type != 0 && $cat_type != event.type){
     return;
   }
 
   var fillstartangle ;
   var fillendangle ;
- 
+
   if(event.fillPCent <= 10){
     fillstartangle =  0.3;
     fillendangle   =  0.7;
@@ -481,8 +488,7 @@ function drawEvent(  event , time_inc  ){
   // Create the bitmap animation from the spritesheet
   // and display the standing 
   var bubble = new createjs.BitmapAnimation(spritesheet);
-  
-  
+ 
   if( event.size == "L") {
     bubble.x = linewd * ( timeDiff + 1) - (radius/2) -27;
     bubble.y = distance -(radius/2) -27; 
@@ -536,44 +542,40 @@ function drawEvent(  event , time_inc  ){
 
   var eventtypeimg = new Image();
   
-  if( event.type ==  "4"){
+  if( event.type ==  "1"){
     eventtypeimg.src = '/web/img/football-icon.png';  
-    
-  } else if ( event.type ==  "6"){
+  } else if ( event.type ==  "2"){
     eventtypeimg.src = '/web/img/prof.png'; 
-    
-  } else if ( event.type ==  "1"){
+  } else if ( event.type ==  "3"){
     eventtypeimg.src = '/web/img/arts.png'; 
-    
-  } else if ( event.type ==  "7"){
-
+  } else if ( event.type ==  "4"){
     eventtypeimg.src = '/web/img/education.png';  
   } else if ( event.type ==  "5"){
     eventtypeimg.src = '/web/img/help.png'; 
-  } else if ( event.type ==  "3"){
+  } else if ( event.type ==  "6"){
     eventtypeimg.src = '/web/img/adventure.png';  
-  } else if ( event.type ==  "2"){
+  } else if ( event.type ==  "7"){
     eventtypeimg.src = '/web/img/event.png';  
   }
-  
   
   eventtypeimg.name = 'event1';
   eventtypeimg.onload = function() {
     
-    var eventtypeimgB = new createjs.Bitmap(eventtypeimg);
-    eventtypeimgB.x = linewd * ( timeDiff + 1) - (logoradius/2) -5  ;
-    eventtypeimgB.y = distance -(logoradius/2) + 0; 
-    if( event.size == "L") {
-      eventtypeimgB.scaleX = .3;
-      eventtypeimgB.scaleY = .3;
-    } else if( event.size == "M") {
-      eventtypeimgB.scaleX = .2;
-      eventtypeimgB.scaleY = .2;
-    } else if( event.size == "S") {
-      eventtypeimgB.scaleX = .19;
-      eventtypeimgB.scaleY = .19;
-    }
-    stage.addChild(eventtypeimgB);
+  var eventtypeimgB = new createjs.Bitmap(eventtypeimg);
+  eventtypeimgB.x = linewd * ( timeDiff + 1) - (logoradius/2) -5  ;
+  eventtypeimgB.y = distance -(logoradius/2) + 0; 
+
+  if( event.size == "L") {
+    eventtypeimgB.scaleX = .3;
+    eventtypeimgB.scaleY = .3;
+  } else if( event.size == "M") {
+    eventtypeimgB.scaleX = .2;
+    eventtypeimgB.scaleY = .2;
+  } else if( event.size == "S") {
+    eventtypeimgB.scaleX = .19;
+    eventtypeimgB.scaleY = .19;
+  }
+  stage.addChild(eventtypeimgB);
   
     var fillarc = new createjs.Shape();
     fillarc.alpha =.6;
@@ -604,9 +606,11 @@ function drawWave(xp , yp, startA , endA, radius ){
 function popup_evt_details(evt){
     
   console.log(evt.target.name + " Was Clicked");
+
   for (var i=0; i< eventlist.length; i++){
     if(eventlist[i].id  == evt.target.name ){
       eventlist[i].bubble.gotoAndPlay('die');
+      alert( eventlist[i].id);
       break;
     }
   }
@@ -616,3 +620,37 @@ function popup_evt_details(evt){
 $('#eventdetails').on('hidden.bs.modal', function () {
      poppedBubble.gotoAndStop('stand');
 });
+
+function fetchEvents(){
+
+  $time_interval = $("#ti").val(); 
+  $cat_type      = $("#category").val();
+  $search_t      = $("#search_t").val();
+
+
+  var dt = new Date()
+  var tz = dt.getTimezoneOffset();
+
+  var url  = 'fetch_event.php';
+  var data = "time_interval=" + $time_interval   +  "&cat_type=" + $cat_type  + "&tz=" + tz + '&s=' + $search_t; 
+  
+  // alert(data);
+  $.ajax({
+      type: "POST",
+      dataType: "json",
+      url: url,
+      data: data,
+      success: fetch_event_success
+    });
+}
+
+function fetch_event_success(data, textStatus, jqXHR){
+  // alert(data);
+  if(data.exit_cd == 0 ){
+      // alert(data.events.length);
+      redraw(data.events);
+  }else{
+      alert(data.msg);
+  }
+ 
+}
