@@ -35,8 +35,9 @@ function add_event( $conn ,$event){
 }
 
 ///below code is written for fetching of events
-function fetch_event($conn,$event_id){
+function fetch_event($conn,$event_id ,$tz ){
 	
+	$event = null;
 	$query = "select * from popcliqs_events where event_id = :event_id";
 
 	$binding = array( 
@@ -44,15 +45,37 @@ function fetch_event($conn,$event_id){
 	);
 
 	$results = query( $query, $conn , $binding );
-	$pref_list = array();
-     if($results){
+	if($results){
 		foreach( $results as $row){
 			extract($row);
 
-			$event = new  User_Event;
-			$event->event_id = $event_id;
+			$timestamp = strtotime($event_start);
+			$start_timestamp = $timestamp - ($tz * 60 ) ;
+			$evt_st = date( 'M d Y h:i a', $start_timestamp ) ;
+
+
+			$timestamp = strtotime($event_end);
+			$end_timestamp = $timestamp - ($tz * 60 ) ;
+			$evt_end = date( 'M d Y h:i a', $end_timestamp ) ;
+
+			$event 				= new  User_Event;
+			$event->event_id 	= $event_id;
+			$event->category_id = $category;
+			$event->start_dt    = $evt_st;
+			$event->end_dt      = $evt_end;
+			$event->title       = $event_title;
+			$event->location    = $event_location;
+			$event->address     = $event_address;
+			$event->description = $description;
+			$event->age_limit   = $age_limit;
+			$event->capacity    = $capacity_limit;
+			$event->lat		 	= $event_latitude;
+			$event->lon		 	= $event_longitude;
+			$event->postal_code = $zip;
+
 		}
 	}
+	return $event;
 } 
 
 function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $age  , $miles = 25 ){

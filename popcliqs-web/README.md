@@ -58,5 +58,15 @@ CREATE TABLE  `zipgeo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+CREATE TABLE  phpfox_event_rsvp (
+	rsvp_id INT AUTO_INCREMENT,
+	event_id INT,
+	user_id INT,
+	rsvp_cd INT,
+	update_ts datetime,
+	create_ts datetime,
+	primary key(rsvp_id)
+)
+
 
 =======================

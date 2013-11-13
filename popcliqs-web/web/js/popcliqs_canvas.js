@@ -609,12 +609,12 @@ function popup_evt_details(evt){
 
   for (var i=0; i< eventlist.length; i++){
     if(eventlist[i].id  == evt.target.name ){
+      
       eventlist[i].bubble.gotoAndPlay('die');
-      alert( eventlist[i].id);
+      fetch_event_details(eventlist[i].id);
       break;
     }
   }
- $('#eventdetails').modal('show');
 }
 
 $('#eventdetails').on('hidden.bs.modal', function () {

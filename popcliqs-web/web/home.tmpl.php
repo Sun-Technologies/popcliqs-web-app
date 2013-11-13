@@ -394,7 +394,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Save</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -409,11 +409,71 @@
         <h4 class="modal-title" id="myModalLabel">Event Details</h4>
       </div>
       <div class="modal-body">
-        ...
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Title</label>
+          <div class="col-lg-8">
+            <P id="e_title"></P>
+          </div>
+        </div><br>
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Description</label>
+          <div class="col-lg-8">
+            <P id="e_desc"></P>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Start</label>
+          <div class="col-lg-8">
+            <P id="e_start"></P>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">End</label>
+          <div class="col-lg-8">
+            <P id="e_end"></P>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Location</label>
+          <div class="col-lg-8">
+            <P id="e_loc"></P>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Address</label>
+          <div class="col-lg-8">
+            <P id="e_add"></P>
+          </div>
+        </div>
+        <br/>
+         <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Zip</label>
+          <div class="col-lg-8">
+            <P id="e_zip"></P>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Distance</label>
+          <div class="col-lg-8">
+            <P id="e_dist"></P>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Age Limit</label>
+          <div class="col-lg-8">
+            <P id="e_alimit"></P>
+          </div>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="save_btn" class="btn btn-primary">Pop It!</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

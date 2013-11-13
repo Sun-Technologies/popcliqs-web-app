@@ -122,6 +122,7 @@ function create_pref_success(data, textStatus, jqXHR){
 		alert(data.msg);
 	}
 }
+
 function return_checkbox_val(cat_id){
 	
 	var checkbox_id = "#cat_" +  cat_id + "_0"; 
@@ -144,6 +145,7 @@ function return_checkbox_val(cat_id){
 		return 2;
 	}
 }
+
 function update_user_pref(){
 
 	//sports 
@@ -171,7 +173,6 @@ function update_user_pref(){
 	});
 }
 
-
 function update_user_pref_success(data, textStatus, jqXHR){
 	
 	if(data.exit_cd == 0 ){
@@ -183,3 +184,56 @@ function update_user_pref_success(data, textStatus, jqXHR){
 		alert(data.msg);
 	}
 }
+
+function fetch_event_details(eventid){
+
+	var dt = new Date()
+  	var $tz = dt.getTimezoneOffset();
+
+	var data = "event_id=" + eventid + "&tz=" + $tz; 
+	var url = 'fetch_event_details.php';
+
+	$.ajax({
+	  type: "POST",
+	  dataType: "json",
+	  url: url,
+	  data: data,
+	  success: fetch_event_details_success
+	});
+}
+
+function fetch_event_details_success (data, textStatus, jqXHR) {
+	
+	if(data.exit_cd == 0 ){
+
+		$('#e_title').html(data.title) ;
+		$('#e_desc').html(data.description) ;
+		$('#e_loc').html(data.location) ;
+		$('#e_add').html(data.address) ;
+		$('#e_zip').html(data.postal_code) ;
+
+		age_limit_desc = "No age limit";
+		if(data.age_limit == 2) {
+			age_limit_desc = "Above 18 only.";
+		}else if(data.age_limit == 3) {
+			age_limit_desc = "Above 21 only.";
+		}
+		$('#e_alimit').html(age_limit_desc) ;
+
+		$('#e_start').html(data.st_dt) ;
+		$('#e_end').html(data.ed_dt) ;
+		$('#e_dist').html(data.distance);
+		
+		if(data.rsvp != 0 ) {
+			$("#save_btn").css("display", "none");
+		}else{
+			$("#save_btn").css("display", "inline");
+		}
+		$('#eventdetails').modal('show');
+
+	}else { 
+		alert(data.msg);
+	}
+}
+
+

@@ -42,9 +42,8 @@ if($user != null){
 	$user_lat_log 	= get_lat_lon_zip( $user->zip ,  $conn);
 	// var_dump($user_lat_log);
 
-	$results = getSplashEvent($conn , $start_t  , $end_t , $user_lat_log , $search_term , $age );
-
-	$user_events	= getUserEvent($results, $tz );
+	$results 	 = getSplashEvent($conn , $start_t  , $end_t , $user_lat_log , $search_term , $age );
+	$user_events = getUserEvent($results, $tz );
 
 	$ranked_events  = assign_rank_to_events($user_events , 
 						$user_cat_pref , $user_lat_log, $start_t, $end_t, $miles);

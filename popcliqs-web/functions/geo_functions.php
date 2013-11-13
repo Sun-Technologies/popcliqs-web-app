@@ -29,3 +29,13 @@ function degrees_difference($lat1, $lon1, $lat2, $lon2)
 
     return $distance;
 }
+
+function get_distance_between_zips($conn, $zip1, $zip2){
+
+    $latlong1  = get_lat_lon_zip( $zip1 ,  $conn );
+    $latlong2  = get_lat_lon_zip( $zip2 ,  $conn );
+
+    return round( degrees_difference($latlong1['lat'] , $latlong1['lon'] , 
+        $latlong2['lat'] , $latlong2['lon']) , 2);
+}
+

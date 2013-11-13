@@ -119,4 +119,39 @@ function get_user_age($date_of_birth){
 	return $diff->y; 
 }
 
+function get_user_zip($conn , $user_id){
+
+	$query = "select zip from popcliqs_users where user_id = :uid LIMIT 1";
+
+	$binding = array(
+		'uid' => $user_id 
+	);
+
+	$results = query( $query, $conn , $binding);
+
+	if ($results) { 
+		return $results[0][0];
+	}
+	return false;
+} 
+
+function user_event_rsvp_cd($event_id , $user_id , $conn ){
+
+	$query = "select rsvp_id  from phpfox_event_rsvp 
+				where  event_id = :eid and user_id = :uid
+			";
+
+	$binding = array(
+		'eid' => $event_id , 
+		'uid' => $user_id 
+	);
+	$results = query( $query, $conn , $binding );
+
+	if($results){
+		extract($results);
+		return $rsvp_id;
+	}
+	return 0;
+}
+
 
