@@ -130,11 +130,11 @@
                <p>Enter as mm/dd/yy</p>
             <li>
             	
-            	<label for="end_date">end_date:</label>
-			    <input type="text" name="end_date" value="">
-            	 <select name="end_time" id="end_time">
-			    <option value="">end-time</option>
-			     <option value="00:30">12:30 AM</option>
+    	<label for="end_date">end_date:</label>
+	    <input type="text" name="end_date" value="">
+    	<select name="end_time" id="end_time">
+	    <option value="">end-time</option>
+	    <option value="00:30">12:30 AM</option>
         <option value="01:00">1:00 AM</option>
         <option value="01:30">1:30 AM</option>
         <option value="02:00">2:00 AM</option>  

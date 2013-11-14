@@ -10,6 +10,7 @@ require 'pdo/user_event_class.php';
 require 'functions/geo_functions.php';
 require 'pdo/exit_code_class.php';
 require 'pdo/exitcode_constants.php';
+require 'functions/rsvp_functions.php';
 
 if(!isset($_SESSION['user_id'])){
 	header('Location:index.php');

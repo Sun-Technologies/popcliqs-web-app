@@ -176,7 +176,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"  onclick="update_user_pref();">Save changes</button>
+        <button type="button" class="btn btn-primary"  onclick="update_user_pref();">Save</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -389,12 +389,13 @@
         <!-- Tab panes -->
         <div class="tab-content">
           <div class="tab-pane active" id="attended">...</div>
-          <div class="tab-pane" id="initiated">...</div>
+          <div class="tab-pane" id="initiated">
+            <?php require 'initiated.tab.php'; ?>
+          </div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -408,6 +409,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">Event Details</h4>
       </div>
+      <input type="hidden" id="e_id" />
       <div class="modal-body">
         <div class="form-group">
           <label for="title" class="col-lg-2 control-label">Title</label>
@@ -473,7 +475,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="save_btn" class="btn btn-primary">Pop It!</button>
+        <button type="button" id="save_btn" class="btn btn-primary" onclick="update_rspv()">Pop It!</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -493,8 +495,13 @@
      fetchEvents();
      // redraw();
   });
+
   $('#historyTab').click(function (e) {
-    alert("history" + e.target);
+    
+    var target = e.target + "";
+    if(target.indexOf("initiated") !== -1){
+      fetch_initiated_events();
+    }
   });
 
   $(function() {

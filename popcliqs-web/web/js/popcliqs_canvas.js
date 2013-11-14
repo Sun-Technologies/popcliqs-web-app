@@ -305,7 +305,12 @@ function open_newEvent(){
 }
 
 function open_history(){
-   $('#history').modal('show');
+  $('#history').modal('show');
+  
+
+  if($('#history-int').hasClass( "active" )){
+    fetch_initiated_events();
+  }
 }
 
 function addtime ( time ,  addhr ){

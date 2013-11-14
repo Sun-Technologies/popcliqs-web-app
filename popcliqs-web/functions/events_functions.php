@@ -30,7 +30,8 @@ function add_event( $conn ,$event){
 		'lon'      		=> $event->lon
 		);
 
-	insert_query_execute ( $query , $conn , $binding );
+	return insert_query_execute ( $query , $conn , $binding );
+
 	
 }
 
@@ -65,7 +66,7 @@ function fetch_event($conn,$event_id ,$tz ){
 			$event->end_dt      = $evt_end;
 			$event->title       = $event_title;
 			$event->location    = $event_location;
-			$event->address     = $event_address;
+			$event->address     = preg_replace( '/(\r\n)|\n|\r/', '', $event_address);
 			$event->description = $description;
 			$event->age_limit   = $age_limit;
 			$event->capacity    = $capacity_limit;
@@ -196,8 +197,7 @@ function assign_rank_to_events($user_events , $user_cat_pref , $user_lat_lon, $s
 	return $ranked_events;
 }
 
-
-function get_user_event_preffered($evt_cat_id, $user_cat_prefs ) {
+function get_user_event_preffered( $evt_cat_id, $user_cat_prefs ) {
 
 	if($user_cat_prefs ) {
 		foreach( $user_cat_prefs as $user_cat_pref){
@@ -209,5 +209,31 @@ function get_user_event_preffered($evt_cat_id, $user_cat_prefs ) {
 		}
 	}
 	return false;
+}
 
+function fetch_init_events( $conn , $user_id ){
+
+	$query = "select * from popcliqs_events where user_id = :user_id and status = 1 order by event_start desc ";
+
+	$binding = array( 
+		'user_id' => $user_id
+	);
+
+	return query( $query, $conn , $binding );
+}
+
+
+function delete_event( $conn , $user_id , $event_id  ){
+
+	$query = " update popcliqs_events set status= :status , update_ts= :update_ts 
+					where user_id = :user_id and event_id = :event_id ";
+
+	$binding = array( 
+		'user_id' 	=> $user_id , 
+		'event_id' 	=> $event_id , 
+		'status' 	=> 0 , 
+		'update_ts' => date( "Y-m-d H:i:s" ) 
+	);
+
+	update_query_execute($query,$conn,$binding);
 }

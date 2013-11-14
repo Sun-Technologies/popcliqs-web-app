@@ -11,6 +11,7 @@ require 'pdo/user_event_class.php';
 require 'pdo/exit_code_class.php';
 require 'pdo/exitcode_constants.php';
 require 'functions/geo_functions.php';
+require 'functions/rsvp_functions.php';
 
 date_default_timezone_set("UTC");
 
@@ -98,7 +99,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
             $event->lat             = $event_lat_log['lat'];
             $event->lon             = $event_lat_log['lon'];
 
-            add_event( $conn ,$event);
+            $event_id  = add_event( $conn ,$event);
+            insert_rsvp_status( $conn , $event_id , $user_id , 1 );
         }
     }
     require 'json/json.service.layout.php';

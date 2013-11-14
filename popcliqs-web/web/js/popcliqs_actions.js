@@ -204,6 +204,7 @@ function fetch_event_details(eventid){
 
 function fetch_event_details_success (data, textStatus, jqXHR) {
 	
+	// alert(data);
 	if(data.exit_cd == 0 ){
 
 		$('#e_title').html(data.title) ;
@@ -212,6 +213,7 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 		$('#e_add').html(data.address) ;
 		$('#e_zip').html(data.postal_code) ;
 
+
 		age_limit_desc = "No age limit";
 		if(data.age_limit == 2) {
 			age_limit_desc = "Above 18 only.";
@@ -219,7 +221,7 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 			age_limit_desc = "Above 21 only.";
 		}
 		$('#e_alimit').html(age_limit_desc) ;
-
+		$('#e_id').val(data.id) ;
 		$('#e_start').html(data.st_dt) ;
 		$('#e_end').html(data.ed_dt) ;
 		$('#e_dist').html(data.distance);
@@ -236,4 +238,73 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 	}
 }
 
+function update_rspv(){
+
+	var eventid = $('#e_id').val();
+	var data    = "event_id=" + eventid ; 
+	var url     = 'update_user_rspv.php';
+
+	$.ajax({
+	  type: "POST",
+	  dataType: "json",
+	  url: url,
+	  data: data,
+	  success: update_rspv_success
+	});
+}
+
+function update_rspv_success(data, textStatus, jqXHR){
+	
+	if(data.exit_cd == 0 ){
+		
+		$('#eventdetails').modal('hide');
+	}else { 
+
+		alert(data.msg);
+	}
+}
+
+function fetch_initiated_events(){
+
+	var dt = new Date()
+  	var $tz = dt.getTimezoneOffset();
+
+	var url  = 'fetch_initiated_events.php?';
+	var data = "&tz=" + $tz; 
+	$.ajax({
+	  type: "POST",
+	  dataType: "text",
+	  url: url,
+	  data: data,
+	  success: fetch_initiated_events_success
+	});
+}
+
+function fetch_initiated_events_success (data, textStatus, jqXHR) {
+	
+	$('#initiated-tab').html(data);
+}
+
+function delete_event(event_id){
+	
+	var r = confirm("Are you sure you want to delete the event !!! ");
+	if ( r == true ){
+	   
+		var url  = 'delete_event.php?';
+		var data = "event_id=" + event_id; 
+		$.ajax({
+		  type: "POST",
+		  dataType: "text",
+		  url: url,
+		  data: data,
+		  success: delete_event_success
+		});
+	}
+}
+
+function delete_event_success(data, textStatus, jqXHR){
+
+	alert(data);
+	fetch_initiated_events();
+}
 
