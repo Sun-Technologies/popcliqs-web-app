@@ -304,7 +304,6 @@ function delete_event(event_id){
 
 function delete_event_success(data, textStatus, jqXHR){
 
-	alert(data);
 	fetch_initiated_events();
 }
 
