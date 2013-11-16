@@ -52,12 +52,18 @@ function fetch_event($conn,$event_id ,$tz ){
 
 			$timestamp = strtotime($event_start);
 			$start_timestamp = $timestamp - ($tz * 60 ) ;
-			$evt_st = date( 'M d Y h:i a', $start_timestamp ) ;
+			$evt_st = date( 'm/d/Y h:i a', $start_timestamp ) ;
 
 
 			$timestamp = strtotime($event_end);
 			$end_timestamp = $timestamp - ($tz * 60 ) ;
-			$evt_end = date( 'M d Y h:i a', $end_timestamp ) ;
+			$evt_end = date( 'm/d/Y h:i a', $end_timestamp ) ;
+
+
+			$st_evt_hr = date('H', $start_timestamp) ;
+			$st_evt_mn = date('i', $start_timestamp) ;
+			$ed_evt_hr = date('H', $end_timestamp) ;
+			$ed_evt_mn = date('i', $end_timestamp) ;
 
 			$event 				= new  User_Event;
 			$event->event_id 	= $event_id;
@@ -73,6 +79,8 @@ function fetch_event($conn,$event_id ,$tz ){
 			$event->lat		 	= $event_latitude;
 			$event->lon		 	= $event_longitude;
 			$event->postal_code = $zip;
+			$event->start_time  = $st_evt_hr . ':'. $st_evt_mn;
+			$event->end_time    = $ed_evt_hr . ':'. $ed_evt_mn;
 
 		}
 	}

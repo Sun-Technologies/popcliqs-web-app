@@ -15,14 +15,13 @@
 					echo ',{';
 				}
 				$hour = $user_event->start_time . ':00'; ?>
-				"id" : <?php echo $user_event->event_id ?> ,
-				"size" : "<?php echo $user_event->size ?>"  ,
-				"type" : <?php echo $user_event->category_id ?> ,
-				"time" : "<?php echo $hour ?>" ,
+				"id"        : <?php echo $user_event->event_id ?> ,
+				"size"      : "<?php echo $user_event->size ?>"  ,
+				"type"      : <?php echo $user_event->category_id ?> ,
+				"time"      : "<?php echo $hour ?>" ,
 				"fillPCent" : 0 ,
-				"rank" : <?php echo $user_event->rank ?> ,
-				"mratio" : <?php echo $user_event->mratio ?> 
-				
+				"rank"      : <?php echo $user_event->rank ?> ,
+				"mratio"    : <?php echo $user_event->mratio ?>
 				<?php echo "}" ?>  
 		<?php 
 			$rank +=2;

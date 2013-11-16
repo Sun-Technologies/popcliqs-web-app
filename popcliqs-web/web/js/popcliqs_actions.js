@@ -307,3 +307,71 @@ function delete_event_success(data, textStatus, jqXHR){
 	fetch_initiated_events();
 }
 
+function edit_event(event_id){
+
+	var dt = new Date();
+  	var $tz = dt.getTimezoneOffset();
+  	var url = 'fetch_event_details.php';
+
+	var data = "event_id=" + event_id + "&tz=" + $tz; 
+	$.ajax({
+	  type: "POST",
+	  dataType: "json",
+	  url: url,
+	  data: data,
+	  success: edit_event_success
+	});
+}
+
+function edit_event_success (data, textStatus, jqXHR) {
+	
+	// alert(data);
+	if(data.exit_cd == 0 ){
+		
+		$('#history').modal('hide');
+		$('#newEvent').modal('show');
+
+		// set values  to input boxes 
+		$("#title").val(data.title);
+		$('#description').val(data.description);
+		$('#category_id').val(data.typeid);
+		$('#location').val(data.location);
+		$('#address').val(data.address);
+		$('#postal_code').val(data.postal_code);
+
+		var agelimit_chkbox = '#age_limit_' + data.age_limit;
+		$(agelimit_chkbox).prop( "checked", true );
+		
+		$('#capacity').val(data.capacity);
+		
+		
+		var start = data.st_dt.split(" "); 
+		var end   = data.ed_dt.split(" "); 
+
+	    $('#start_date').val(start[0]);
+	    $('#end_date').val(end[0]);
+	    $('#start_time').val(data.st_time);
+	    $('#end_time').val(data.ed_time);
+
+
+	}else { 
+
+		alert(data.msg);
+	}
+
+	
+	
+	/*
+	var $description	= $('#description').val();
+	var $category_id	= $('#category_id').val();
+	var $location		= $('#location').val();
+	var $address		= $('#address').val();
+	var $postal_code	= $('#postal_code').val();
+	var $age_limit		= $('#age_limit').val();
+	var $capacity		= $('#capacity').val();
+	var $s_dt       	= $('#start_date').val();
+	var $e_dt       	= $('#end_date').val();
+	var $s_tm			= $('#start_time').val();
+	var $e_tm			= $('#end_time').val();*/
+}
+
