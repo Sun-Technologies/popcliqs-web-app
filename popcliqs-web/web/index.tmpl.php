@@ -265,8 +265,18 @@
               </div>
             </div>
           </div>
+          <div class="row" style="padding-bottom:10px;">
+            <div class="form-group">
+              <div class="col-lg-3">
+              </div>
+              <div class="col-lg-7">
+                By signing up, I agree to the <a href="#">Terms</a> of Use and <a href="#">Privacy Policy</a>.
+              </div>
+            </div>
+          </div>
+
           <div class="row" style="padding-left:20px;padding-top:20px;"> 
-              <button type="submit" class="btn btn-success backgroundColor1 col-lg-offset-3 col-lg-6">Submit</button>
+              <button type="submit" class="btn btn-success backgroundColor1 col-lg-offset-3 col-lg-6">Sign Up</button>
           </div>
         </form>
       </div>

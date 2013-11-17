@@ -97,7 +97,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Prefrences</h4>
+        <h4 class="modal-title" id="myModalLabel">Preferences</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
@@ -144,7 +144,7 @@
         </div><br/>
         <div class="form-group">
             <img src="/web/img/help.png"  class="col-lg-2 control-label" style="width:60px;" /> 
-            <label for="1" class="col-lg-3 control-label">Self Help</label>
+            <label for="1" class="col-lg-3 control-label">Support Group</label>
             <div class="col-lg-7">
 
               <input type="radio" id="cat_5_0" name="5" value="0" placeholder="" />

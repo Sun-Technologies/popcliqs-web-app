@@ -244,7 +244,7 @@ function drawFooter(){
     archandleMouseClick() 
   }
   
-  var pqlabel = new createjs.Text("pq", "45px Arial", "#000");
+  var pqlabel = new createjs.Text("pq", "45px Arial", "#005DEA");
   pqlabel.x = 15;
   pqlabel.y = 425;
 
@@ -263,16 +263,16 @@ function drawFooter(){
   newevtcircle.graphics.beginFill("#40C8FF").drawCircle(0, 550, 40);
   historycircle.graphics.beginFill("#40C8FF").drawCircle(0, 550, 40);
   
-  preflabel = new createjs.Text("Preferences", "12px Arial", "#000");
+  preflabel = new createjs.Text("Preferences", "12px Arial", "#005DEA");
   preflabel.x = 10;
   preflabel.y = 350;
   
   
-  newevtlabel = new createjs.Text("PopcliQ!", "12px Arial", "#000");
+  newevtlabel = new createjs.Text("PopcliQ!", "12px Arial", "#005DEA");
   newevtlabel.x = 105;
   newevtlabel.y = 360;
 
-  historylabel = new createjs.Text("History", "12px Arial", "#000");
+  historylabel = new createjs.Text("History", "12px Arial", "#005DEA");
   historylabel.x = 135;
   historylabel.y = 440;
 
