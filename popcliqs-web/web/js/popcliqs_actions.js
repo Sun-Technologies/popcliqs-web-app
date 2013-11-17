@@ -34,17 +34,24 @@ function create_event(){
 		alert(" Capacity should be numberic. " );
 	  	return;
 	}
-
+	var $age_limit = 1 ;
+	if($("#age_limit_2").prop( "checked")){
+		$age_limit = 2 ;
+	}else if($("#age_limit_3").prop( "checked")){
+		$age_limit = 3;
+	}
+	
 	var dt = new Date()
   	var $tz = dt.getTimezoneOffset();
 
+  	var $event_id       = $("#event_id").val();
 	var $title			= $("#title").val();
 	var $description	= $('#description').val();
 	var $category_id	= $('#category_id').val();
 	var $location		= $('#location').val();
 	var $address		= $('#address').val();
 	var $postal_code	= $('#postal_code').val();
-	var $age_limit		= $('#age_limit').val();
+	// var $age_limit		= $('#age_limit').val();
 	var $capacity		= $('#capacity').val();
 	var $s_dt       	= $('#start_date').val();
 	var $e_dt       	= $('#end_date').val();
@@ -60,16 +67,34 @@ function create_event(){
 	var data =   "event_title=" + $title   +  "&description=" + $description + "&category_id=" + $category_id + "&location="  + $location  
 			   + "&address="    + $address +  "&postal_code=" + $postal_code + "&age_limit="   + $age_limit   + "&capacity="  + $capacity  
 			   + "&start_date=" + $s_dt    +  "&end_date="    + $e_dt        + "&start_time="  +  $s_tm	      + "&end_time="  +  $e_tm 
-			   + "&tz="         + $tz; 
+			   + "&tz="         + $tz      +  "&event_id="    + $event_id;
+
+	var handler = create_event_success; 
+
+	if ($('#event_id').val() != null || $('#event_id').val() != "" ){
+		handler = update_event_success;
+	}
 
 	$.ajax({
 		  type: "POST",
 		  dataType: "json",
 		  url: url,
 		  data: data,
-		  success: create_event_success
+		  success: handler
 		});
 }
+
+function update_event_success(data, textStatus, jqXHR){
+	
+	if(data.exit_cd == 0 ){
+		alert("Event update Successfully !!! ");
+		close_event_window();
+		location.reload();
+	}else{
+		alert(data.msg);
+	}
+}
+
 
 function isNumber(n) {
   	return !isNaN(parseFloat(n)) && isFinite(n);
@@ -79,8 +104,7 @@ function create_event_success(data, textStatus, jqXHR){
 	
 	if(data.exit_cd == 0 ){
 		alert("Event created Successfully !!! ");
-		$('#newEvent').modal('hide');
-		document.getElementById("event_form").reset();
+		close_event_window();
 		location.reload();
 	}else{
 		alert(data.msg);
@@ -332,6 +356,7 @@ function edit_event_success (data, textStatus, jqXHR) {
 		$('#newEvent').modal('show');
 
 		// set values  to input boxes 
+		$("#event_id").val(data.id);
 		$("#title").val(data.title);
 		$('#description').val(data.description);
 		$('#category_id').val(data.typeid);
@@ -341,37 +366,23 @@ function edit_event_success (data, textStatus, jqXHR) {
 
 		var agelimit_chkbox = '#age_limit_' + data.age_limit;
 		$(agelimit_chkbox).prop( "checked", true );
-		
 		$('#capacity').val(data.capacity);
-		
-		
+				
 		var start = data.st_dt.split(" "); 
 		var end   = data.ed_dt.split(" "); 
-
-	    $('#start_date').val(start[0]);
+		$('#start_date').val(start[0]);
 	    $('#end_date').val(end[0]);
 	    $('#start_time').val(data.st_time);
 	    $('#end_time').val(data.ed_time);
-
 
 	}else { 
 
 		alert(data.msg);
 	}
-
-	
-	
-	/*
-	var $description	= $('#description').val();
-	var $category_id	= $('#category_id').val();
-	var $location		= $('#location').val();
-	var $address		= $('#address').val();
-	var $postal_code	= $('#postal_code').val();
-	var $age_limit		= $('#age_limit').val();
-	var $capacity		= $('#capacity').val();
-	var $s_dt       	= $('#start_date').val();
-	var $e_dt       	= $('#end_date').val();
-	var $s_tm			= $('#start_time').val();
-	var $e_tm			= $('#end_time').val();*/
 }
 
+function close_event_window(){
+
+	$('#newEvent').modal('hide');
+	document.getElementById("event_form").reset();
+}

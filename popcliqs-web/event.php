@@ -15,7 +15,8 @@ require 'functions/rsvp_functions.php';
 
 date_default_timezone_set("UTC");
 
-$status_obj    = $_SUCCESS;
+$status_obj = $_SUCCESS;
+$user_id    = $_SESSION['user_id'];
 
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
@@ -39,6 +40,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
     $type 			=  1;
     $status         =  1;
     $tz             = isset($_POST["tz"]) ? $_POST["tz"] : 0;
+    $event_id       = isset($_POST["event_id"]) ? $_POST["event_id"] : 0;
 
     if( empty($event_title) ){
 
@@ -82,13 +84,14 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
             $event_lat_log = get_lat_lon_zip( $zip ,  $conn);
             
             $event                  = new User_Event;
+            $event->id              = $event_id;
             $event->title           = $event_title;
             $event->category_id     = $category_id;
             $event->description 	= $description;
             $event->location 		= $location;
             $event->address 		= $address;
-            $event->city 			= $city;
-            $event->state 			= $state;
+            // $event->city 			= $city;
+            // $event->state 			= $state;
             $event->postal_code 	= $zip;
             $event->start_time 	    = $start_timestamp;
             $event->capacity 		= $capacity;
@@ -99,8 +102,16 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
             $event->lat             = $event_lat_log['lat'];
             $event->lon             = $event_lat_log['lon'];
 
-            $event_id  = add_event( $conn ,$event);
-            insert_rsvp_status( $conn , $event_id , $user_id , 1 );
+
+            if($event_id ){
+                error_log("It is update event..... $event_id $age_limit ");
+                update_event( $conn , $event, $user_id);
+            }else{
+
+                $event_id  = add_event( $conn ,$event);
+                insert_rsvp_status( $conn , $event_id , $user_id , 1 );
+            }
+
         }
     }
     require 'json/json.service.layout.php';

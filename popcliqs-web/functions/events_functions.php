@@ -35,6 +35,40 @@ function add_event( $conn ,$event){
 	
 }
 
+
+function update_event( $conn , $event, $user_id ){
+
+	$query = " 
+		    	update popcliqs_events  
+				set event_title=:title, description=:description, category=:category_id, 
+				event_location=:location, event_address=:address, zip=:postal_code,
+				age_limit=:age_limit ,
+				capacity_limit=:capacity, event_start=:start_time, event_end=:end_time, 
+				update_ts=:update_ts, event_latitude=:lat, event_longitude=:lon
+				where event_id =:event_id and  user_id=:user_id 	 
+			";
+
+	$binding = array(
+	  	'title'         => $event->title ,
+		'description'   => $event->description,
+		'category_id'   => $event->category_id  , 
+		'location' 		=> $event->location,
+		'address' 		=> $event->address,
+		'postal_code'	=> $event->postal_code,
+		'age_limit'		=> $event->age_limit,
+		'capacity'		=> $event->capacity,
+		'start_time'	=> date( "Y-m-d H:i:s", $event->start_time),
+		'end_time'		=> date( "Y-m-d H:i:s", $event->end_time),
+	    'update_ts' 	=> date( "Y-m-d H:i:s" ),
+		'lat'      		=> $event->lat,
+		'lon'      		=> $event->lon,
+		'user_id'		=> $user_id ,
+		'event_id'		=> $event->id
+		);
+
+	return update_query_execute ( $query , $conn , $binding );
+}
+
 ///below code is written for fetching of events
 function fetch_event($conn,$event_id ,$tz ){
 	

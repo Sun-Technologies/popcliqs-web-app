@@ -196,6 +196,7 @@
             <label for="title" class="col-lg-2 control-label">Title</label>
             <div class="col-lg-8">
               <input type="text" id="title" name="title" class="form-control" placeholder="" />
+               <input type="hidden" id="event_id" name="event_id"/>
             </div>
           </div>
           <div class="form-group">
@@ -365,7 +366,7 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" onclick="close_event_window();">Close</button>
         <button type="button" class="btn btn-primary" onclick="create_event();">Save</button>
       </div>
      </form>
