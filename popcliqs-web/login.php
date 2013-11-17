@@ -25,7 +25,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	}else{
 
 		$status = "incorrect login";
-		require 'index.tmpl.php';
+		// require 'index.tmpl.php';
+		header('Location:index.php');
 	}
 	
 
