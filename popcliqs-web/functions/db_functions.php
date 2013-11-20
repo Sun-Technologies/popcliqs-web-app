@@ -1,18 +1,28 @@
 <?php 
 
+//Local configuration
 $config =  array(
 		'username' => 'root'	 	,
 		'password' => 'root'		,
 		'hostname' => 'localhost'	,
-		'dbname'   => 'popcliqs_web'
+		'dbname'   => 'popcliqs_web' 
 );
+
+
+//Prod configuration
+// $config =  array(
+// 		'username' => 'popcliqsweb'	 	,
+// 		'password' => 'Bubble@2013'		,
+// 		'hostname' => 'popcliqsweb.db.10862321.hostedresource.com'	,
+// 		'dbname'   => 'popcliqsweb'
+// );
 
 
 function connect ($config){
 
 	try{
 
-		$conn = new PDO('mysql:host=localhost;dbname=popcliqs_web' ,
+		$conn = new PDO('mysql:host='.$config['hostname'].';dbname='.$config['dbname'] ,
 				$config['username'] , 
 				$config['password']
 		);
@@ -21,7 +31,7 @@ function connect ($config){
 		
 	}catch(Exception $e){
 
-		//echo "Exception" . $e->getMessage();
+		echo "Exception" . $e->getMessage();
 		return false;
 	}
 }

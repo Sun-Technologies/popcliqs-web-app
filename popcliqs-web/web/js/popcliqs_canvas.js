@@ -42,7 +42,7 @@ var eventlist ;
 /*
  * Redraw 
  */
-function redraw(eventarr){
+function redraw(eventarr , redraw){
   
   // eventlist = new Array(event1,event2,event3);
   eventlist = eventarr;
@@ -60,7 +60,7 @@ function redraw(eventarr){
     newcanvas = "mainCanvas-xs";
   }
 
-  if(canvasstr != newcanvas){
+  if(canvasstr != newcanvas || redraw ){
     //alert(" change in canvas");
     canvasstr = newcanvas;
     draw();
@@ -73,10 +73,10 @@ function draw() {
   stage = new createjs.Stage(canvas);
   
   stage.clear();
-  stage.update();
+  //stage.update();
 
   spritesheet = new createjs.SpriteSheet({
-    images: ['/web/img/animation-1.png'],
+    images: ['./web/img/animation-1.png'],
     frames: {width: 300, height: 300},
     animations: {   
       stand: 0, // 1 frame of the player standing
@@ -103,7 +103,6 @@ function drawBody(canvas){
   var timex = linewd;
   
   var time_inc = 1;
-
   if($time_interval == 24){
     time_inc = 3;
   }else if($time_interval == 72){
@@ -548,19 +547,19 @@ function drawEvent(  event , time_inc  ){
   var eventtypeimg = new Image();
   
   if( event.type ==  "1"){
-    eventtypeimg.src = '/web/img/football-icon.png';  
+    eventtypeimg.src = './web/img/football-icon.png';  
   } else if ( event.type ==  "2"){
-    eventtypeimg.src = '/web/img/prof.png'; 
+    eventtypeimg.src = './web/img/prof.png'; 
   } else if ( event.type ==  "3"){
-    eventtypeimg.src = '/web/img/arts.png'; 
+    eventtypeimg.src = './web/img/arts.png'; 
   } else if ( event.type ==  "4"){
-    eventtypeimg.src = '/web/img/education.png';  
+    eventtypeimg.src = './web/img/education.png';  
   } else if ( event.type ==  "5"){
-    eventtypeimg.src = '/web/img/help.png'; 
+    eventtypeimg.src = './web/img/help.png'; 
   } else if ( event.type ==  "6"){
-    eventtypeimg.src = '/web/img/adventure.png';  
+    eventtypeimg.src = './web/img/adventure.png';  
   } else if ( event.type ==  "7"){
-    eventtypeimg.src = '/web/img/event.png';  
+    eventtypeimg.src = './web/img/event.png';  
   }
   
   eventtypeimg.name = 'event1';
@@ -632,7 +631,6 @@ function fetchEvents(){
   $cat_type      = $("#category").val();
   $search_t      = $("#search_t").val();
 
-
   var dt = new Date()
   var tz = dt.getTimezoneOffset();
 
@@ -653,7 +651,8 @@ function fetch_event_success(data, textStatus, jqXHR){
   // alert(data);
   if(data.exit_cd == 0 ){
       // alert(data.events.length);
-      redraw(data.events);
+    redraw(data.events , true);
+
   }else{
       alert(data.msg);
   }

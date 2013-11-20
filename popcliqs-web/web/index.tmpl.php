@@ -18,7 +18,7 @@
         Sign In
       </button>
       <div class="container" style="height:70px;">
-            <a class="brand" href="home.php"> <span  style="position:relative;top:-15px;" ><img src="web/img/4.png"/></span></a>
+            <a class="brand" href="home.php"> <span  style="position:relative;top:-15px;" ><img src="./web/img/4.png"/></span></a>
       </div>
     </div>
     <div class="navbar-collapse collapse backgroundColor" style="height:1px;">

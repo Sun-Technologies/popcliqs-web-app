@@ -19,10 +19,11 @@ if(!isset($_SESSION['user_id'])){
 date_default_timezone_set("UTC");  
 
 $status_obj     = $_SUCCESS;
-$user_id		= $_SESSION['user_id']; 	
+$user_id		= $_SESSION['user_id']; 
 $time_interval 	= $_POST["time_interval"];
 $tz 			= isset($_POST["tz"]) ? $_POST["tz"] : 0;
 $search_term    = isset($_POST["s"]) ? $_POST["s"] : false;
+$cat_id         = isset($_POST["cat_type"]) ? $_POST["cat_type"] : 0;
 
 $start_t  = time();
 // $start_t  = $start_t - (60 *  $tz);
@@ -42,7 +43,7 @@ if($user != null){
 	$user_lat_log 	= get_lat_lon_zip( $user->zip ,  $conn);
 	// var_dump($user_lat_log);
 
-	$results 	 = getSplashEvent($conn , $start_t  , $end_t , $user_lat_log , $search_term , $age );
+	$results 	 = getSplashEvent($conn , $start_t  , $end_t , $user_lat_log , $search_term , $age , $cat_id );
 	$user_events = getUserEvent($results, $tz );
 
 	$ranked_events  = assign_rank_to_events($user_events , 

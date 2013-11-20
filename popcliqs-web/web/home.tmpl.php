@@ -24,7 +24,7 @@
        <span class="glyphicon glyphicon-search"></span>
       </button>
        <div class="container" style="height:60px;">
-            <a class="brand" href="home.php"> <span  style="position:relative;top:-20px;" ><img src="web/img/4.png"/></span></a>
+            <a class="brand" href="home.php"> <span  style="position:relative;top:-20px;" ><img src="./web/img/4.png"/></span></a>
       </div>
     </div>
     <div class="navbar-collapse collapse backgroundColor" style="height:1px;">
@@ -34,31 +34,30 @@
         </button>
       </form>
       &nbsp;&nbsp;&nbsp;
-      <form class="navbar-form navbar-right" >
+      <form class="navbar-form navbar-right" action="javascript:fetchEvents();" >
         <div class="form-group">
-          <select name="category" id="category" onchange="this.form.submit()" class="form-control">
+          <select name="category" id="category" onchange="fetchEvents()" class="form-control">
             <option value="0">All</option>
-            <option value="4">Sports</option>
-            <option value="6">Professional</option>
-            <option value="7">Education</option>
+            <option value="1">Sports</option>
+            <option value="2">Professional</option>
+            <option value="3">Arts</option>
+            <option value="4">Education</option>
             <option value="5">Support Group</option>
-            <option value="1">Arts</option>
-            <option value="3">Outdoor</option>
-            <option value="2">Party</option>
-            <option value="8">Other</option>
+            <option value="6">Outdoor</option>
+            <option value="7">Party</option>
           </select>
         </div>
         <div class="form-group">
-          <select name="ti" id="ti" onchange="this.form.submit()" class="form-control">
+          <select name="ti" id="ti" onchange="fetchEvents()" class="form-control">
             <option value="8">8 Hours</option>
               <option value="24">24 Hours</option>
               <option value="72">3 Days</option>
           </select>
         </div>
         <div class="form-group">
-         <input type="search" name="search_t" id="search_t" placeholder="Search" class="form-control">
+         <input type="search" name="search_t" id="search_t"  placeholder="Search" class="form-control">
         </div> 
-        <button type="submit" class="btn backgroundColor1">
+        <button type="button" class="btn backgroundColor1" onclick="fetchEvents()">
           <span class="glyphicon glyphicon-search"></span>
         </button>
       </form>
@@ -91,7 +90,7 @@
   </footer>
 </div>
 
-<!-- Modal -->
+<!-- Modal
 <div class="modal fade" id="mypref" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -101,7 +100,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <img src="/web/img/football-icon.png"  class="col-lg-2 control-label" style="width:60px;" /> 
+            <img src="./web/img/football-icon.png"  class="col-lg-2 control-label" style="width:60px;" /> 
             <label for="1" class="col-lg-3 control-label">Sports</label>
             <div class="col-lg-7">
               <input type="radio" id="cat_1_0" name="cat_1" value="0" placeholder="" />
@@ -110,7 +109,7 @@
             </div>
         </div><br/>
         <div class="form-group">
-            <img src="/web/img/prof.png"  class="col-lg-1 control-label" style="width:60px;" /> 
+            <img src="./web/img/prof.png"  class="col-lg-1 control-label" style="width:60px;" /> 
             <label for="1" class="col-lg-3 control-label">Professional</label>
             <div class="col-lg-7">
 
@@ -121,7 +120,7 @@
             </div>
         </div><br/>
         <div class="form-group">
-            <img src="/web/img/arts.png"  class="col-lg-2 control-label" style="width:60px;" /> 
+            <img src="./web/img/arts.png"  class="col-lg-2 control-label" style="width:60px;" /> 
             <label for="1" class="col-lg-3 control-label">Arts</label>
             <div class="col-lg-7">
 
@@ -132,7 +131,7 @@
             </div>
         </div><br/>
         <div class="form-group">
-            <img src="/web/img/education.png"  class="col-lg-1 control-label" style="width:60px;" /> 
+            <img src="./web/img/education.png"  class="col-lg-1 control-label" style="width:60px;" /> 
             <label for="1" class="col-lg-3 control-label">Education</label>
             <div class="col-lg-7">
 
@@ -143,7 +142,7 @@
             </div>
         </div><br/>
         <div class="form-group">
-            <img src="/web/img/help.png"  class="col-lg-2 control-label" style="width:60px;" /> 
+            <img src="./web/img/help.png"  class="col-lg-2 control-label" style="width:60px;" /> 
             <label for="1" class="col-lg-3 control-label">Support Group</label>
             <div class="col-lg-7">
 
@@ -154,7 +153,7 @@
             </div>
         </div><br/>
         <div class="form-group">
-            <img src="/web/img/adventure.png"  class="col-lg-2 control-label" style="width:60px;" /> 
+            <img src="./web/img/adventure.png"  class="col-lg-2 control-label" style="width:60px;" /> 
             <label for="1" class="col-lg-3 control-label">Outdoor</label>
             <div class="col-lg-7">
 
@@ -165,7 +164,7 @@
             </div>
         </div><br/>
         <div class="form-group">
-            <img src="/web/img/event.png"  class="col-lg-2 control-label" style="width:60px;" /> 
+            <img src="./web/img/event.png"  class="col-lg-2 control-label" style="width:60px;" /> 
             <label for="1" class="col-lg-3 control-label">Party</label>
             <div class="col-lg-7">
               <input type="radio" id="cat_7_0" name="7" value="0" placeholder="" />

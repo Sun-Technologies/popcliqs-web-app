@@ -376,7 +376,6 @@ function edit_event_success (data, textStatus, jqXHR) {
 	    $('#end_time').val(data.ed_time);
 
 	}else { 
-
 		alert(data.msg);
 	}
 }

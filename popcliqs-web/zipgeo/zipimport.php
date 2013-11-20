@@ -2,10 +2,20 @@
 
 
 set_time_limit(0);
+
+// Prod
+// $mysqlhost  = 'popcliqsweb.db.10862321.hostedresource.com';
+// $mysqluser  = 'popcliqsweb';
+// $mysqlpass  = 'Bubble@2013';
+// $mysqldb    = 'popcliqsweb';
+
+
 $mysqlhost  = 'localhost';
 $mysqluser  = 'root';
 $mysqlpass  = 'root';
 $mysqldb    = 'popcliqs_web';
+
+
 $mysqltable = 'zipgeo';
 
 mysql_connect($mysqlhost, $mysqluser, $mysqlpass) or die(mysql_error());

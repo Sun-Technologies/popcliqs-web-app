@@ -121,7 +121,7 @@ function fetch_event($conn,$event_id ,$tz ){
 	return $event;
 } 
 
-function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $age  , $miles = 25 ){
+function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $age  , $cat_id ,$miles = 25 ){
 
 	$milesperdegree = 69;
     $degreesdiff = $miles / $milesperdegree;
@@ -141,9 +141,15 @@ function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $
 				evt.event_title LIKE :search_t or evt.event_location    LIKE :search_t or   
 				evt.zip LIKE :search_t or 
 				evt.description  LIKE :search_t 
-			)
+			) 
 	";	
 
+	if ( $cat_id ) { 
+
+		$query = $query. " and  evt.category =".$cat_id; 
+	}
+
+	// error_log( " query :>>> $query ");
 	$binding = array(
 		'st' 	=> date( "Y-m-d H:i:s", $start_t), 
 		'et' 	=> date( "Y-m-d H:i:s", $end_t), 

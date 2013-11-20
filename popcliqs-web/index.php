@@ -63,7 +63,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
 	}else if (is_user_exist( $conn, $email )){
 
-		$status  = "email already exists,,,try another email id";
+		$status  = "email already exists, try another email id.";
 	}
 	else{
 
