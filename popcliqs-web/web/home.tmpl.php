@@ -90,7 +90,7 @@
   </footer>
 </div>
 
-<!-- Modal
+<!-- Modal-->
 <div class="modal fade" id="mypref" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
