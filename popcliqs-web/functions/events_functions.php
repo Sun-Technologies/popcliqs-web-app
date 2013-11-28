@@ -131,7 +131,7 @@ function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $
 	$lon1 = $latlong['lon'] - $degreesdiff;
 	$lon2 = $latlong['lon'] + $degreesdiff;
 
-	// echo " start    " . date( "Y-m-d H:i:s", $start_t) . " End date " . date( "Y-m-d H:i:s", $end_t);
+	error_log(  " start    " . date( "Y-m-d H:i:s", $start_t) . " End date " . date( "Y-m-d H:i:s", $end_t) );
 	$query = "SELECT * FROM 
 			popcliqs_events as evt
 			WHERE  evt.event_start >= :st and evt.event_start <= :et  and

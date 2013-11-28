@@ -5,13 +5,13 @@
   <link rel="stylesheet" type="text/css" href="web/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="web/css/popcliqs.css">
   <link rel="stylesheet" type="text/css" href=" http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css">
- 
+ <link href='http://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
   <meta name="viewport" content="width=device-width">
 </head>
 <body onresize="redraw()">
 <!-- nav bar--> 
-<div class="navbar-fixed-top navbar-green" >
-</div>
+<!-- <div class="navbar-fixed-top navbar-green" >
+</div> -->
 
 <div class=" navbar-fixed-top navbar-blue" >
     <div class="navbar-header">
@@ -23,8 +23,8 @@
       <button type="button" class="navbar-toggle collapsed backgroundColor1" data-toggle="collapse" data-target=".navbar-collapse" >
        <span class="glyphicon glyphicon-search"></span>
       </button>
-       <div class="container" style="height:60px;">
-            <a class="brand" href="home.php"> <span  style="position:relative;top:-20px;" ><img src="./web/img/4.png"/></span></a>
+       <div class="container" style="height:70px;">
+            <a class="brand" href="home.php"> <span  style="position:relative;top:6px;" ><img src="./web/img/3.png"/></span></a>
       </div>
     </div>
     <div class="navbar-collapse collapse backgroundColor" style="height:1px;">

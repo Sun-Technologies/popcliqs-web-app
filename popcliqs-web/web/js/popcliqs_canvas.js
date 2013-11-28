@@ -243,7 +243,7 @@ function drawFooter(){
     archandleMouseClick() 
   }
   
-  var pqlabel = new createjs.Text("pq", "45px Arial", "#005DEA");
+  var pqlabel = new createjs.Text("pq", "45px Baumans", "#005DEA");
   pqlabel.x = 15;
   pqlabel.y = 425;
 
