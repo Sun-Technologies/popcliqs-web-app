@@ -1,4 +1,6 @@
+
 <!DOCTYPE HTML>
+
 <html>
 <head>
   <title>Popcliqs - Login</title>
@@ -270,7 +272,7 @@
               <div class="col-lg-3">
               </div>
               <div class="col-lg-7">
-                By signing up, I agree to the <a href="#">Terms</a> of Use and <a href="#">Privacy Policy</a>.
+                By signing up, I agree to the <a data-toggle="modal" href="#myModal">Terms</a> of Use and <a href="#">Privacy Policy</a>.
               </div>
             </div>
           </div>
@@ -282,12 +284,21 @@
       </div>
     </div>
 </div>
-<hr>
 <div class="container">
-  <footer>
-        <p>&copy; 2013 Popcliqs.com, <a href="#">About</a> | <a href="#">Privacy</a> | <a href="#">Terms</a></p>
- </footer>
-</div>
+     <div class="row">
+      <div class="col-md-12">
+        <hr/>
+        <p>&copy; 2013 Popcliqs.com, <a href="#">About</a> | <a href="#">Privacy</a> | <a data-toggle="modal" href="#myModal">Terms</a>
+      </p>
+     
+                 
+<?php 
+require 'terms.tmpl.php';
+ ?>
+                 
+
+     
+    
 <!--script src="js/jquery.js" ></script-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="web/js/bootstrap.js" ></script>
