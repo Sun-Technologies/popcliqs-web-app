@@ -154,6 +154,21 @@
                 </select> / 
                 <select name="year" id="year">
                   <option value="">Year:</option>
+                  <option value="1997">2012</option>
+                  <option value="1997">2011</option>
+                  <option value="1997">2010</option>
+                  <option value="1997">2009</option>
+                  <option value="1997">2008</option>
+                  <option value="1997">2007</option>
+                  <option value="1997">2006</option>
+                  <option value="1997">2005</option>
+                  <option value="1997">2004</option>
+                  <option value="1997">2003</option>
+                  <option value="1997">2002</option>
+                  <option value="1997">2001</option>
+                  <option value="1997">2000</option>
+                  <option value="1997">1999</option>
+                  <option value="1997">1998</option>
                   <option value="1997">1997</option>
                   <option value="1996">1996</option>
                   <option value="1995">1995</option>

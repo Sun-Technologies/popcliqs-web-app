@@ -113,6 +113,7 @@ function drawBody(canvas){
   var bg = new createjs.Shape();
 
   stage.addChild(bg);
+  stage.enableMouseOver();
   bg.graphics.beginStroke("#9F9F9F");
 
   if($time_interval != 72){
@@ -239,8 +240,12 @@ function drawFooter(){
   arc.graphics.beginStroke("#ccc");
   arc.graphics.beginFill("#BDCB00").arc(0, 500, 100, 0, Math.PI*2);
 
+  arc.onMouseOver = function(evt) { 
+    evt.target.cursor = 'pointer' ;
+  }
+
   arc.onClick = function(evt) { 
-    archandleMouseClick() 
+    archandleMouseClick() ;
   }
   
   var pqlabel = new createjs.Text("pq", "45px Baumans", "#005DEA");
@@ -279,12 +284,24 @@ function drawFooter(){
   stage.addChild(newevtcircle);
   stage.addChild(historycircle);
 
+  prefcircle.onMouseOver = function(evt) { 
+    evt.target.cursor = 'pointer' ;
+  }
+  
   prefcircle.onClick = function(evt) { 
     open_pref(); 
   }
 
+  newevtcircle.onMouseOver = function(evt) { 
+     evt.target.cursor = 'pointer' ;
+  }
+
   newevtcircle.onClick = function(evt) { 
     open_newEvent(); 
+  }
+
+  historycircle.onMouseOver = function(evt) { 
+    evt.target.cursor = 'pointer' ;
   }
 
   historycircle.onClick = function(evt) { 
