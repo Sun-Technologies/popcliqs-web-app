@@ -28,38 +28,59 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$type 		=  1;
 	
 
-	if( empty($email) || empty($reemail) || !valid_email($reemail) ){
-
-		$status = "please enter the valid email id";
+	if( empty($email) ){
 		
-    }else if($email !=$reemail){
+
+		$status = "please enter the  email id";
+		$error_id  = "#email";
+
+		}
+		elseif (!valid_email($email)) {
+			$status="please enter the valid email id";
+             $error_id ="#email";
+
+		}elseif (!valid_email($reemail)) {
+			$status="please enter the correct email id";
+             $error_id ="#reemail";
+
+		}elseif (empty($reemail)) {
+			$status = "please re enter the email";
+			$error_id = "#reemail";
+	
+	   }else if($email !=$reemail){
 
 		$status = "email match not found";
+	    $error_id  = "#reemail";
 	
-	}else if(empty($password)){
+	}else if(empty($password) || strlen($password)!= 6){
 
 		$status = "enter password";
-
+        $error_id ="#password";
 	}
 	else if (empty($sex)) {
 
 		$status = "select the gender"; 
+		$error_id ="#sex";
 
 	} else if (empty($month)) {
 
 		$status = "enter a valid date of birth mm";
+        $error_id ="#month";
 
 	}else if (empty($day)) {
 
 		$status = "enter a valid date of birth /dd/";
+		$error_id = "#day";
 	
 	}else if (empty($year)) {
 
 		$status = "enter a valid date of birth yyyy";
+		$error_id ="#year";
 	
 	}else if (empty($zip) || !is_numeric($zip) || strlen($zip)!= 5 ) {
 
 		$status = "enter valid zip";
+		$error_id = "#zip";
 
 	}else if (is_user_exist( $conn, $email )){
 
@@ -82,6 +103,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 		send_welcome_mail($email);
 		$_SESSION['email'] = $email;
 		$_SESSION['user_id'] = $user_id;
+		$_SESSION['zip'] = $zip;
 		setcookie('user_id', $user_id , time()+60*60);
 
 		insert_default_pref( $conn  , $user_id);

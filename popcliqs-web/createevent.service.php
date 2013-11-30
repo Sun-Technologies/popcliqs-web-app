@@ -22,7 +22,7 @@
 	$zip   		= isset($_GET["zip"])   ? $_GET["zip"] : 0 ;
 	$st_hr   	= isset($_GET["st_hr"]) ? $_GET["st_hr"] : 0 ;
 
-	$start_t  = time();
+	$start_t  = time() - (time() % 3600);
 	// $start_t  = $start_t - (60 *  $tz);
 
 	$st_time  = $start_t + ($st_hr  * 60 * 60 );

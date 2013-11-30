@@ -67,7 +67,9 @@ function authenticate_user( $conn, $email, $password ){
 	if( $results ){
 		foreach( $results as $row){
 			extract($row);
+			$_SESSION['zip'] = $zip;
 			return $user_id;
+
 		}
 	} else{
 		return false;

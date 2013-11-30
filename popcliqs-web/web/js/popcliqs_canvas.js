@@ -489,6 +489,9 @@ function drawEvent(  event , time_inc  ){
   arc.graphics.beginStroke("#00a3e8").arc(linewd * (timeDiff + 1), distance , radius/2 , 0, event.mratio * Math.PI, false);
   stage.addChild(arc);
   arc.addEventListener("click", popup_evt_details);
+  arc.onMouseOver = function(evt) { 
+    evt.target.cursor = 'pointer' ;
+  }
   arc.name = event.id;
   
 
@@ -502,6 +505,10 @@ function drawEvent(  event , time_inc  ){
   arc.name = event.id;
   //arc.user = user_id;
   arc.addEventListener("click", popup_evt_details);
+  
+  arc.onMouseOver = function(evt) { 
+    evt.target.cursor = 'pointer' ;
+  }
   
   
   //// Animation code start here

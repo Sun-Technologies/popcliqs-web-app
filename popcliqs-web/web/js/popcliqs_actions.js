@@ -380,8 +380,19 @@ function edit_event_success (data, textStatus, jqXHR) {
 	}
 }
 
+function update_screen(modal_id){
+	$(modal_id).modal('hide');
+		location.reload();
+
+}
+
 function close_event_window(){
 
 	$('#newEvent').modal('hide');
 	document.getElementById("event_form").reset();
+}
+
+
+function reset_pwd(){
+	$('#resetpwd').modal('show');
 }

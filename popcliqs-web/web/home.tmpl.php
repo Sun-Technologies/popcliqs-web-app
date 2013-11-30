@@ -60,7 +60,14 @@
         <button type="button" class="btn backgroundColor1" onclick="fetchEvents()">
           <span class="glyphicon glyphicon-search"></span>
         </button>
+        <br><span  class="pull-right " style="margin-top:5px;cursor:pointer">
+        <a href"#" onclick="reset_pwd()">
+          <?php
+              echo $_SESSION['email'] . ' ('.$_SESSION['zip'] .')' ;
+          ?>
+         </a>
       </form>
+
     </div>
   </div>
   <br>
@@ -381,7 +388,7 @@ require 'terms.tmpl.php';
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" onclick="update_screen('#history')" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="myModalLabel">History</h4>
       </div>
       <div class="modal-body">
@@ -398,7 +405,7 @@ require 'terms.tmpl.php';
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" onclick="update_screen('#history')" >Close</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -484,6 +491,8 @@ require 'terms.tmpl.php';
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+ <?php require 'resetpwd.tmpl.php'; ?>
+ 
 <!--script src="js/jquery.js" ></script-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="web/js/easeljs-0.6.0.min.js"></script>
@@ -497,6 +506,7 @@ require 'terms.tmpl.php';
   $(function() { 
      fetchEvents();
      // redraw();
+    setInterval(function(){ fetchEvents(); },1000 * 30 );
   });
 
   $('#historyTab').click(function (e) {
@@ -515,7 +525,8 @@ require 'terms.tmpl.php';
     $( "#end_date" ).datepicker();
   });
 
-</script>
+  
+
 </script>
 </body>
 </html>

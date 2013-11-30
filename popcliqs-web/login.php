@@ -18,8 +18,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
 	
 	$user_id = authenticate_user($conn, $email, $password );
+
 	if ($user_id != null) {
-		$_SESSION['email'] = $email;
+		$_SESSION['email']   = $email; //$email;
 		$_SESSION['user_id'] = $user_id;
 		header('Location:home.php');
 	}else{
