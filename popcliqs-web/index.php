@@ -31,12 +31,12 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	if( empty($email) ){
 		
 
-		$status = "please enter the  email id";
+		$email_status = "please enter the  email id";
 		$error_id  = "#email";
 
 		}
 		elseif (!valid_email($email)) {
-			$status="please enter the valid email id";
+			$email_status="please enter the valid email id";
              $error_id ="#email";
 
 		}elseif (!valid_email($reemail)) {
@@ -52,7 +52,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 		$status = "email match not found";
 	    $error_id  = "#reemail";
 	
-	}else if(empty($password) || strlen($password)!= 6){
+	}else if(empty($password) || strlen($password) < 6){
 
 		$status = "enter password";
         $error_id ="#password";
@@ -84,7 +84,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
 	}else if (is_user_exist( $conn, $email )){
 
-		$status  = "email already exists, try another email id.";
+		$email_status  = "email already exists, try another email id.";
+		$error_id = "#email";
 	}
 	else{
 

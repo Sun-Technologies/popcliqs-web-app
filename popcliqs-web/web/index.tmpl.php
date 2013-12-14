@@ -73,7 +73,7 @@ $month_list = array(
                 <label for="email" class="control-label">Email</label>
               </div>
               <div class="col-lg-8">
-                <input type="email" id="email"  name="email" class="form-control" placeholder="me@friends.com"   data-content="Enter a valid Email Address" data-placement="top" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"/>
+                <input type="email" id="email"  name="email" class="form-control" placeholder="me@friends.com"   data-content="<?php if(isset($status)) { echo $email_status ; }?>" data-placement="top" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"/>
               </div>
             </div>
           </div>
