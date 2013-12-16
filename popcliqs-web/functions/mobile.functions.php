@@ -71,7 +71,9 @@ function get_event_by_id($event_id , $conn , $tz, $start_t = null){
 			
 			if($start_t != null){
 
-				$time_diff = $start_timestamp - $start_t ;
+				$time_diff = $start_timestamp - ($start_t - (60 *  $tz) );
+
+				 // echo ( " Time diffsdfd : " . $time_diff  . " compare " . 60 *1.5*60 ); 
 				// if time diff is less than 1.5 hours , user can checking 
 				if($time_diff > (60 *1.5*60) ){
 			    	$user_event->mins_left_for_checkin = round($time_diff/60 - (1.5*60))  ;

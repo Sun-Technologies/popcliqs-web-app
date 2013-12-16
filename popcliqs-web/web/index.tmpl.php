@@ -57,8 +57,7 @@ $month_list = array(
           <div class="container">
             <h4>All Social... no media</h4>
           </div>
-      		<iframe width="100%"  style="height:300px;" src="http://www.youtube.com/embed/3RyvMmlSZr0" frameborder="0" allowfullscreen>
-          </iframe>
+          <iframe src="//player.vimeo.com/video/81890061" width="450" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
       </div>
       <div class="col-md-6 col-lg-offset-0">
         <div style="margin-bottom:20px;">
@@ -206,7 +205,7 @@ $month_list = array(
      <div class="row">
       <div class="col-md-12">
         <hr/>
-        <p>&copy; 2013 Popcliqs.com, <a href="#">About</a> | <a href="#">Privacy</a> | <a data-toggle="modal" href="#myModal">Terms</a>
+          <p>&copy; 2014 popcliqs, <a href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
       </p>
      
                  

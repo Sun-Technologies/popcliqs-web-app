@@ -49,6 +49,7 @@ function query($query , $conn , $bindings = null){
 function update_query_execute ($query , $conn , $bindings = null){
 	$stmt = $conn->prepare($query);
 	$stmt->execute($bindings);
+	return $stmt->rowCount();
 }
 
 function insert_query_execute ($query , $conn , $bindings = null){

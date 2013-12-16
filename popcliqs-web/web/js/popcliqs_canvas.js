@@ -248,7 +248,7 @@ function drawFooter(){
     archandleMouseClick() ;
   }
   
-  var pqlabel = new createjs.Text("pq", "45px Baumans", "#005DEA");
+  var pqlabel = new createjs.Text("pq", "45px Baumans", "#278AD2");
   pqlabel.x = 15;
   pqlabel.y = 425;
 
@@ -263,21 +263,21 @@ function drawFooter(){
   newevtcircle.graphics.setStrokeStyle(2);
   historycircle.graphics.setStrokeStyle(2);
 
-  prefcircle.graphics.beginFill("#40C8FF").drawCircle(0, 550, 40);
+  prefcircle.graphics.beginFill("#005DEA").drawCircle(0, 550, 40);
   newevtcircle.graphics.beginFill("#40C8FF").drawCircle(0, 550, 40);
-  historycircle.graphics.beginFill("#40C8FF").drawCircle(0, 550, 40);
+  historycircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
   
-  preflabel = new createjs.Text("Preferences", "12px Arial", "#005DEA");
-  preflabel.x = 10;
-  preflabel.y = 350;
+  preflabel = new createjs.Text("Settings", "13px Arial", "#ffffff");
+  preflabel.x = 18;
+  preflabel.y = 353;
   
   
-  newevtlabel = new createjs.Text("PopcliQ!", "12px Arial", "#005DEA");
-  newevtlabel.x = 105;
+  newevtlabel = new createjs.Text("New Cliq", "bold 12px Arial", "#ffffff");
+  newevtlabel.x = 100;
   newevtlabel.y = 360;
 
-  historylabel = new createjs.Text("History", "12px Arial", "#005DEA");
-  historylabel.x = 135;
+  historylabel = new createjs.Text("My Cliqs", "13px Arial", "#ffffff");
+  historylabel.x = 130;
   historylabel.y = 440;
 
   stage.addChild(prefcircle);
@@ -583,6 +583,8 @@ function drawEvent(  event , time_inc  ){
   } else if ( event.type ==  "6"){
     eventtypeimg.src = './web/img/adventure.png';  
   } else if ( event.type ==  "7"){
+    eventtypeimg.src = './web/img/event.png';  
+  } else if ( event.type ==  "8"){
     eventtypeimg.src = './web/img/event.png';  
   }
   

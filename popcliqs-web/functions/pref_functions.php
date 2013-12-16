@@ -24,7 +24,6 @@ function add_pref($conn,$pref_list,$user_id ){
 }
 
  /////below code is written for fetch pref 
-
 function fetch_pref($conn,$user_id){
 
 
@@ -64,7 +63,7 @@ function insert_default_pref($conn  , $user_id){
 				) 
 			";
 
-    for ($index = 1 ;  $index < 8 ; $index++) {
+    for ($index = 1 ;  $index < 9 ; $index++) {
 		$binding = array(
 		             'user_id'      => $user_id,
 	     			 'category_id'  => $index  ,
@@ -94,17 +93,34 @@ function get_user_cat_pref($conn , $user_id){
 
 function update_pref($conn,$pref_list,$user_id ){
 
-	$query = " update user_cat_pref set pref_cd= :preference_cd, update_ts= :update_ts 
+	$update_query = " update user_cat_pref set pref_cd= :preference_cd, update_ts= :update_ts 
 					where user_id = :user_id and category_id = :category_id ";
 
+	$insert_query = "
+						insert into user_cat_pref
+						(user_id, category_id , pref_cd,  create_ts ,update_ts)
+				        VALUES (:user_id ,:category_id , :preference_cd,:create_ts, :update_ts )
+					";
 	foreach ($pref_list as $pref) {
-
-		$binding = array(
+		
+		$update_binding = array(
 		        'user_id'       => $user_id,
 	     	    'category_id'   => $pref->category_id , 
 	     		'preference_cd' => $pref->preference_cd,
 				'update_ts' 	=> date( "Y-m-d H:i:s" )
 	    );
-		update_query_execute($query,$conn,$binding);
+		$result  =  update_query_execute($update_query,$conn,$update_binding);
+		
+		if( $result  == false){
+
+			$insert_binding = array(
+		             'user_id'      => $user_id,
+	     			 'category_id'  => $pref->category_id ,
+	     			 'preference_cd'=> $pref->preference_cd,
+	    			 'create_ts'    => date( "Y-m-d H:i:s" ),
+					 'update_ts' 	=> date( "Y-m-d H:i:s" )
+	     	);
+			insert_query_execute($insert_query,$conn,$insert_binding);
+		}
 	}
 }

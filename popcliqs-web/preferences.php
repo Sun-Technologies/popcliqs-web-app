@@ -17,10 +17,11 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$sports_cat_cd        	=  isset($_POST['1'])    ? trim($_POST['1']):0;
 	$professional_cat_cd	=  isset($_POST['2'])    ? trim($_POST['2']):0;
 	$educational_cat_cd   	=  isset($_POST['3'])    ? trim($_POST['3']): 0;
-	$support_cat_cd   =  isset($_POST['4'])    ? trim($_POST['4']): 0;
-	$arts_cat_cd   =  isset($_POST['5'])    ? trim($_POST['5']):0;
-	$outdoor_cat_cd   =  isset($_POST['6'])    ? trim($_POST['6']): 0;
-	$party_cat_cd   =  isset($_POST['7'])    ? trim($_POST['7']): 0;
+	$support_cat_cd          =  isset($_POST['4'])    ? trim($_POST['4']): 0;
+	$arts_cat_cd             =  isset($_POST['5'])    ? trim($_POST['5']):0;
+	$outdoor_cat_cd          =  isset($_POST['6'])    ? trim($_POST['6']): 0;
+	$party_cat_cd            =  isset($_POST['7'])    ? trim($_POST['7']): 0;
+     $social_cat_cd           =  isset($_POST['8'])    ? trim($_POST['8']): 0;
 
 	if (empty($sports_cat_cd)) {
 		$status = "select the sports category";
@@ -72,6 +73,13 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
           $party_pref->preference_cd =$party_cat_cd;
 
           $pref_list[] = $party_pref;
+
+
+          $social_pref = new user_preferences;
+          $social_pref->category_id = 8;
+          $social_pref->preference_cd =$social_cat_cd;
+
+          $pref_list[] = $social_pref;
           
 
           $user_id = $_SESSION['user_id'];

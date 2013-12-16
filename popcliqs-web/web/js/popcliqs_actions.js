@@ -173,18 +173,19 @@ function return_checkbox_val(cat_id){
 function update_user_pref(){
 
 	//sports 
-	var sport_pref_val = return_checkbox_val(1);
-	var prof_pref_val  = return_checkbox_val(2);
-	var arts_pref_val  = return_checkbox_val(3);	
-	var edu_pref_val  = return_checkbox_val(4);	
-	var help_pref_val  = return_checkbox_val(5);		
+	var sport_pref_val    = return_checkbox_val(1);
+	var prof_pref_val     = return_checkbox_val(2);
+	var arts_pref_val     = return_checkbox_val(3);	
+	var edu_pref_val      = return_checkbox_val(4);	
+	var help_pref_val     = return_checkbox_val(5);		
 	var outdoor_pref_val  = return_checkbox_val(6);
-	var party_pref_val  = return_checkbox_val(7);	
+	var party_pref_val    = return_checkbox_val(7);
+	var social_pref_val	  = return_checkbox_val(8);	
 
-	var data = "sport_pref_val=" + sport_pref_val + "&prof_pref_val=" + prof_pref_val + 
+	var data = "sport_pref_val=" + sport_pref_val +  "&prof_pref_val=" + prof_pref_val + 
 	           "&arts_pref_val=" + arts_pref_val  +  "&edu_pref_val=" + edu_pref_val  + 
 	           "&help_pref_val=" + help_pref_val  +  "&outdoor_pref_val=" + outdoor_pref_val  +
-	           "&party_pref_val=" + party_pref_val ;
+	           "&party_pref_val=" + party_pref_val+  "&social_pref_val=" + social_pref_val;
 
 	var url = 'update_user_pref.php';
 

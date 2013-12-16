@@ -31,6 +31,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$help_pref_val    =  isset($_POST['help_pref_val'])    ? trim($_POST['help_pref_val']): 2;
 	$outdoor_pref_val =  isset($_POST['outdoor_pref_val']) ? trim($_POST['outdoor_pref_val']): 2;
 	$party_pref_val   =  isset($_POST['party_pref_val'])   ? trim($_POST['party_pref_val']): 2;
+	$social_pref_val  =  isset($_POST['social_pref_val'])   ? trim($_POST['social_pref_val']): 2;
 	
 
 	$pref_list = array();
@@ -78,6 +79,14 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$party_pref->preference_cd =$party_pref_val;
 
 	$pref_list[] = $party_pref;
+
+	$social_pref = new user_preferences;
+	$social_pref->category_id = 8;
+	$social_pref->preference_cd =$social_pref_val;
+
+	error_log("social_pref_val : $social_pref_val ");
+
+	$pref_list[] = $social_pref;
 
 	$user_id = $_SESSION['user_id'];
     update_pref($conn,$pref_list,$user_id );
