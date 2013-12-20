@@ -29,28 +29,27 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	
 
 	if( empty($email) ){
-		
-
+	
 		$email_status = "please enter the  email id";
 		$error_id  = "#email";
 
-		}
-		elseif (!valid_email($email)) {
-			$email_status="please enter the valid email id";
-             $error_id ="#email";
+	}
+	elseif (!valid_email($email)) {
+		$email_status="please enter the valid email id";
+         $error_id ="#email";
 
-		}elseif (!valid_email($reemail)) {
-			$status="please enter the correct email id";
-             $error_id ="#reemail";
+	}elseif (!valid_email($reemail)) {
+		$status="please enter the correct email id";
+         $error_id ="#reemail";
 
-		}elseif (empty($reemail)) {
-			$status = "please re enter the email";
-			$error_id = "#reemail";
-	
-	   }else if($email !=$reemail){
+	}elseif (empty($reemail)) {
+		$status = "please re enter the email";
+		$error_id = "#reemail";
 
-		$status = "email match not found";
-	    $error_id  = "#reemail";
+   }else if($email !=$reemail){
+
+	$status = "email match not found";
+    $error_id  = "#reemail";
 	
 	}else if(empty($password) || strlen($password) < 6){
 

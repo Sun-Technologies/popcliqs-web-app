@@ -263,22 +263,22 @@ function drawFooter(){
   newevtcircle.graphics.setStrokeStyle(2);
   historycircle.graphics.setStrokeStyle(2);
 
-  prefcircle.graphics.beginFill("#005DEA").drawCircle(0, 550, 40);
-  newevtcircle.graphics.beginFill("#40C8FF").drawCircle(0, 550, 40);
+  prefcircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
+  newevtcircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
   historycircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
   
-  preflabel = new createjs.Text("Settings", "13px Arial", "#ffffff");
-  preflabel.x = 18;
-  preflabel.y = 353;
+  preflabel = new createjs.Text("Settings", "13px Verdana, Geneva, sans-serif", "#ffffff");
+  preflabel.x = 14;
+  preflabel.y = 348;
   
   
-  newevtlabel = new createjs.Text("New Cliq", "bold 12px Arial", "#ffffff");
+  newevtlabel = new createjs.Text("New Cliq", "13px Verdana, Geneva, sans-serif", "#ffffff");
   newevtlabel.x = 100;
   newevtlabel.y = 360;
 
-  historylabel = new createjs.Text("My Cliqs", "13px Arial", "#ffffff");
-  historylabel.x = 130;
-  historylabel.y = 440;
+  historylabel = new createjs.Text("My Cliqs", "13px Verdana, Geneva, sans-serif", "#ffffff");
+  historylabel.x = 115;
+  historylabel.y = 445;
 
   stage.addChild(prefcircle);
   stage.addChild(newevtcircle);
@@ -395,11 +395,11 @@ function display_actions(){
   
   // //120 280
   createjs.Tween.get(newevtcircle,{loop:false, override:true})
-          .to({ x: 125,y:-180}, 1000, createjs.Ease.get(1)); 
+          .to({ x: 128,y:-180}, 1000, createjs.Ease.get(1)); 
   
   //150 360
   createjs.Tween.get(historycircle,{loop:false, override:true})
-          .to({ x: 150,y:-100}, 1000, createjs.Ease.get(1)).call(displayLabel); 
+          .to({ x: 140,y:-95}, 1000, createjs.Ease.get(1)).call(displayLabel); 
 
   stage.addChild(prefcircle);
   stage.addChild(newevtcircle);

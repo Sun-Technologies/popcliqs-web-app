@@ -11,10 +11,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$conn = connect ($config);
 	if( empty($email) || empty($password)  ){
 
-		$status = "incorrect login";
+		$login_status = "Invalid user name or  password login";
 		require 'web/index.tmpl.php';
-		die();
-		
+		die();	
     }
 	
 	$user_id = authenticate_user($conn, $email, $password );
@@ -25,16 +24,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		header('Location:home.php');
 	}else{
 
-		$status = "incorrect login";
-		// require 'index.tmpl.php';
-		header('Location:index.php');
+		$login_status = "Invalid user name or  password login";
+		// header('Location:index.php');
+		require 'web/index.tmpl.php';
 	}
-	
-
-	
-
 }
 else {
-
 	header('Location:index.php');
 }

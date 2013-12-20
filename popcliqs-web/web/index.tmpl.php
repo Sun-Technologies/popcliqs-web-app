@@ -26,9 +26,6 @@ $month_list = array(
 <body>
 <!-- nav bar--> 
 
-<!-- <div class="navbar-fixed-top navbar-green" >
-</div> -->
-
 <div class=" navbar-fixed-top navbar-blue" >
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed btn-success backgroundColor1" data-toggle="collapse" data-target=".navbar-collapse" >
@@ -72,7 +69,7 @@ $month_list = array(
                 <label for="email" class="control-label">Email</label>
               </div>
               <div class="col-lg-8">
-                <input type="email" id="email"  name="email" class="form-control" placeholder="me@friends.com"   data-content="<?php if(isset($status)) { echo $email_status ; }?>" data-placement="top" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"/>
+                <input type="email" id="email"  name="email" class="form-control" placeholder=""   data-content="<?php if(isset($status)) { echo $email_status ; }?>" data-placement="top" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"/>
               </div>
             </div>
           </div>
@@ -83,7 +80,7 @@ $month_list = array(
                 <label for="reemail" class="control-label">Email again</label>
               </div>
               <div class="col-lg-8">
-                <input type="email" id="reemail"  name="reemail" class="form-control" placeholder="me@friends.com" data-content="Re Enter the Email address" data-placement="top" value="<?php echo isset($_POST['reemail']) ? $_POST['reemail'] : ''; ?>" />
+                <input type="email" id="reemail"  name="reemail" class="form-control" placeholder="" data-content="Please Re Enter the Email address" data-placement="top" value="<?php echo isset($_POST['reemail']) ? $_POST['reemail'] : ''; ?>" />
               </div>
             </div>
           </div>
@@ -107,13 +104,13 @@ $month_list = array(
               <div class="col-lg-8">
               <?php 
                 if (isset($_POST['sex']) && $_POST['sex']== 'male' ) { ?>
-                 <input type="radio" name="sex" value="male" id="sex" data-content="select the gender" data-placement="top" checked="true" /> Male &nbsp;
+                 <input type="radio" name="sex" value="male" id="sex" data-content="Please select the gender" data-placement="top" checked="true" /> Male &nbsp;
                   <input type="radio" name="sex" value="female"> Female 
                <?php   } elseif (isset($_POST['sex']) && $_POST['sex'] == 'female') { ?>
                  <input type="radio" name="sex" value="male" id="sex" /> Male &nbsp;
                   <input type="radio" name="sex" value="female" checked="true"> Female 
               <?php   } else {?>
-               <input type="radio" name="sex" value="male" id="sex" data-content="select the gender" data-placement="top"  /> Male &nbsp;
+               <input type="radio" name="sex" value="male" id="sex" data-content="Please select the gender" data-placement="top"  /> Male &nbsp;
                   <input type="radio" name="sex" value="female" > Female 
               <?php  }?> 
                   
@@ -127,7 +124,7 @@ $month_list = array(
                 <label for="dob" class="control-label">I was born</label>
               </div>
               <div class="col-lg-8">
-                <select name="month" id="month" data-content="select Month" data-placement="top"> 
+                <select name="month" id="month" data-content="Please select month" data-placement="top"> 
                   <option value="">Month:</option>
                   <?php foreach ($month_list as $key => $value) {
                     if (isset($_POST['month']) && $key == $_POST['month']) {
@@ -139,7 +136,7 @@ $month_list = array(
                   } ?>
             
                 </select>  /
-                <select name="day" id="day" data-content="select day" data-placement="top">
+                <select name="day" id="day" data-content="Please select day" data-placement="top">
                   <option value="">Day:</option>
                   <?php 
                  
@@ -155,7 +152,7 @@ $month_list = array(
                    ?>
               
                 </select> / 
-                <select name="year" id="year" data-content="select Year" data-placement="top">
+                <select name="year" id="year" data-content="Please select year" data-placement="top">
                   <option value="">Year:</option>
                     <?php 
                  
@@ -180,7 +177,7 @@ $month_list = array(
                 <label for="zip" class="control-label">Home Zip</label>
               </div>
               <div class="col-lg-8">
-                <input type="text" id="zip"  name="zip" class="form-control" placeholder="" data-content="Enter valid zip !!! " data-placement="top" value="<?php echo isset($_POST['zip']) ? $_POST['zip'] : ''; ?>" />
+                <input type="text" id="zip"  name="zip" class="form-control" placeholder="" data-content="Please enter valid zip" data-placement="top" value="<?php echo isset($_POST['zip']) ? $_POST['zip'] : ''; ?>" />
               </div>
             </div>
           </div>
@@ -222,9 +219,16 @@ require 'terms.tmpl.php';
     $('document').ready(function(){
 
       <?php if(isset($status)) {?>
-      $(' <?php echo $error_id; ?>').popover('show'); 
+         $(' <?php echo $error_id; ?>').popover('show'); 
+      <?php } ?>
+
+      <?php if( isset($login_status) ) {?>
+                alert("<?php echo $login_status; ?>"); 
       <?php } ?>   
+      
     });
+
+
 
 </script>
 </body>
