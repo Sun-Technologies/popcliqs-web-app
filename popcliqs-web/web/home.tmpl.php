@@ -50,9 +50,9 @@
         </div>
         <div class="form-group">
           <select name="ti" id="ti" onchange="fetchEvents()" class="form-control">
+            <option value="24">24 Hours</option>
             <option value="8">8 Hours</option>
-              <option value="24">24 Hours</option>
-              <option value="72">3 Days</option>
+            <option value="72">3 Days</option>
           </select>
         </div>
         <div class="form-group">
@@ -62,7 +62,7 @@
           <span class="glyphicon glyphicon-search"></span>
         </button>
         <br><span  class="pull-right" style="margin-top:5px;cursor:pointer;position:relative;right:-70px;">
-        <a href"#" onclick="reset_pwd()">
+        <a href"#" onclick="fetch_acc_setting()">
           <?php
               echo $_SESSION['email'] . '<span style="color:#818181"> ( Home : '.$_SESSION['zip'] .' )' ;
           ?>

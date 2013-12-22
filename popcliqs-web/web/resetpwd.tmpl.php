@@ -79,7 +79,7 @@ function enableTextbox()
                     <div class="form-group">
                     <label for="zip" class="col-sm-4 control-label">Zip</label>
                     <div class="col-sm-6">
-                        <input type="text" class="form-control" placeholder="Enter Zip....">
+                        <input type="text" class="form-control" id="zip" name="zip" placeholder="Enter Zip....">
                     </div>
                 </div>
                      

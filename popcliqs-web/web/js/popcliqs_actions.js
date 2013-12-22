@@ -124,6 +124,37 @@ function fetch_pref(){
 	});
 }
 
+function fetch_acc_setting(){
+		
+	var url = 'fetch_acc_setting.php';
+
+	$.ajax({
+	  type: "POST",
+	  dataType: "json",
+	  url: url,
+	  data: null,
+	  success: create_acc_setting_success
+	});
+}
+
+function create_acc_setting_success(data,textStatus,jqXHR){
+
+	if(data.exit_cd == 0 ){
+
+		$('#resetpwd').modal('show');
+		zip = data.zip;
+		alert("zip " + zip );
+        $("#zip").val(data.zip);
+
+
+	}else{
+
+		alert(data.msg);
+	}
+
+	alert(data);
+}
+
 function create_pref_success(data, textStatus, jqXHR){
 
 	if(data.exit_cd == 0 ){

@@ -136,3 +136,16 @@ function get_user_zip($conn , $user_id){
 	}
 	return false;
 } 
+
+function fetch_acc_setting($conn,$user_id){
+	$query = "select zip from popcliqs_users where user_id = :uid LIMIT 1";
+	$binding = array(
+		'uid' => $user_id
+		);
+	$results = query($query,$conn,$binding);
+    
+	if ($results) {
+		return $results;
+	}
+	return false;
+}
