@@ -19,9 +19,9 @@ if( $rows ){
 		}
 	?>
 	<tr>
-	  <td><?php echo $event_title ?></td>
+	  <td><?php echo stripslashes($event_title) ?></td>
 	  <td><?php echo $evt_st  ?></td>
-	  <td><?php echo $event_location?></td>
+	  <td><?php echo stripslashes($event_location) ?></td>
 	  <td>
 	 	<?php if( $canEdit ) { ?>
 	 		<button type="button" class="btn backgroundColor1" onclick="delete_event(<?php echo $event_id?>)">

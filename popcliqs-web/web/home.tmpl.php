@@ -165,9 +165,9 @@ require 'terms.tmpl.php';
           <div class="form-group">
             <label for="contact-email" class="col-lg-2 control-label" style="padding-top:0px;">Age limit</label>
             <div class="col-lg-8" style="padding-top:0px;">
-              <input type="radio" id="age_limit_1" value="1"  placeholder=""> Anyone    &nbsp;
-              <input type="radio" id="age_limit_2" value="2" placeholder=""> Above 18  &nbsp;
-              <input type="radio" id="age_limit_3" value="3"  placeholder=""> Above 21  &nbsp;
+              <input type="radio" id="age_limit_0" value="1"  placeholder=""> Anyone    &nbsp;
+              <input type="radio" id="age_limit_18" value="2" placeholder=""> Above 18  &nbsp;
+              <input type="radio" id="age_limit_21" value="3"  placeholder=""> Above 21  &nbsp;
             </div>
           </div>
           <div class="form-group">

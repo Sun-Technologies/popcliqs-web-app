@@ -34,11 +34,11 @@ function create_event(){
 		alert(" Capacity should be numberic. " );
 	  	return;
 	}
-	var $age_limit = 1 ;
-	if($("#age_limit_2").prop( "checked")){
-		$age_limit = 2 ;
-	}else if($("#age_limit_3").prop( "checked")){
-		$age_limit = 3;
+	var $age_limit = 0 ;
+	if($("#age_limit_18").prop( "checked")){
+		$age_limit = 18 ;
+	}else if($("#age_limit_21").prop( "checked")){
+		$age_limit = 21;
 	}
 	
 	var dt = new Date()
@@ -271,9 +271,9 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 
 
 		age_limit_desc = "No age limit";
-		if(data.age_limit == 2) {
+		if(data.age_limit == 18) {
 			age_limit_desc = "Above 18 only.";
-		}else if(data.age_limit == 3) {
+		}else if(data.age_limit == 21) {
 			age_limit_desc = "Above 21 only.";
 		}
 		$('#e_alimit').html(age_limit_desc) ;

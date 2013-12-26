@@ -104,10 +104,10 @@ function fetch_event($conn,$event_id ,$tz ){
 			$event->category_id = $category;
 			$event->start_dt    = $evt_st;
 			$event->end_dt      = $evt_end;
-			$event->title       = $event_title;
-			$event->location    = $event_location;
-			$event->address     = preg_replace( '/(\r\n)|\n|\r/', '', $event_address);
-			$event->description = $description;
+			$event->title       = stripslashes($event_title);
+			$event->location    = stripslashes($event_location);
+			$event->address     = preg_replace( '/(\r\n)|\n|\r/', '', stripslashes($event_address));
+			$event->description = stripslashes($description);
 			$event->age_limit   = $age_limit;
 			$event->capacity    = $capacity_limit;
 			$event->lat		 	= $event_latitude;
@@ -123,6 +123,9 @@ function fetch_event($conn,$event_id ,$tz ){
 
 function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $age  , $cat_id ,$miles = 25 ){
 
+
+
+	error_log("$$$ AGE  ::: $age ");
 	$milesperdegree = 69;
     $degreesdiff = $miles / $milesperdegree;
 
@@ -136,7 +139,7 @@ function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $
 			popcliqs_events as evt
 			WHERE  evt.event_start >= :st and evt.event_start <= :et  and
 			evt.event_latitude between :lat1 and :lat2 and evt.event_longitude between :lon1 and :lon2 
-			and evt.age_limit < $age and evt.status = 1 
+			and evt.age_limit <= $age and evt.status = 1 
 			and (
 				evt.event_title LIKE :search_t or evt.event_location    LIKE :search_t or   
 				evt.zip LIKE :search_t or 
