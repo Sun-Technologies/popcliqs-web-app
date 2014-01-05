@@ -1,6 +1,38 @@
-/**
- *  Create Event.
- */
+function save_acc_setting(){
+
+	if ($('#zip').val() == null || $('#zip').val() == ""  
+			|| $('#zip').val().length  != 5 || !isNumber($('#zip').val()) ){
+	 	
+		alert(" Invalid Zip" );
+	 	return;
+	 }
+	 var $zip	= $('#zip').val();
+	 var url = 'save_acc_setting.php';
+	 var data = "zip=" + $zip ;
+	var handler = save_acc_setting_success;
+
+	$.ajax({
+		  type: "POST",
+		  dataType: "json",
+		  url: url,
+		  data: data,
+		  success: handler
+		});
+
+}
+
+function save_acc_setting_success(data, textStatus, jqXHR){
+	
+	if(data.exit_cd == 0 ){
+		$('#resetpwd').modal('hide');
+		
+	}else{
+
+		alert(data.msg);
+	}
+}
+
+
 function create_event(){
 	
 	if ( $('#title').val() == null || $('#title').val() == "" ){
@@ -143,7 +175,7 @@ function create_acc_setting_success(data,textStatus,jqXHR){
 
 		$('#resetpwd').modal('show');
 		zip = data.zip;
-		alert("zip " + zip );
+	
         $("#zip").val(data.zip);
 
 
@@ -151,8 +183,6 @@ function create_acc_setting_success(data,textStatus,jqXHR){
 
 		alert(data.msg);
 	}
-
-	alert(data);
 }
 
 function create_pref_success(data, textStatus, jqXHR){
@@ -428,3 +458,23 @@ function close_event_window(){
 function reset_pwd(){
 	$('#resetpwd').modal('show');
 }
+
+function enableTextbox()
+{
+    if (document.getElementById("pwd").checked == true)
+    {
+        
+        document.getElementById("pwd1").disabled = false;
+        document.getElementById("pwd2").disabled = false;
+        document.getElementById("pwd3").disabled = false;
+       
+    }
+    else
+    {
+        document.getElementById("pwd1").disabled = true;
+        document.getElementById("pwd2").disabled = true;
+        document.getElementById("pwd3").disabled = true;
+       
+    }
+}
+

@@ -17,27 +17,7 @@ $month_list = array(
 ?>
 
 <div class="modal fade" id="resetpwd" tabindex="-1" role="dialog" aria-hidden="true">
-  <script>
-
-function enableTextbox()
-{
-    if (document.getElementById("pwd").checked == true)
-    {
-        
-        document.getElementById("pwd1").disabled = false;
-        document.getElementById("pwd2").disabled = false;
-        document.getElementById("pwd3").disabled = false;
-       
-    }
-    else
-    {
-        document.getElementById("pwd1").disabled = true;
-        document.getElementById("pwd2").disabled = true;
-        document.getElementById("pwd3").disabled = true;
-       
-    }
-}
-    </script> 
+ 
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -83,55 +63,7 @@ function enableTextbox()
                     </div>
                 </div>
                      
-               <div class="form-group">
-                    <label for="dob" class="col-sm-4 control-label">I Am Born</label>
-                    <div class="col-lg-8">
-                <select name="month" id="month" data-content="select Month" data-placement="top"> 
-                  <option value="">Month:</option>
-                  <?php foreach ($month_list as $key => $value) {
-                    if (isset($_POST['month']) && $key == $_POST['month']) {
-                      echo " <option value='$key' selected>$value</option>";
-                    }
-                    else{
-                      echo " <option value='$key'>$value</option>";
-                    }
-                  } ?>
-            
-                </select>  /
-                <select name="day" id="day" data-content="select day" data-placement="top">
-                  <option value="">Day:</option>
-                  <?php 
-                 
-                  for ($index = 1; $index <=31 ; $index++) { 
-                 
-                    if (isset($_POST['day']) && $_POST['day'] == $index) {
-                     echo " <option value=$index selected>$index</option>";
-                    }else{
-                      echo "<option value=$index>$index</option>";
-
-                    }
-                  }
-                   ?>
               
-                </select> / 
-                <select name="year" id="year" data-content="select Year" data-placement="top">
-                  <option value="">Year:</option>
-                    <?php 
-                 
-                  for ($index = 1900; $index <=2012 ; $index++) { 
-                 
-                    if (isset($_POST['year']) && $_POST['year'] == $index) {
-                     echo " <option value=$index selected>$index</option>";
-                    }else{
-                      echo "<option value=$index>$index</option>";
-
-                    }
-                  }
-                   ?>
-                </select>
-              </div>
-                </div>  
-
 
                     
             </form>
@@ -139,7 +71,7 @@ function enableTextbox()
             </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" onclick="" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" onclick="">Save</button>
+                <button type="button" class="btn btn-primary" onclick="save_acc_setting()">Save</button>
               </div>
         </div>
     </div>

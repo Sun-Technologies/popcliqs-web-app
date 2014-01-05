@@ -149,3 +149,18 @@ function fetch_acc_setting($conn,$user_id){
 	}
 	return false;
 }
+
+function update_acc_setting( $conn , $user_id , $zip  ){
+
+	$query = " update popcliqs_users set zip=:zip where user_id = :user_id";
+
+	$binding = array( 
+		'user_id' 	=> $user_id , 
+		
+		'zip'       =>$zip
+	);
+
+	update_query_execute($query,$conn,$binding);
+}
+
+
