@@ -5,7 +5,7 @@
 	require('functions/mobile.functions.php');
 	require('functions/geo_functions.php');
 	
-	$_SUCCESS    				= 0;
+	$_SUCCESS    				=  0;
 	$_ERROR_ALL	 				= -1000;
 	$_ERROR_AUTH 				= -1001;
 	$_ERROR_INVALID_EVENT_ID 	= -1002;
@@ -51,7 +51,7 @@
 	} 
 
 	//Zip code validation
-	if($zip == null ||  $zip == '' || !(preg_match('/^\d{5}$/', $zip)) ){
+	if($zip == null ||  $zip == '' || !(preg_match('/^\d{6}$/', $zip)) ){
 		$exit_cd = $_ERROR_INVALID_ZIP;
 	}
 
