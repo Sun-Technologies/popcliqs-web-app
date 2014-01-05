@@ -60,17 +60,19 @@
 
 	if( $is_authorized ){
 		
-		error_log(" start_t  : $start_t ");
+		error_log(" start_t   : $start_t ");
 		$checkin_eventid_list = fetch_checkin_event($conn ,$user_id , $start_t);
 		// error_log(" checkin_eventid_list (size) :  " .  sizeof($checkin_eventid_list) ) ;
 
-		$output_size = sizeof($checkin_eventid_list) <  $size ? sizeof($checkin_eventid_list) : $size;
-		
+		//$output_size = sizeof($checkin_eventid_list) <  $size ? sizeof($checkin_eventid_list) : $size;
+
+		$output_size = sizeof($checkin_eventid_list) < ($offset + $size) ? sizeof($checkin_eventid_list) : ($offset + $size); 
+ 		
 		// foreach( $checkin_eventid_list as $checkin_eventid){
 		for( $index = $offset ; $index < $output_size ; $index ++) {
 
 			$checkin_eventid = $checkin_eventid_list[$index];
-			// error_log("event " + $checkin_eventid);
+			// error_log("event ::: " . $checkin_eventid);
 			$event_data = get_event_by_id($checkin_eventid , $conn , $tz , $start_t);
 			$event_data_list[] = $event_data[0];
 			

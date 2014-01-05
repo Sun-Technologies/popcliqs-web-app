@@ -49,7 +49,7 @@ function get_event_by_id($event_id , $conn , $tz, $start_t = null){
 
 			// $latlong  = get_lat_lon_zip( $postal_code ,  $conn );
 			
-			error_log($category );
+			// error_log($category );
 
 			$user_event = new User_Event();
 			$user_event->event_id   	= $event_id;
@@ -110,7 +110,7 @@ function fetch_checkin_event($conn ,$user_id , $start_t){
 		foreach( $results as $row){
 			extract($row);
 			$checkin_eventid_list[] = $event_id;
-			error_log(" event_id " . $event_id);
+			// error_log(" event_id " . $event_id);
 			
 		}
 	}
