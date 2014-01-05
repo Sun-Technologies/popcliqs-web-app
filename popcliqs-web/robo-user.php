@@ -15,7 +15,7 @@
 						'30064' , '95014' , '342005' , '342011');
 
 	$user_id = 0;
-	$st_hr = rand(0,30);
+	$st_hr = rand(0,72);
 	$cat_cd  = rand(0,8); 
 	$zip =  $zip_array[rand(0, (sizeof($zip_array) - 1))];
 	$conn = connect ($config);

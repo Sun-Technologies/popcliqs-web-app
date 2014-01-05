@@ -437,8 +437,12 @@ function drawEvent(  event , time_inc  ){
 
   var fillstartangle ;
   var fillendangle ;
-
-  if(event.fillPCent <= 10){
+  if(event.fillPCent <= 0){
+    fillstartangle =  0;
+    fillendangle   =  0;
+    
+  }
+  else if(event.fillPCent <= 10){
     fillstartangle =  0.3;
     fillendangle   =  0.7;
     

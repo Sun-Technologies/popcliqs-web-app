@@ -234,29 +234,29 @@ function assign_rank_to_events($user_events , $user_cat_pref , $user_lat_lon, $s
 					$rank = 7.5;
 				}else if( $distance_per > 170 &&   $pref_code ==2 ){
 					$rank = 7;
-				}else if( $distance_per > 155 &&   $pref_code ==1 ){
+				}else if( $distance_per > 165 &&   $pref_code ==1 ){
 					$rank = 6.5;
-				}else if( $distance_per > 155 &&   $pref_code ==2 ){
+				}else if( $distance_per > 165 &&   $pref_code ==2 ){
 					$rank = 5.5;
-				}else if( $distance_per > 140 &&   $pref_code ==1 ){
+				}else if( $distance_per > 150 &&   $pref_code ==1 ){
 					$rank = 6;
-				}else if( $distance_per > 140 &&   $pref_code ==2 ){
+				}else if( $distance_per > 150 &&   $pref_code ==2 ){
 					$rank = 5;
-				}else if( $distance_per > 130 &&   $pref_code ==1 ){
+				}else if( $distance_per > 140 &&   $pref_code ==1 ){
 					$rank = 4.5;
-				}else if( $distance_per > 130 &&   $pref_code ==2 ){
+				}else if( $distance_per > 140 &&   $pref_code ==2 ){
 					$rank = 3.5;
-				}else if( $distance_per > 120 &&   $pref_code ==1 ){
+				}else if( $distance_per > 130 &&   $pref_code ==1 ){
 					$rank = 4;
-				}else if( $distance_per > 120 &&   $pref_code ==2 ){
+				}else if( $distance_per > 130 &&   $pref_code ==2 ){
 					$rank = 3;
-				}else if( $distance_per > 110 &&   $pref_code ==1 ){
+				}else if( $distance_per > 120 &&   $pref_code ==1 ){
 					$rank = 2.5;
-				}else if( $distance_per > 110 &&   $pref_code ==2 ){
+				}else if( $distance_per > 120 &&   $pref_code ==2 ){
 					$rank = 1.5; 
-				}else if( $distance_per > 100 &&   $pref_code ==1 ){
+				}else if( $distance_per > 110 &&   $pref_code ==1 ){
 					$rank = 2;
-				}else if( $distance_per > 100 &&   $pref_code ==2 ){
+				}else if( $distance_per > 110 &&   $pref_code ==2 ){
 					$rank = 1; 	
 				}
 
