@@ -21,6 +21,6 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
     $conn = connect ($config);
     $event_id = isset($_POST['event_id']) ? trim($_POST['event_id']): null;
-    update_rsvp_status( $conn , $event_id , $user_id  , 1 );
+    insert_rsvp_status( $conn , $event_id , $user_id  , 1 );
 }	
 require 'json/json.service.layout.php';
