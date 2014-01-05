@@ -195,7 +195,7 @@ function update_event_status($conn ,$user_id , $event_id , $resp_cd){
 
 function add_new_event($conn , $user_id ,  $zip , $cat_cd , $st_time , $end_time ,$event_lat_log ){
 
-	error_log( "  $user_id ,  $zip , $cat_cd , $st_time , $end_time , $cat_id " );
+	error_log( "  $user_id ,  $zip , $cat_cd , $st_time , $end_time " );
 
 	//add event 
 	$evt_id = add_event($conn , $user_id ,  $zip , $st_time , $end_time , $cat_cd , $event_lat_log);

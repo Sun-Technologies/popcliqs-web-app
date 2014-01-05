@@ -218,22 +218,46 @@ function assign_rank_to_events($user_events , $user_cat_pref , $user_lat_lon, $s
 
 				$distance_per = $radius_mls/($radius_mls - $distance) * 100;
 
-				if( $distance_per > 75       &&   $pref_code ==2 ){
-					$rank = 1;
-				}else if( $distance_per > 75 &&   $pref_code ==1 ){
-					$rank = 2;
-				}else if( $distance_per > 50 &&   $pref_code ==2 ){
-					$rank = 2;
-				}else if( $distance_per > 50 &&   $pref_code ==1 ){
-					$rank = 4;
-				}else if( $distance_per > 50 &&   $pref_code ==2 ){
-					$rank = 6;
-				}else if( $distance_per > 50 &&   $pref_code ==1 ){
+				if( $distance_per > 210  &&   $pref_code ==1 ){
+					$rank = 9.2;
+				}else if( $distance_per > 210 &&   $pref_code ==2 ){
+					$rank = 8.5;
+				}else if( $distance_per > 210  &&   $pref_code ==1 ){
+					$rank = 9;
+				}else if( $distance_per > 210 &&   $pref_code ==2 ){
 					$rank = 8;
-				}else if( $distance_per > 25 &&   $pref_code ==2 ){
+				}else if( $distance_per > 190 &&   $pref_code ==1 ){
+					$rank = 7.8;
+				}else if( $distance_per > 190 &&   $pref_code ==2 ){
+					$rank = 7.4;
+				}else if( $distance_per > 170 &&   $pref_code ==1 ){
+					$rank = 7.5;
+				}else if( $distance_per > 170 &&   $pref_code ==2 ){
+					$rank = 7;
+				}else if( $distance_per > 155 &&   $pref_code ==1 ){
+					$rank = 6.5;
+				}else if( $distance_per > 155 &&   $pref_code ==2 ){
+					$rank = 5.5;
+				}else if( $distance_per > 140 &&   $pref_code ==1 ){
+					$rank = 6;
+				}else if( $distance_per > 140 &&   $pref_code ==2 ){
+					$rank = 5;
+				}else if( $distance_per > 130 &&   $pref_code ==1 ){
+					$rank = 4.5;
+				}else if( $distance_per > 130 &&   $pref_code ==2 ){
+					$rank = 3.5;
+				}else if( $distance_per > 120 &&   $pref_code ==1 ){
+					$rank = 4;
+				}else if( $distance_per > 120 &&   $pref_code ==2 ){
 					$rank = 3;
-				}else if( $distance_per > 25 &&   $pref_code ==1 ){
-					$rank = 5; 	
+				}else if( $distance_per > 110 &&   $pref_code ==1 ){
+					$rank = 2.5;
+				}else if( $distance_per > 110 &&   $pref_code ==2 ){
+					$rank = 1.5; 
+				}else if( $distance_per > 100 &&   $pref_code ==1 ){
+					$rank = 2;
+				}else if( $distance_per > 100 &&   $pref_code ==2 ){
+					$rank = 1; 	
 				}
 
 				error_log(" distance =  $distance ::: rank = $rank :::: prefcode = $pref_code ::: distance_per = $distance_per"); 
