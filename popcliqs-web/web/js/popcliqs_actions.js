@@ -1,3 +1,38 @@
+function send_password(){
+
+	if ($('#user_email').val() == null || $('#user_email').val() == "") {
+		alert("Please Enter Email");
+		return;
+
+	}
+	 var $user_email = $('#user_email').val();
+     var url = 'forgot_password.php';
+	 var data = "user_email=" + $user_email ;
+	 var handler = send_password_success;
+
+	$.ajax({
+		  type: "POST",
+		  dataType: "json",
+		  url: url,
+		  data: data,
+		  success: handler
+		});
+}
+
+function send_password_success(data, textStatus, jqXHR){
+
+	if(data.exit_cd == 0 ){
+      alert("The Link to reset password has been sent to your Email Address");
+		$('#forgotPassword').modal('hide');
+		document.getElementById("forgot_password_form").reset();
+		
+	} else{
+
+		alert(data.msg);
+
+	}
+}
+
 function save_acc_setting(){
 
 	if (document.getElementById("pwd").checked == true ){
@@ -66,6 +101,8 @@ function save_acc_setting_success(data, textStatus, jqXHR){
 		alert(data.msg);
 	}
 }
+
+
 
 
 function create_event(){

@@ -82,6 +82,13 @@ function send_welcome_mail($email){
 	mail($email, $subject,$messege);
 }
 
+function send_password_mail($email){
+	$subject ="Mail from popcliqs.";
+	$messege  = "This is your password.";
+	mail($email, $subject,$messege);
+}
+
+
 function get_user($conn , $user_id ){
 
 
@@ -173,4 +180,17 @@ function update_user_password($conn, $user_id,$password){
 		'new_password' => $password,
 		);
 	update_query_execute($query,$conn,$binding);
+}
+
+function does_user_email_exist($conn,$email){
+	$query = "select email from popcliqs_users where email = :email";
+	$binding = array(
+		'email' => $email
+		);
+	$results = query($query,$conn,$binding);
+    
+	if ($results) {
+		return true;
+	}
+	return false;
 }

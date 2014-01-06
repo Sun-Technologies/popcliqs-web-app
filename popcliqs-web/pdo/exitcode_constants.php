@@ -48,3 +48,8 @@ $_ERROR_INVALID_EVENT_TIME 				=  new Exit_Code_Class;
 $_ERROR_INVALID_EVENT_TIME->exit_cd   	= "-1009";
 $_ERROR_INVALID_EVENT_TIME->exit_msg	= "Start time cannot be greater than end time.";
 
+
+$_ERROR_INVALID_USER_EMAIL 				=  new Exit_Code_Class;
+$_ERROR_INVALID_USER_EMAIL->exit_cd   	= "-1010";
+$_ERROR_INVALID_USER_EMAIL->exit_msg	= "There is no account with this email address.";
+

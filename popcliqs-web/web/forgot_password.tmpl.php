@@ -1,4 +1,4 @@
-<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="forgotPassword" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -7,13 +7,21 @@
             
             </div>
             <div class="modal-body" style="width: 100%; height: 100px;">
-             
-            </div>
+                <form class="form-horizontal" action="" method="post" id="forgot_password_form">
+              <div class="form-group">
+                   <label for="email" class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                     <input  type="email" id="user_email"  name="user_email" class="form-control" placeholder="Enter Your Email"  />
+                  </div>
+              </div>
+              </form>
+           </div>
 
                 <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-dismiss="modal">
-                SUBMIT</button>
+                   <button type="button" class="btn btn-default" onclick="" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary"  onclick="send_password()">Submit</button>
                 </div>
         </div>
     </div>
 </div>
+
