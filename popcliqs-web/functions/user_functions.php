@@ -163,4 +163,14 @@ function update_acc_setting( $conn , $user_id , $zip  ){
 	update_query_execute($query,$conn,$binding);
 }
 
+function update_user_password($conn, $user_id,$password){
+	$query = "update popcliqs_users set password = :new_password where user_id = :user_id";
+	
+	$binding = array(
 
+		'user_id'  => $user_id ,
+
+		'new_password' => $password,
+		);
+	update_query_execute($query,$conn,$binding);
+}

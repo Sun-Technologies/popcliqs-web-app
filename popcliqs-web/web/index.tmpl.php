@@ -45,9 +45,21 @@ $month_list = array(
         </div>
         <button type="submit" class="btn btn-success backgroundColor1">Sign in</button>
       </form>
+      <div class="container">
+     <div class="row">
+      <div class="col-md-12">
+        
+          <p style="padding-top:45px;padding-left:900px;"> <a data-toggle="modal" href="#myModal1">Forgot Password</a></p>
+      
+     </div>
+    </div>
+    </div>             
+</p>
+
     </div>
 </div>
 <br/>
+
 <div class="container">
     <div class="row"  style="padding-top:80px;">
       <div class="col-md-5 col-md-offset-0">
@@ -204,10 +216,13 @@ $month_list = array(
         <hr/>
           <p>&copy; 2014 popcliqs, <a href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
       </p>
-     
-                 
+        
+           
+    
+       
 <?php 
 require 'terms.tmpl.php';
+require 'forgot_password.tmpl.php';
  ?>
     
 <!--script src="js/jquery.js" ></script-->
@@ -227,7 +242,6 @@ require 'terms.tmpl.php';
       <?php } ?>   
       
     });
-
 
 
 </script>

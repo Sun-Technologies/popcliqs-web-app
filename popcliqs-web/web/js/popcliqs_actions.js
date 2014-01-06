@@ -1,15 +1,50 @@
 function save_acc_setting(){
 
-	if ($('#zip').val() == null || $('#zip').val() == ""  
+	if (document.getElementById("pwd").checked == true ){
+	
+        if ($('#pwd1').val() == null || $('#pwd1').val() == ""){
+    		alert("Enter old Password");
+    		return; 
+    	}
+
+
+	
+    else if ( $('#pwd2').val() == null || $('#pwd2').val() == "" ){
+    	alert("Enter New Password");
+    	return;
+
+    }
+     else if ( $('#pwd3').val() == null || $('#pwd3').val() == "" ){
+    	alert("Re Enter New Password");
+    	return;
+
+    }
+   else if ( $('#pwd2').val().length  < 6 || $('#pwd3').val().length  < 6 ){
+	 	
+		alert("Password length Should be greater than six" );
+	 	return;
+
+    }
+    else if ( $('#pwd2').val() !== $('#pwd3').val() ){
+    	alert("Password Miss Match");
+    }
+
+	else if ($('#zip').val() == null || $('#zip').val() == ""  
 			|| $('#zip').val().length  != 5 || !isNumber($('#zip').val()) ){
 	 	
 		alert(" Invalid Zip" );
 	 	return;
 	 }
+
+}
+   var $old_password = $('#pwd1').val();
+   var $new_password = $('#pwd3').val();
+        alert($new_password);   
+
 	 var $zip	= $('#zip').val();
 	 var url = 'save_acc_setting.php';
-	 var data = "zip=" + $zip ;
-	var handler = save_acc_setting_success;
+	 var data = "zip=" + $zip + "&old_password=" + $old_password  + "&new_password=" + $new_password;
+	 var handler = save_acc_setting_success;
 
 	$.ajax({
 		  type: "POST",
@@ -469,12 +504,13 @@ function enableTextbox()
         document.getElementById("pwd3").disabled = false;
        
     }
-    else
+    else 
     {
         document.getElementById("pwd1").disabled = true;
         document.getElementById("pwd2").disabled = true;
         document.getElementById("pwd3").disabled = true;
        
     }
+  
 }
 
