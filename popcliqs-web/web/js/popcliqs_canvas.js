@@ -3,7 +3,7 @@ var ispredisplay = false;
 var Log;
 var $time_interval = 8;
 var poppedBubble;
-
+var stage;
 var event1  = new Object();
 event1.id   = "evt01";
 event1.size = "S";
@@ -46,7 +46,7 @@ function redraw(eventarr , redraw){
   
   // eventlist = new Array(event1,event2,event3);
   eventlist = eventarr;
- 
+
   if( $("#wapper-canvas-lg").css('display') == 'block'){
       newcanvas = "mainCanvas-lg";
     
@@ -63,6 +63,10 @@ function redraw(eventarr , redraw){
   if(canvasstr != newcanvas || redraw ){
     //alert(" change in canvas");
     canvasstr = newcanvas;
+    if( stage != null){
+      stage.removeAllChildren();
+      stage.update();
+    }
     draw();
   }
 }
@@ -72,7 +76,7 @@ function draw() {
   var canvas = document.getElementById(canvasstr);
   stage = new createjs.Stage(canvas);
   
-  stage.clear();
+  // stage.clear();
   //stage.update();
 
   spritesheet = new createjs.SpriteSheet({
@@ -192,11 +196,8 @@ function drawBody(canvas){
   if($time_interval != 72){
     displayTime(timex , getTime(now_l) , stage );
   }
-  //drawVertTimeLine( timex , canvas ,bg );
-  // alert(eventlist.length);
   //Draw all the events.
   for (var i=0; i < eventlist.length ; i++){
-
      drawEvent( eventlist[i] , time_inc ); 
   }
 }
