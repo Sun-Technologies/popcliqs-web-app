@@ -45,8 +45,10 @@ var eventlist ;
 function redraw(eventarr , redraw){
   
   // eventlist = new Array(event1,event2,event3);
-  eventlist = eventarr;
-
+  if(eventarr != null){
+    eventlist = eventarr;
+  }
+  
   if( $("#wapper-canvas-lg").css('display') == 'block'){
       newcanvas = "mainCanvas-lg";
     
@@ -123,7 +125,7 @@ function drawBody(canvas){
   if($time_interval != 72){
     displayTime(timex , 'Now' , stage , 10 );
   } else{
-    displayTime(timex , 'Today' , stage , 10 );
+    displayTime(timex , 'Now' , stage , 10 );
   }
   drawVertTimeLine( timex , canvas ,bg );
   
@@ -150,7 +152,7 @@ function drawBody(canvas){
   if($time_interval != 72){
     displayTime(timex , getTime(now_l) , stage );
   }else{
-    displayTime(timex , 'Tomorrow' , stage );
+    displayTime(timex , 'Next 24hrs' , stage );
   }
   drawVertTimeLine( timex , canvas ,bg );
   
@@ -179,7 +181,7 @@ function drawBody(canvas){
   if($time_interval != 72){
     displayTime(timex , getTime(now_l) , stage );
   }else{
-    displayTime(timex , 'Day After' , stage );
+    displayTime(timex , 'Next 72hrs' , stage );
   }
 
   now_l = addtime(now_l, time_inc );
@@ -458,20 +460,12 @@ function drawEvent(  event , time_inc  ){
     fillendangle   =  1.3; 
   }
 
-  if( getHour(now) > getHour(event.time) ){
-    var diff = 24 -  getHour(now); 
-    var timeDiff = getHour(event.time) + diff ;
-
-
-  }else{
-
-    var timeDiff = getHour(event.time) - getHour(now) ;
-  }
-  
+  var timeDiff = event.time_diff;
   if(timeDiff  != 0){ 
     timeDiff = timeDiff/time_inc ;
   }
-   
+  
+  //alert( "time_inc " + time_inc + " timeDiff " + timeDiff +  " timediff" + event.time_diff); 
   var radius; 
   var logoradius;
   if( event.size == "L") {

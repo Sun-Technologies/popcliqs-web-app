@@ -21,7 +21,8 @@
 				"time"      : "<?php echo $hour ?>" ,
 				"fillPCent" : 0 ,
 				"rank"      : <?php echo $user_event->rank ?> ,
-				"mratio"    : <?php echo $user_event->mratio ?>
+				"mratio"    : <?php echo $user_event->mratio ?>,
+				"time_diff" : <?php echo $user_event->time_diff ?>
 				<?php echo "}" ?>  
 		<?php 
 			$rank +=2;

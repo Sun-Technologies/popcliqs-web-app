@@ -30,6 +30,7 @@ Class User_Event {
 	public $no_of_maybe = 0;
 	public $creator;
 	public $mins_left_for_checkin = 0;
+	public $time_diff = 0;
 } 
 
 

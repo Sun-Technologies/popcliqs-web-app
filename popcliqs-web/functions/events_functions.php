@@ -176,9 +176,10 @@ function getUserEvent($results, $tz ){
 		
 			// $evt_hr = date( 'H', $event_start ) ;
 			$timestamp = strtotime($event_start);
+			$time_diff = ($timestamp - time()) / (60*60);
 			$start_timestamp = $timestamp - ($tz * 60 ) ;
 			$evt_hr = date( 'H', $start_timestamp ) ;
-			error_log( "$event_id ::: $tz ::  $event_start ::: $evt_hr " );
+			// error_log( "$event_id ::: $tz ::  $event_start ::: $evt_hr :: ts : $timestamp  : diff : "  .$time_diff/(60*60));
 			
 			$user_event 				= new User_Event();
 			$user_event->event_id		= $event_id;
@@ -188,6 +189,7 @@ function getUserEvent($results, $tz ){
 			$user_event->lon			= $event_longitude;
 			$user_event->size 			= "S";
 			$user_event->mratio 		= 2;
+			$user_event->time_diff      = $time_diff;
 
 			$user_events[] =  $user_event;
 
