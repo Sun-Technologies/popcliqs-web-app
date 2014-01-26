@@ -114,7 +114,7 @@ require 'terms.tmpl.php';
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
           <h4 class="modal-title" id="myModalLabel" style="text-align:center">Create New Event</h4>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="width: 100%; height: 400px; overflow-y: scroll;">
           <div class="form-group">
             <label for="title" class="col-lg-2 control-label">Title</label>
             <div class="col-lg-8">
