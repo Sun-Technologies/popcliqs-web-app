@@ -1,3 +1,8 @@
+function reset_forgot_password(){
+	$('#forgotPassword').modal('hide');
+		document.getElementById("forgot_password_form").reset();
+}
+
 function send_password(){
 
 	if ($('#user_email').val() == null || $('#user_email').val() == "") {
@@ -42,29 +47,27 @@ function save_acc_setting(){
     		return; 
     	}
 
-
-	
-    else if ( $('#pwd2').val() == null || $('#pwd2').val() == "" ){
+    	else if ( $('#pwd2').val() == null || $('#pwd2').val() == "" ){
     	alert("Enter New Password");
     	return;
 
     }
-     else if ( $('#pwd3').val() == null || $('#pwd3').val() == "" ){
+    	 else if ( $('#pwd3').val() == null || $('#pwd3').val() == "" ){
     	alert("Re Enter New Password");
     	return;
 
     }
-   else if ( $('#pwd2').val().length  < 6 || $('#pwd3').val().length  < 6 ){
+   		else if ( $('#pwd2').val().length  < 6 || $('#pwd3').val().length  < 6 ){
 	 	
 		alert("Password length Should be greater than six" );
 	 	return;
 
     }
-    else if ( $('#pwd2').val() !== $('#pwd3').val() ){
+    	else if ( $('#pwd2').val() !== $('#pwd3').val() ){
     	alert("Password Miss Match");
     }
 
-	else if ($('#zip').val() == null || $('#zip').val() == ""  
+		else if ($('#zip').val() == null || $('#zip').val() == ""  
 			|| $('#zip').val().length  != 5 || !isNumber($('#zip').val()) ){
 	 	
 		alert(" Invalid Zip" );
@@ -72,16 +75,16 @@ function save_acc_setting(){
 	 }
 
 }
-   var $old_password = $('#pwd1').val();
-   var $new_password = $('#pwd3').val();
+   		var $old_password = $('#pwd1').val();
+   		var $new_password = $('#pwd3').val();
         alert($new_password);   
 
-	 var $zip	= $('#zip').val();
-	 var url = 'save_acc_setting.php';
-	 var data = "zip=" + $zip + "&old_password=" + $old_password  + "&new_password=" + $new_password;
-	 var handler = save_acc_setting_success;
+	 	var $zip	= $('#zip').val();
+	 	var url = 'save_acc_setting.php';
+	 	var data = "zip=" + $zip + "&old_password=" + $old_password  + "&new_password=" + $new_password;
+	 	var handler = save_acc_setting_success;
 
-	$.ajax({
+		$.ajax({
 		  type: "POST",
 		  dataType: "json",
 		  url: url,

@@ -112,7 +112,7 @@ require 'terms.tmpl.php';
       <form class="form-horizontal" id="event_form" name="event_form" method="post" action="event.php">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel">PopcliQ! - Create New Event</h4>
+          <h4 class="modal-title" id="myModalLabel" style="text-align:center">Create New Event</h4>
         </div>
         <div class="modal-body">
           <div class="form-group">
@@ -304,7 +304,7 @@ require 'terms.tmpl.php';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" onclick="update_screen('#history')" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">History</h4>
+        <h4 class="modal-title" id="myModalLabel" style="text-align:center">History</h4>
       </div>
       <div class="modal-body">
         <ul class="nav nav-tabs" id="historyTab">
@@ -332,7 +332,7 @@ require 'terms.tmpl.php';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Event Details</h4>
+        <h4 class="modal-title" id="myModalLabel" style="text-align:center">Event Details</h4>
       </div>
       <input type="hidden" id="e_id" />
       <div class="modal-body">

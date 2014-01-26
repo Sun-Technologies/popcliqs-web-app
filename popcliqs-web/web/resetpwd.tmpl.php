@@ -22,7 +22,7 @@ $month_list = array(
         <div class="modal-content">
             <div class="modal-header">
              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <h4 style="text-align:center">Account Settings</h4>
+              <h4 style="text-align:center" style="text-align:center;">Account Settings</h4>
             </div>
             <div class="modal-body">
              <form class="form-horizontal">

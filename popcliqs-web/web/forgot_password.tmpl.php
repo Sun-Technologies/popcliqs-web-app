@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <button type="button" class="close" data-dismiss="modal" onclick="reset_forgot_password()" aria-hidden="true">&times;</button>
             <h4 style="text-align:center">FORGOT PASSWORD</h4>
             
             </div>
@@ -18,7 +18,7 @@
            </div>
 
                 <div class="modal-footer">
-                   <button type="button" class="btn btn-default" onclick="" data-dismiss="modal">Close</button>
+                   <button type="button" class="btn btn-default" onclick="reset_forgot_password()" data-dismiss="modal">Close</button>
                   <button type="button" class="btn btn-primary"  onclick="send_password()">Submit</button>
                 </div>
         </div>
