@@ -299,7 +299,31 @@ function fetch_init_events( $conn , $user_id ){
 	return query( $query, $conn , $binding );
 }
 
+function fetch_rsvp_events($conn , $user_id  , $action){
 
+	$query = "select * from phpfox_event_rsvp as rsvp , popcliqs_events as evnt where 
+			rsvp.user_id = :user_id and rsvp_cd = :action  
+			and rsvp.event_id = evnt.event_id and status = 1 
+			order by event_start desc limit 10 ";
+	
+	$binding = array( 
+		'user_id' => $user_id ,
+		'action'  => $action
+	);
+	return query( $query, $conn , $binding );
+
+}
+
+function update_rsvp_events($conn , $user_id  , $event_id){
+	$query = "update  phpfox_event_rsvp set rsvp_cd = 0 where
+			user_id = :user_id and event_id = :event_id ";
+	
+	$binding = array( 
+		'user_id'   => $user_id ,
+		'event_id'  => $event_id
+	);
+	return update_query_execute( $query, $conn , $binding );
+}
 function delete_event( $conn , $user_id , $event_id  ){
 
 	$query = " update popcliqs_events set status= :status , update_ts= :update_ts 

@@ -328,7 +328,14 @@ function open_history(){
   
 
   if($('#history-int').hasClass( "active" )){
+
     fetch_initiated_events();
+  }else if($('#history-interest').hasClass( "active" )) {
+
+    fetch_interested_events();
+  }else if($('#history-att').hasClass( "active" )) {
+     
+     fetch_attended_events();
   }
 }
 

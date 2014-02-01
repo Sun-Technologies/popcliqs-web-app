@@ -36,7 +36,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$distanceToEvent = get_distance_between_zips($conn, $event_info->postal_code, $user_zip);
 	$rsvp_id 		 = user_event_rsvp_cd($event_id , $user_id , $conn );
 	
-	error_log("Distance : $distanceToEvent  RSVP : $rsvp_id ");
+	error_log("Distance : $distanceToEvent  RSVP : $rsvp_id  event id : $event_id");
 	
 	// Dump x
 	// ob_start();

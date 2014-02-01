@@ -387,10 +387,10 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 		$('#e_end').html(data.ed_dt) ;
 		$('#e_dist').html(data.distance);
 		
-		if(data.rsvp != 0 ) {
-			$("#save_btn").css("display", "none");
-		}else{
+		if(data.rsvp == 0 ) {
 			$("#save_btn").css("display", "inline");
+		}else{
+			$("#save_btn").css("display", "none");
 		}
 		$('#eventdetails').modal('show');
 
@@ -425,6 +425,44 @@ function update_rspv_success(data, textStatus, jqXHR){
 	}
 }
 
+function fetch_attended_events(){
+
+	var dt   = new Date()
+  	var $tz  = dt.getTimezoneOffset();
+	var data = "action=2&tz=" + $tz ; 
+	fetch_rsvp_evnts(data,fetch_attended_events_success);
+}
+
+function fetch_interested_events(){
+
+	var dt   = new Date()
+  	var $tz  = dt.getTimezoneOffset();
+	var data = "action=1&tz=" + $tz ; 
+	fetch_rsvp_evnts(data ,fetch_interested_events_success);
+	
+}
+
+function fetch_rsvp_evnts(data , successNext){
+
+	var url  = 'fetch_rsvp_events.php';
+	
+	$.ajax({
+	  type: "POST",
+	  dataType: "text",
+	  url: url,
+	  data: data,
+	  success: successNext
+	});
+
+}
+
+function fetch_attended_events_success(data, textStatus, jqXHR){
+	$('#attended-tab').html(data);
+}
+
+function fetch_interested_events_success(data, textStatus, jqXHR){
+	$('#interested-tab').html(data);
+}
 function fetch_initiated_events(){
 
 	var dt = new Date()
@@ -442,8 +480,34 @@ function fetch_initiated_events(){
 }
 
 function fetch_initiated_events_success (data, textStatus, jqXHR) {
-	
+
 	$('#initiated-tab').html(data);
+}
+
+function update_rsvp_event(event_id){
+	var r = confirm("Are you sure you want to remove the event  from your list ?");
+	if ( r == true ){
+		var url  = 'update_rsvp_events.php?';
+		var data = "&event_id=" + event_id ; 
+		$.ajax({
+		  type: "POST",
+		  dataType: "json",
+		  url: url,
+		  data: data,
+		  success: update_rsvp_events_success
+		});
+	}
+}
+
+function update_rsvp_events_success (data, textStatus, jqXHR) {
+
+	if(data.exit_cd == 0 ){
+		fetch_interested_events();
+		fetch_attended_events();
+	}else { 
+
+		alert(data.msg);
+	}
 }
 
 function delete_event(event_id){

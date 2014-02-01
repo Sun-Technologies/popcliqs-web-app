@@ -180,7 +180,7 @@ require 'terms.tmpl.php';
             <label for="start_date" class="col-lg-2 control-label" style="padding-left:0px;">Start time</label>
             <div class="col-lg-8">
               <input type="text" id="start_date" name="start_date" class="form-control" placeholder="" style="width:192px;display:inline-block;" />
-              <select id="start_time" name="start_time" class="form-control" style="width:150px;display:inline-block;">
+              <select id="start_time" name="start_time" class="form-control" style="width:140px;display:inline-block;">
                   <option value="00:00">12:00 AM</option>
                   <option value="00:30">12:30 AM</option>
                   <option value="01:00">1:00 AM</option>
@@ -236,7 +236,7 @@ require 'terms.tmpl.php';
             <label for="end_date" class="col-lg-2 control-label">End time</label>
             <div class="col-lg-8">
               <input type="text" id="end_date" name="end_date" class="form-control" placeholder="" style="width:190px;display:inline-block;"/>
-              <select id="end_time" name="end_time" class="form-control" style="width:150px;display:inline-block;">
+              <select id="end_time" name="end_time" class="form-control" style="width:140px;display:inline-block;">
                 <option value="00:00">12:00 AM</option>
                 <option value="00:30">12:30 AM</option>
                 <option value="01:00">1:00 AM</option>
@@ -308,12 +308,19 @@ require 'terms.tmpl.php';
       </div>
       <div class="modal-body">
         <ul class="nav nav-tabs" id="historyTab">
-          <li class="active" id="history-att"><a href="#attended" data-toggle="tab">Attended</a></li>
+          <li id="history-interest" class="active" ><a href="#interest" data-toggle="tab">Interest</a></li>
+          <li id="history-att"><a href="#attended" data-toggle="tab">Attended</a></li>
           <li id="history-int"><a href="#initiated" data-toggle="tab">Initiated</a></li>
         </ul>
+
         <!-- Tab panes -->
         <div class="tab-content">
-          <div class="tab-pane active" id="attended">...</div>
+            <div class="tab-pane active" id="interest">
+               <?php require 'interested.tab.php'; ?>
+            </div>
+          <div class="tab-pane" id="attended">
+              <?php require 'attended.tab.php'; ?>
+          </div>
           <div class="tab-pane" id="initiated">
             <?php require 'initiated.tab.php'; ?>
           </div>
@@ -429,6 +436,12 @@ require 'terms.tmpl.php';
     var target = e.target + "";
     if(target.indexOf("initiated") !== -1){
       fetch_initiated_events();
+    }
+     if(target.indexOf("interested") !== -1){
+      fetch_interested_events();
+    }
+     if(target.indexOf("attended") !== -1){
+      fetch_attended_events();
     }
   });
 

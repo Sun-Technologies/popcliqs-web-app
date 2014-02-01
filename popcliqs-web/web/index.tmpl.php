@@ -45,9 +45,9 @@ $month_list = array(
         </div>
         <button type="submit" class="btn btn-success backgroundColor1">Sign in</button>
       </form>
-       <p style="padding-top:35px;padding-left:1010px;color:white;"> <a data-toggle="modal" href="#forgotPassword">Forgot Password</a></p>
-
-            
+      <span  class="pull-right" style="margin-top:15px;">
+       <a data-toggle="modal" href="#forgotPassword">Forgot Password</a>
+      </span>          
 </p>
 
     </div>
