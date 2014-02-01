@@ -429,7 +429,7 @@ require 'terms.tmpl.php';
   $(function() { 
      fetchEvents();
      // redraw();
-    setInterval(function(){ fetchEvents(); },1000 * 30 );
+    setInterval(function(){ fetchEvents(); },1000 * 60 * 5 );
   });
 
   $('#historyTab').click(function (e) {

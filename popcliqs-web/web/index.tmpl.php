@@ -68,14 +68,14 @@ $month_list = array(
          <!-- <?php if(isset($status)) {?>
       <h3 class="notice"><?php echo $status ; }?></h3> -->
         </div>
-        <form action="" method="post">
+        <form action="#" method="post" autocomplete="off" >
           <div class="row" style="padding-bottom:10px;">
             <div class="form-group">
               <div class="col-lg-3">
                 <label for="email" class="control-label">Email</label>
               </div>
               <div class="col-lg-8">
-                <input type="email" id="email"  name="email" class="form-control" placeholder=""   data-content="<?php if(isset($status)) { echo $email_status ; }?>" data-placement="top" value="<?php echo isset($_POST['email']) ? $_POST['email'] : ''; ?>"/>
+                <input type="email" id="semail"  name="semail" class="form-control" placeholder=""   data-content="<?php if(isset($status)) { echo $email_status ; }?>" data-placement="top" value="<?php echo isset($_POST['semail']) ? $_POST['semail'] : ''; ?>"/>
               </div>
             </div>
           </div>
@@ -86,7 +86,7 @@ $month_list = array(
                 <label for="reemail" class="control-label">Email again</label>
               </div>
               <div class="col-lg-8">
-                <input type="email" id="reemail"  name="reemail" class="form-control" placeholder="" data-content="Please Re Enter the Email address" data-placement="top" value="<?php echo isset($_POST['reemail']) ? $_POST['reemail'] : ''; ?>" />
+                <input type="email" id="sreemail"  name="sreemail" class="form-control" placeholder="" data-content="Please Re Enter the Email address" data-placement="top" value="<?php echo isset($_POST['sreemail']) ? $_POST['sreemail'] : ''; ?>" />
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ $month_list = array(
                 <label for="password" class="control-label">Password</label>
               </div>
               <div class="col-lg-8">
-                <input type="password" id="password"  name="password" class="form-control" placeholder="" data-content="Please Enter a valid Password (length greater than six)." data-placement="top" value="<?php echo isset($_POST['password']) ? $_POST['password'] : ''; ?>"/>
+                <input type="password" id="spassword"  name="spassword" class="form-control" placeholder="" data-content="Please Enter a valid Password (length greater than six)." data-placement="top" value="<?php echo isset($_POST['spassword']) ? $_POST['spassword'] : ''; ?>"/>
               </div>
             </div>
           </div>

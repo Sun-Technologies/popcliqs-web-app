@@ -15,9 +15,9 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
   
     $conn = connect ($config);
 
-	$email    	=  isset($_POST['email'])    ? trim($_POST['email']): null;
-	$reemail  	=  isset($_POST['reemail'])  ? trim($_POST['reemail']):null;
-	$password 	=  isset($_POST['password']) ? trim($_POST['password']):null;
+	$email    	=  isset($_POST['semail'])    ? trim($_POST['semail']): null;
+	$reemail  	=  isset($_POST['sreemail'])  ? trim($_POST['sreemail']):null;
+	$password 	=  isset($_POST['spassword']) ? trim($_POST['spassword']):null;
 	$zip      	=  isset($_POST['zip'])      ? trim($_POST['zip']):null;
 	$month      =  isset($_POST['month'])    ? trim($_POST['month']):null;
 	$day        =  isset($_POST['day'])      ? trim($_POST['day']):null;
@@ -31,30 +31,30 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	if( empty($email) ){
 	
 		$email_status = "please enter the  email id";
-		$error_id  = "#email";
+		$error_id  = "#semail";
 
 	}
 	elseif (!valid_email($email)) {
 		$email_status="please enter the valid email id";
-         $error_id ="#email";
+         $error_id ="#semail";
 
 	}elseif (!valid_email($reemail)) {
 		$status="please enter the correct email id";
-         $error_id ="#reemail";
+         $error_id ="#sreemail";
 
 	}elseif (empty($reemail)) {
 		$status = "please re enter the email";
-		$error_id = "#reemail";
+		$error_id = "#sreemail";
 
    }else if($email !=$reemail){
 
 	$status = "email match not found";
-    $error_id  = "#reemail";
+    $error_id  = "#sreemail";
 	
 	}else if(empty($password) || strlen($password) < 6){
 
 		$status = "enter password";
-        $error_id ="#password";
+        $error_id ="#spassword";
 	}
 	else if (empty($sex)) {
 
