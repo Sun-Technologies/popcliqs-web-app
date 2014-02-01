@@ -51,7 +51,7 @@ function save_acc_setting(){
     	alert("Enter New Password");
     	return;
 
-    }
+   	}
     	 else if ( $('#pwd3').val() == null || $('#pwd3').val() == "" ){
     	alert("Re Enter New Password");
     	return;
@@ -77,13 +77,13 @@ function save_acc_setting(){
 }
    		var $old_password = $('#pwd1').val();
    		var $new_password = $('#pwd3').val();
-        alert($new_password);   
-
-	 	var $zip	= $('#zip').val();
+        
+	 	var $zip= $('#zip').val();
 	 	var url = 'save_acc_setting.php';
 	 	var data = "zip=" + $zip + "&old_password=" + $old_password  + "&new_password=" + $new_password;
 	 	var handler = save_acc_setting_success;
 
+	 	$('#zip_code_str').html($zip.trim()+")");
 		$.ajax({
 		  type: "POST",
 		  dataType: "json",
@@ -96,8 +96,10 @@ function save_acc_setting(){
 
 function save_acc_setting_success(data, textStatus, jqXHR){
 	
+	
 	if(data.exit_cd == 0 ){
 		$('#resetpwd').modal('hide');
+		 fetchEvents();
 		
 	}else{
 

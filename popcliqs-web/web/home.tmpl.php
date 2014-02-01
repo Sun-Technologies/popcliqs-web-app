@@ -64,7 +64,8 @@
         <br><span  class="pull-right" style="margin-top:5px;cursor:pointer;position:relative;right:-70px;">
         <a href"#" onclick="fetch_acc_setting()">
           <?php
-              echo $_SESSION['email'] . '<span style="color:#818181"> ( Home : '.$_SESSION['zip'] .' )' ;
+              echo $_SESSION['email'] . '<span style="color:#818181"> 
+              (Home:<span id="zip_code_str">'.$_SESSION['zip'] .'<span/><span/>)' ;
           ?>
          </a>
       </form>
