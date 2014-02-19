@@ -143,7 +143,7 @@ function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $
 			and (
 				evt.event_title LIKE :search_t or evt.event_location    LIKE :search_t or   
 				evt.zip LIKE :search_t or 
-				evt.description  LIKE :search_t 
+				evt.description  LIKE :search_t  or evt.event_address  LIKE :search_t
 			) 
 	";	
 

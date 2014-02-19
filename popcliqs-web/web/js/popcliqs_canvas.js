@@ -34,7 +34,7 @@ event3.mratio=1.4;
 
 
 $cat_type = 0;
-var maxL = 500;
+var maxL = 475;
 var eventlist ;
 
 
@@ -488,6 +488,7 @@ function drawEvent(  event , time_inc  ){
     logoradius = 40;
   }
   var distance = maxL - (  event.rank * 10 * maxL ) /100 ;
+
   
   var arc = new createjs.Shape();
   arc.graphics.beginFill("#fff");

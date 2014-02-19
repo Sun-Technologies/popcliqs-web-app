@@ -68,5 +68,12 @@ CREATE TABLE  phpfox_event_rsvp (
 	primary key(rsvp_id)
 )
 
+CREATE TABLE popcliqs_reset(
+	email  varchar(200),
+	sessionkey varchar(200),
+	create_ts DATETIME,
+	update_ts DATETIME
+	
+)
 
 =======================

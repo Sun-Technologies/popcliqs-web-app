@@ -51,7 +51,7 @@
 	} 
 
 	//Zip code validation
-	if($zip == null ||  $zip == '' || !(preg_match('/^\d{6}$/', $zip)) ){
+	if($zip == null ||  $zip == ''  ){
 		$exit_cd = $_ERROR_INVALID_ZIP;
 	}
 

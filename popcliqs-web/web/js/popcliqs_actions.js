@@ -180,7 +180,7 @@ function create_event(){
 
 	var handler = create_event_success; 
 
-	if ($('#event_id').val() != null || $('#event_id').val() != "" ){
+	if ($('#event_id').val() != null && $('#event_id').val().trim() != "" ){
 		handler = update_event_success;
 	}
 
@@ -190,7 +190,7 @@ function create_event(){
 		  url: url,
 		  data: data,
 		  success: handler
-		});
+	});
 }
 
 function update_event_success(data, textStatus, jqXHR){
@@ -212,7 +212,7 @@ function isNumber(n) {
 function create_event_success(data, textStatus, jqXHR){
 	
 	if(data.exit_cd == 0 ){
-		alert("Event created Successfully !!! ");
+		alert("You are all set to find your cliq.");
 		close_event_window();
 		location.reload();
 	}else{
@@ -383,11 +383,12 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 		}else if(data.age_limit == 21) {
 			age_limit_desc = "Above 21 only.";
 		}
+
 		$('#e_alimit').html(age_limit_desc) ;
 		$('#e_id').val(data.id) ;
 		$('#e_start').html(data.st_dt) ;
 		$('#e_end').html(data.ed_dt) ;
-		$('#e_dist').html(data.distance);
+		$('#e_dist').html(data.distance + " " + "approx miles");
 		
 		if(data.rsvp == 0 ) {
 			$("#save_btn").css("display", "inline");

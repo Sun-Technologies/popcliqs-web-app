@@ -22,7 +22,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 		
 		if (does_user_email_exist($conn,$user_email)) {
         	
-        	send_password_mail($user_email);
+        	send_password_mail($conn ,$user_email);
            error_log("forgot password email sent");
          }else {
         	$status_obj = $_ERROR_INVALID_USER_EMAIL ;
