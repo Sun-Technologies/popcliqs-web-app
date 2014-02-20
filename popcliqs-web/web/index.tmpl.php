@@ -14,6 +14,8 @@ $month_list = array(
 12 => 'December'
 );
 
+$form_er_class ="form-group has-error has-feedback";
+$form_class    ="form-group";
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -54,156 +56,7 @@ $month_list = array(
 </div>
 <br/>
 
-<div class="container">
-    <div class="row"  style="padding-top:80px;">
-      <div class="col-md-5 col-md-offset-0">
-          <div class="container">
-            <h4>All Social... no media</h4>
-          </div>
-          <iframe src="//player.vimeo.com/video/81890061" width="450" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
-      </div>
-      <div class="col-md-6 col-lg-offset-0">
-        <div style="margin-bottom:20px;">
-          <h4 style="display:inline;">Sign Up</h4> (Or you may never find out what XXXXX means! )
-         <!-- <?php if(isset($status)) {?>
-      <h3 class="notice"><?php echo $status ; }?></h3> -->
-        </div>
-        <form action="#" method="post" autocomplete="off" >
-          <div class="row" style="padding-bottom:10px;">
-            <div class="form-group">
-              <div class="col-lg-3">
-                <label for="email" class="control-label">Email</label>
-              </div>
-              <div class="col-lg-8">
-                <input type="email" id="semail"  name="semail" class="form-control" placeholder=""   data-content="<?php if(isset($status)) { echo $email_status ; }?>" data-placement="top" value="<?php echo isset($_POST['semail']) ? $_POST['semail'] : ''; ?>"/>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="padding-bottom:10px;">
-            <div class="form-group">
-              <div class="col-lg-3">
-                <label for="reemail" class="control-label">Email again</label>
-              </div>
-              <div class="col-lg-8">
-                <input type="email" id="sreemail"  name="sreemail" class="form-control" placeholder="" data-content="Please Re Enter the Email address" data-placement="top" value="<?php echo isset($_POST['sreemail']) ? $_POST['sreemail'] : ''; ?>" />
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="padding-bottom:10px;">
-            <div class="form-group">
-              <div class="col-lg-3">
-                <label for="password" class="control-label">Password</label>
-              </div>
-              <div class="col-lg-8">
-                <input type="password" id="spassword"  name="spassword" class="form-control" placeholder="" data-content="Please Enter a valid Password (length greater than six)." data-placement="top" value="<?php echo isset($_POST['spassword']) ? $_POST['spassword'] : ''; ?>"/>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="padding-bottom:10px;">
-            <div class="form-group">
-              <div class="col-lg-3">
-                <label for="sex" class="control-label">I am</label>
-              </div>
-              <div class="col-lg-8">
-              <?php 
-                if (isset($_POST['sex']) && $_POST['sex']== 'male' ) { ?>
-                 <input type="radio" name="sex" value="male" id="sex" data-content="Please select the gender" data-placement="top" checked="true" /> Male &nbsp;
-                  <input type="radio" name="sex" value="female"> Female 
-               <?php   } elseif (isset($_POST['sex']) && $_POST['sex'] == 'female') { ?>
-                 <input type="radio" name="sex" value="male" id="sex" /> Male &nbsp;
-                  <input type="radio" name="sex" value="female" checked="true"> Female 
-              <?php   } else {?>
-               <input type="radio" name="sex" value="male" id="sex" data-content="Please select the gender" data-placement="top"  /> Male &nbsp;
-                  <input type="radio" name="sex" value="female" > Female 
-              <?php  }?> 
-                  
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="padding-bottom:10px;">
-            <div class="form-group">
-              <div class="col-lg-3">
-                <label for="dob" class="control-label">I was born</label>
-              </div>
-              <div class="col-lg-8">
-                <select name="month" id="month" data-content="Please select month" data-placement="top"> 
-                  <option value="">Month:</option>
-                  <?php foreach ($month_list as $key => $value) {
-                    if (isset($_POST['month']) && $key == $_POST['month']) {
-                      echo " <option value='$key' selected>$value</option>";
-                    }
-                    else{
-                      echo " <option value='$key'>$value</option>";
-                    }
-                  } ?>
-            
-                </select>  /
-                <select name="day" id="day" data-content="Please select day" data-placement="top">
-                  <option value="">Day:</option>
-                  <?php 
-                 
-                  for ($index = 1; $index <=31 ; $index++) { 
-                 
-                    if (isset($_POST['day']) && $_POST['day'] == $index) {
-                     echo " <option value=$index selected>$index</option>";
-                    }else{
-                      echo "<option value=$index>$index</option>";
-
-                    }
-                  }
-                   ?>
-              
-                </select> / 
-                <select name="year" id="year" data-content="Please select year" data-placement="top">
-                  <option value="">Year:</option>
-                    <?php 
-                 
-                  for ($index = 1900; $index <=2012 ; $index++) { 
-                 
-                    if (isset($_POST['year']) && $_POST['year'] == $index) {
-                     echo " <option value=$index selected>$index</option>";
-                    }else{
-                      echo "<option value=$index>$index</option>";
-
-                    }
-                  }
-                   ?>
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="padding-bottom:10px;">
-            <div class="form-group">
-              <div class="col-lg-3">
-                <label for="zip" class="control-label">Home Zip</label>
-              </div>
-              <div class="col-lg-8">
-                <input type="text" id="zip"  name="zip" class="form-control" placeholder="" data-content="Please enter valid zip" data-placement="top" value="<?php echo isset($_POST['zip']) ? $_POST['zip'] : ''; ?>" />
-              </div>
-            </div>
-          </div>
-          <div class="row" style="padding-bottom:10px;">
-            <div class="form-group">
-              <div class="col-lg-3">
-              </div>
-              <div class="col-lg-7">
-                By signing up, I agree to the <a data-toggle="modal" href="#myModal">Terms</a> of Use and <a href="#">Privacy Policy</a>.
-              </div>
-            </div>
-          </div>
-
-          <div class="row" style="padding-left:20px;padding-top:20px;"> 
-              <button type="submit" class="btn btn-success backgroundColor1 col-lg-offset-3 col-lg-6">Sign Up</button>
-          </div>
-        </form>
-      </div>
-    </div>
-</div>
+<?php require 'web/signup.tmpl.php' ?>
 <div class="container">
      <div class="row">
       <div class="col-md-12">
