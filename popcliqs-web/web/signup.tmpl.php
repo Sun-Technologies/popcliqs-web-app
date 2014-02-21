@@ -9,13 +9,11 @@
       <div class="col-md-6 col-lg-offset-0">
         <div style="margin-bottom:20px;">
           <h4 style="display:inline;">Sign Up</h4> (Or you may never find out what XXXXX means! )
-         <!-- <?php if(isset($status)) {?>
-      <h3 class="notice"><?php echo $status ; }?></h3> -->
         </div>
-        <form action="#" method="post" autocomplete="off" >
+        <form action="index.php" method="post" autocomplete="off" >
           <div class="row" style="padding-bottom:10px;">
             <?php 
-              $has_email_err = array_key_exists ( '#semail' , $error_map );  
+              $has_email_err = isset($error_map) ? array_key_exists ( '#semail' , $error_map ) : false;  
             ?>
             <div class="<?php echo $has_email_err ? $form_er_class : $form_class ?>"  >
               <div class="col-lg-3">
@@ -23,12 +21,12 @@
               </div>
               <div class="col-lg-8">
                 <input type="text" id="semail"  name="semail" class="form-control" placeholder=""  value="<?php echo isset($_POST['semail']) ? $_POST['semail'] : ''; ?>"/>
-                 <span class="help-block"><?php echo $error_map['#semail'] ?></span>
+                 <span class="help-block"><?php echo isset($error_map['#semail']) ?  $error_map['#semail'] : "" ?></span>
               </div>
             </div>
           </div>
           <?php 
-              $has_reemail_err = array_key_exists ( '#sreemail' , $error_map );  
+              $has_reemail_err = isset($error_map) ? array_key_exists ( '#sreemail' , $error_map ) : false;  
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_reemail_err ? $form_er_class : $form_class ?>">
@@ -37,12 +35,12 @@
               </div>
               <div class="col-lg-8">
                 <input type="email" id="sreemail"  name="sreemail" class="form-control" placeholder=""  value="<?php echo isset($_POST['sreemail']) ? $_POST['sreemail'] : ''; ?>" />
-                <span class="help-block"><?php echo $error_map['#sreemail'] ?></span>
+                <span class="help-block"><?php echo isset($error_map['#sreemail']) ?  $error_map['#sreemail'] : "" ?></span>
               </div>
             </div>
           </div>
           <?php 
-              $has_password_err = array_key_exists ( '#spassword' , $error_map );  
+              $has_password_err = isset($error_map) ? array_key_exists ( '#spassword' , $error_map ) : false ;  
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_password_err ? $form_er_class : $form_class ?>">
@@ -51,12 +49,12 @@
               </div>
               <div class="col-lg-8">
                 <input type="password" id="spassword"  name="spassword" class="form-control" placeholder="" value="<?php echo isset($_POST['spassword']) ? $_POST['spassword'] : ''; ?>"/>
-                <span class="help-block"><?php echo $error_map['#spassword'] ?></span>
+                <span class="help-block"><?php echo isset($error_map['#spassword']) ?  $error_map['#spassword'] : "" ?></span>
               </div>
             </div>
           </div>
           <?php 
-              $has_gender_err = array_key_exists ( '#sex' , $error_map );  
+              $has_gender_err = isset($error_map) ? array_key_exists ( '#sex' , $error_map ): false;  
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_gender_err ? $form_er_class : $form_class ?>">
@@ -75,12 +73,12 @@
                <input type="radio" name="sex" value="male" id="sex"  /> Male &nbsp;
                   <input type="radio" name="sex" value="female" > Female 
               <?php  }?> 
-                   <span class="help-block"><?php echo $error_map['#sex'] ?></span>
+                   <span class="help-block"><?php echo isset($error_map['#sex']) ?  $error_map['#sex'] :"" ?></span>
               </div>
             </div>
           </div>
           <?php 
-              $has_dob_err = array_key_exists ( '#dob' , $error_map );  
+              $has_dob_err = isset($error_map) ? array_key_exists ( '#dob' , $error_map ) : false;  
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_dob_err ? $form_er_class : $form_class ?>">
@@ -131,12 +129,12 @@
                   }
                    ?>
                 </select>
-                <span class="help-block"><?php echo $error_map['#dob'] ?></span>
+                <span class="help-block"><?php echo isset($error_map['#dob']) ? $error_map['#dob'] : "" ?></span>
               </div>
             </div>
           </div>
           <?php 
-              $has_zip_err = array_key_exists ( '#zip' , $error_map );  
+              $has_zip_err = isset($error_map) ? array_key_exists ( '#zip' , $error_map ) :false;  
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_zip_err ? $form_er_class : $form_class ?>">
@@ -145,7 +143,7 @@
               </div>
               <div class="col-lg-8">
                 <input type="text" id="zip"  name="zip" class="form-control" placeholder="" value="<?php echo isset($_POST['zip']) ? $_POST['zip'] : ''; ?>" />
-                <span class="help-block"><?php echo $error_map['#zip'] ?></span>
+                <span class="help-block"><?php echo isset($error_map['#zip']) ?  $error_map['#zip'] : "" ?></span>
               </div>
             </div>
           </div>

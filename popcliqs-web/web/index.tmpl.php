@@ -66,7 +66,24 @@ $form_class    ="form-group";
      </div>
     </div>
     </div>      
-           
+  
+  <div class="modal fade" id="errorModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header dialog-header-error">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+         <h4 class="modal-title text-danger">
+         <span class="glyphicon glyphicon-warning-sign"></span> Error</h4>
+      </div>
+      <div class="modal-body">
+        <p><?php echo $login_status; ?></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->        
     
        
 <?php 
@@ -86,19 +103,11 @@ require 'forgot_password.tmpl.php';
 <script type="text/javascript">
     
     $('document').ready(function(){
-
-      <?php if(isset($status)) {?>
-         $(' <?php echo $error_id; ?>').popover('show'); 
-      <?php } ?>
-
       <?php if( isset($login_status) ) {?>
-                alert("<?php echo $login_status; ?>"); 
+                $('#errorModal').modal('show') ;
       <?php } ?>   
       
     });
-
-
-
 
 </script>
 </body>

@@ -32,10 +32,10 @@ function send_password_success(data, textStatus, jqXHR){
 		document.getElementById("forgot_password_form").reset();
 		
 	} else{
-
-		alert(data.msg);
-
+		
+			alert(data.msg);
 	}
+	
 }
 
 function save_acc_setting(){
@@ -103,46 +103,80 @@ function save_acc_setting_success(data, textStatus, jqXHR){
 		
 	}else{
 
+	
 		alert(data.msg);
+
+
 	}
 }
 
 
+function display_err(id_tag){
+	$("#"+ id_tag + "_fr" ).addClass("has-error has-feedback");
+	$("#"+ id_tag + "_sp").show();
+	  
+}
+
+function hide_err(id_tag){
+	$("#"+ id_tag + "_fr" ).removeClass("has-error has-feedback");
+	$("#"+ id_tag + "_sp").hide();
+	  
+}
 
 
 function create_event(){
 	
+	var is_error =false;
 	if ( $('#title').val() == null || $('#title').val() == "" ){
-	  	alert(" Invalid Title" );
-	  	return;
+		
+		display_err("title");
+		is_error = true;
+	}else{
+		hide_err("title");
 	}
 
 	if ($('#category_id').val() == null || $('#category_id').val() == "" ){
-	  	alert(" Select a Category" );
-	  	return;
+	  	
+		display_err("category");
+		is_error = true;
+	}else{
+		hide_err("category");
 	}
 
 	if ($('#postal_code').val() == null || $('#postal_code').val() == ""  
 			|| $('#postal_code').val().length  != 5 || !isNumber($('#postal_code').val()) ){
 	 	
-		alert(" Invalid Zip" );
-	 	return;
+		display_err("zip");
+		is_error = true;
+
+	}else{
+		hide_err("zip");
 	}
 
 	if ($('#start_date').val() == null || $('#start_date').val() == "" ){
-	  	alert(" Invalid Start date" );
-	  	return;
+	  	display_err("stdt");
+		is_error = true;
+	}else{
+		hide_err("stdt");
 	}
 
 	if ($('#end_date').val() == null || $('#end_date').val() == "" ){
-	  	alert(" Invalid End date" );
-	  	return;
+	  	display_err("endt");
+		is_error = true;
+
+	}else{
+		hide_err("endt");
 	}
 
 	if( $('#capacity').val() != null && $('#capacity').val() != ""  && !isNumber($('#capacity').val()) ){
-		alert(" Capacity should be numberic. " );
-	  	return;
+		display_err("capacity");
+		is_error = true;
+
+	}else{
+		hide_err("capacity");
 	}
+
+
 	var $age_limit = 0 ;
 	if($("#age_limit_18").prop( "checked")){
 		$age_limit = 18 ;
@@ -150,6 +184,9 @@ function create_event(){
 		$age_limit = 21;
 	}
 	
+	if(is_error){
+		return;
+	}
 	var dt = new Date()
   	var $tz = dt.getTimezoneOffset();
 
@@ -200,7 +237,13 @@ function update_event_success(data, textStatus, jqXHR){
 		close_event_window();
 		location.reload();
 	}else{
-		alert(data.msg);
+		if(data.exit_cd == "-1009"){
+			display_err("stdt");
+			display_err("endt");
+
+		}else{
+			alert(data.msg);
+		}
 	}
 }
 
@@ -216,7 +259,13 @@ function create_event_success(data, textStatus, jqXHR){
 		close_event_window();
 		location.reload();
 	}else{
-		alert(data.msg);
+		if(data.exit_cd == "-1009"){
+			display_err("stdt");
+			display_err("endt");
+
+		}else{
+			alert(data.msg);
+		}
 	}
 }
 

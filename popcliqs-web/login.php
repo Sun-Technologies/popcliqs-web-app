@@ -24,7 +24,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		header('Location:home.php');
 	}else{
 
-		$login_status = "Invalid user name or  password login";
+		$login_status = "Invalid email or password, please try again.";
 		// header('Location:index.php');
 		require 'web/index.tmpl.php';
 	}

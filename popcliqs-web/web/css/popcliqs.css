@@ -28,3 +28,7 @@
 	color:#ffffff;
 }
 
+.dialog-header-error { background-color: #d2322d; }
+
+
+.dialog-header-error span, .dialog-header-error h4  { color: #ffffff; }
