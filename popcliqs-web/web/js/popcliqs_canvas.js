@@ -34,7 +34,7 @@ event3.mratio=1.4;
 
 
 $cat_type = 0;
-var maxL = 475;
+var maxL = 465;
 var eventlist ;
 
 
@@ -590,9 +590,9 @@ function drawEvent(  event , time_inc  ){
   } else if ( event.type ==  "6"){
     eventtypeimg.src = './web/img/adventure.png';  
   } else if ( event.type ==  "7"){
-    eventtypeimg.src = './web/img/event.png';  
+    eventtypeimg.src = './web/img/party.png';  
   } else if ( event.type ==  "8"){
-    eventtypeimg.src = './web/img/event.png';  
+    eventtypeimg.src = './web/img/social.png';  
   }
   
   eventtypeimg.name = 'event1';
@@ -663,6 +663,9 @@ function fetchEvents(){
   $time_interval = $("#ti").val(); 
   $cat_type      = $("#category").val();
   $search_t      = $("#search_t").val();
+
+  document.cookie = "ti="+$time_interval;
+  document.cookie = "category="+$cat_type;
 
   var dt = new Date()
   var tz = dt.getTimezoneOffset();

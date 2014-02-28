@@ -193,7 +193,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" onclick="close_event_window();">Close</button>
-        <button type="button" class="btn btn-primary" onclick="create_event();">Save</button>
+        <button type="button"  id="submit_btn" class="btn btn-primary" onclick="create_event();">Create</button>
       </div>
      </form>
     </div><!-- /.modal-content -->

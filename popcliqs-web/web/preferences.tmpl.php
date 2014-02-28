@@ -7,8 +7,8 @@
                     "Education"     => "./web/img/education.png",
                     "Support Group" => "./web/img/help.png",
                     "Outdoor"       => "./web/img/adventure.png",
-                    "Party"         => "./web/img/event.png",
-                    "Social"        => "./web/img/event.png"
+                    "Party"         => "./web/img/party.png",
+                    "Social"        => "./web/img/social.png"
                   );
 
 ?>

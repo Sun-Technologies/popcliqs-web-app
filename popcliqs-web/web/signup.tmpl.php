@@ -152,7 +152,7 @@
               <div class="col-lg-3">
               </div>
               <div class="col-lg-7">
-                By signing up, I agree to the <a data-toggle="modal" href="#myModal">Terms</a> of Use and <a href="#">Privacy Policy</a>.
+                By signing up, I agree to the <a data-toggle="modal" href="#myModal">Terms of Use and Privacy Policy</a>.
               </div>
             </div>
           </div>

@@ -16,7 +16,7 @@
 	$key  		= isset($_GET["key"]) ? $_GET["key"] : null ;
 	$tz   		= isset($_GET["tz"])  ? $_GET["tz"] : 0 ;
 	$size       = isset($_GET["size"])  ? $_GET["size"] : 10 ;
-	$offset      = isset($_GET["offset"])  ? $_GET["offset"] : 0 ;
+	$offset     = isset($_GET["offset"])  ? $_GET["offset"] : 0 ;
 	
 
 	$start_t  = time();

@@ -4,6 +4,7 @@ require 'functions/user_functions.php';
 require 'functions/db_functions.php';
 require 'pdo/user_class.php';
 
+$login_status = NULL;
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	$email    	=  isset($_POST['email'])    ? trim($_POST['email']): null;

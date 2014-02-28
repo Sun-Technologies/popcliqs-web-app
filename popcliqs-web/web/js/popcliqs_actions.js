@@ -437,8 +437,11 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 		$('#e_id').val(data.id) ;
 		$('#e_start').html(data.st_dt) ;
 		$('#e_end').html(data.ed_dt) ;
-		$('#e_dist').html(data.distance + " " + "approx miles");
-		
+		if(data.distance == 0){
+			$('#e_dist').html("Same zip code");
+		}else{
+			$('#e_dist').html(" About "  + data.distance + " " + " miles");
+		}
 		if(data.rsvp == 0 ) {
 			$("#save_btn").css("display", "inline");
 		}else{
@@ -627,6 +630,7 @@ function edit_event_success (data, textStatus, jqXHR) {
 	    $('#end_date').val(end[0]);
 	    $('#start_time').val(data.st_time);
 	    $('#end_time').val(data.ed_time);
+	    $('#submit_btn').html("Update");
 
 	}else { 
 		alert(data.msg);
@@ -641,7 +645,9 @@ function update_screen(modal_id){
 
 function close_event_window(){
 
+
 	$('#newEvent').modal('hide');
+	$('#submit_btn').html("Create");
 	document.getElementById("event_form").reset();
 }
 

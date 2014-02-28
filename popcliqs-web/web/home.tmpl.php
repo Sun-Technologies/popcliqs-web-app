@@ -1,3 +1,9 @@
+<?php 
+
+  error_log("ti =  " .$_COOKIE["ti"])
+
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -36,23 +42,30 @@
       &nbsp;&nbsp;&nbsp;
       <form class="navbar-form navbar-right" action="javascript:fetchEvents();" >
         <div class="form-group">
-          <select name="category" id="category" onchange="fetchEvents()" class="form-control">
-            <option value="0">All</option>
-            <option value="1">Sports</option>
-            <option value="2">Professional</option>
-            <option value="3">Arts</option>
-            <option value="4">Education</option>
-            <option value="5">Support Group</option>
-            <option value="6">Outdoor</option>
-            <option value="7">Party</option>
-            <option value="8">Social</option>
+          <?
+            $cat_selected = isset($_COOKIE["category"]) ? $_COOKIE["category"] : 0;
+          ?>
+          <select name="category" id="category" onchange="fetchEvents()" class="form-control" >
+            <option value="0" <?php echo $cat_selected == 0 ?  "selected" : ""?> >All</option>
+            <option value="1" <?php echo $cat_selected == 1 ?  "selected" : ""?> >Sports</option>
+            <option value="2" <?php echo $cat_selected == 2 ?  "selected" : ""?> >Professional</option>
+            <option value="3" <?php echo $cat_selected == 3 ?  "selected" : ""?> >Arts</option>
+            <option value="4" <?php echo $cat_selected == 4 ?  "selected" : ""?> >Education</option>
+            <option value="5" <?php echo $cat_selected == 5 ?  "selected" : ""?> >Support Group</option>
+            <option value="6" <?php echo $cat_selected == 6 ?  "selected" : ""?> >Outdoor</option>
+            <option value="7" <?php echo $cat_selected == 7 ?  "selected" : ""?> >Party</option>
+            <option value="8" <?php echo $cat_selected == 8 ?  "selected" : ""?> >Social</option>
           </select>
         </div>
         <div class="form-group">
-          <select name="ti" id="ti" onchange="fetchEvents()" class="form-control">
-            <option value="24">24 Hours</option>
-            <option value="8">8 Hours</option>
-            <option value="72">3 Days</option>
+          <?
+            $ti_selected = isset($_COOKIE["ti"]) ? $_COOKIE["ti"] : 24;
+          ?>
+          <select name="ti" id="ti" onchange="fetchEvents()" class="form-control" 
+              value="<?php echo isset($_COOKIE["ti"]) ? $_COOKIE["ti"] : 24 ?>">
+            <option value="24" <?php echo $ti_selected == 24 ?  "selected" : ""?> >24 Hours</option>
+            <option value="8"  <?php echo $ti_selected == 8  ?  "selected" : ""?> >8 Hours</option>
+            <option value="72" <?php echo $ti_selected == 72 ?  "selected" : ""?> >3 Days</option>
           </select>
         </div>
         <div class="form-group">
@@ -203,7 +216,7 @@ require 'terms.tmpl.php';
         <div class="form-group">
           <label for="title" class="col-lg-2 control-label">Distance</label>
           <div class="col-lg-8">
-            <P id="e_dist"></P>
+           <P id="e_dist"></P>
           </div>
         </div>
         <br/>

@@ -29,8 +29,9 @@
 						"lat"   				: "<?php echo $user_event->lat ?>" ,
 						"lon"   				: "<?php echo $user_event->lon ?>" ,
 						"tz"   					: "<?php echo $ret_tz ?>" ,
-						"is_creator"    		: "<?php echo ($user_event->creator === $user_id ) ? "true" : "false" ?>" ,
-						"mins_left_for_checkin" : "<?php echo $user_event->mins_left_for_checkin ?>"
+						"is_creator"    	 	: "<?php echo ($user_event->creator === $user_id ) ? "true" : "false" ?>" ,
+						"left_for_checkin_time" : "<?php echo $user_event->mins_left_for_checkin_time ?>"
+						"left_for_checkin_dt"   : "<?php echo $user_event->mins_left_for_checkin_dt ?>"
 					}
 			<?php   
 				} 
