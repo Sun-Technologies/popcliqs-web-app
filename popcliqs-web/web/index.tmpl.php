@@ -34,10 +34,10 @@ $form_class    ="form-group";
         Sign In
       </button>
       <div class="container" style="height:70px;">
-            <a class="brand" href="home.php"> <span  style="position:relative;top:6px;" ><img src="./web/img/3.png"/></span></a>
+          <a class="brand" href="home.php"> <span  style="position:relative;top:6px;" ><img src="./web/img/3.png"/></span></a>
       </div>
     </div>
-    <div class="navbar-collapse collapse backgroundColor" style="height:1px;">
+    <div class="navbar-collapse collapse backgroundColor" id="navbar_id" style="height:1px;">
       <form class="navbar-form navbar-right" action="login.php" method="post" >
         <div class="form-group">
           <input type="text" name="email" placeholder="Email" class="form-control" required value=""  />
@@ -47,7 +47,7 @@ $form_class    ="form-group";
         </div>
         <button type="submit" class="btn btn-success backgroundColor1">Sign in</button>
       </form>
-      <span  class="pull-right" style="margin-top:45px;position:relative;right:-23%;">
+      <span  class="pull-right" id="forgot_pwd" style="">
        <a data-toggle="modal" href="#forgotPassword">Forgot Password</a>
       </span>          
     </p>
