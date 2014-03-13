@@ -74,6 +74,10 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
         $start_timestamp = ($tz * 60 ) + $start_timestamp;
         $end_timestamp   = ($tz * 60 ) + $end_timestamp;
 
+        if(   $start_timestamp  < time()){
+            $status_obj = $_ERROR_INVALID_EVENT_TIME;
+        }
+
         // error_log(" $start_timestamp $end_timestamp ", 0);
         if( $start_timestamp >  $end_timestamp ){
 

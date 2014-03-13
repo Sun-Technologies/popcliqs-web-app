@@ -47,10 +47,10 @@ $form_class    ="form-group";
         </div>
         <button type="submit" class="btn btn-success backgroundColor1">Sign in</button>
       </form>
-      <span  class="pull-right" style="margin-top:45px;position:relative;left:130px;">
+      <span  class="pull-right" style="margin-top:45px;position:relative;right:-23%;">
        <a data-toggle="modal" href="#forgotPassword">Forgot Password</a>
       </span>          
-</p>
+    </p>
 
     </div>
 </div>
@@ -70,9 +70,9 @@ $form_class    ="form-group";
   <div class="modal fade" id="errorModal">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header dialog-header-error">
+      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-         <h4 class="modal-title text-danger">
+         <h4 class="modal-title" style="text-align:center;">
          <span class="glyphicon glyphicon-warning-sign"></span> Error</h4>
       </div>
       <div class="modal-body">

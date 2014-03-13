@@ -179,6 +179,13 @@ require 'terms.tmpl.php';
         </div>
         <br/>
         <div class="form-group">
+          <label for="title" class="col-lg-2 control-label">Category</label>
+          <div class="col-lg-8">
+            <P id="e_cat"></P>
+          </div>
+        </div>
+        <br/>
+        <div class="form-group">
           <label for="title" class="col-lg-2 control-label">Start</label>
           <div class="col-lg-8">
             <P id="e_start"></P>

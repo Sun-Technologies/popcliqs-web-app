@@ -37,7 +37,7 @@
         </td>
         <td>
         <div class="col-lg-12">
-        Wont miss
+        Won't miss
         </div>
         </td>
       </thead>

@@ -5,7 +5,7 @@
       <form class="form-horizontal" id="event_form" name="event_form" method="post" action="event.php">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h4 class="modal-title" id="myModalLabel" style="text-align:center">Create New Event</h4>
+          <h4 class="modal-title" id="eventdetails_title" style="text-align:center">New CLiq</h4>
         </div>
         <div class="modal-body" style="width: 100%; height: 400px; overflow-y: scroll;">
 

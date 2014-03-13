@@ -79,8 +79,8 @@ function get_event_by_id($event_id , $conn , $tz, $start_t = null){
 			    	// $user_event->mins_left_for_checkin = round($time_diff/60 - (1.5*60))  ;
 			    	$check_sttimestamp = $start_timestamp  - (60 *1.5*60) ;
 					// $start_timestamp = $timestamp - ($tz * 60 ) ;
-					$user_event->mins_left_for_checkin_time = date('H', $check_sttimestamp) . ':'. date('i', $check_sttimestamp) ;
-					$user_event->mins_left_for_checkin_dt   = date('m', $check_sttimestamp) .'/'. date('d', $check_sttimestamp) . '/' . date('Y', $check_sttimestamp);
+					$user_event->mins_left_for_checkin_time = date('H:i:s', $check_sttimestamp);
+					$user_event->mins_left_for_checkin_dt   = date('m/d/Y', $check_sttimestamp);
 
 				// }
 			}

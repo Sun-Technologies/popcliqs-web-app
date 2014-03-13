@@ -421,6 +421,7 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 
 		$('#e_title').html(data.title) ;
 		$('#e_desc').html(data.description) ;
+		$('#e_cat').html(data.type) ;
 		$('#e_loc').html(data.location) ;
 		$('#e_add').html(data.address) ;
 		$('#e_zip').html(data.postal_code) ;
@@ -611,6 +612,9 @@ function edit_event_success (data, textStatus, jqXHR) {
 		$('#history').modal('hide');
 		$('#newEvent').modal('show');
 
+		//update title.
+		$("#eventdetails_title").html("Modify CLiq");
+
 		// set values  to input boxes 
 		$("#event_id").val(data.id);
 		$("#title").val(data.title);
@@ -648,6 +652,7 @@ function close_event_window(){
 
 	$('#newEvent').modal('hide');
 	$('#submit_btn').html("Create");
+	$("#eventdetails_title").html("New CLiq");
 	document.getElementById("event_form").reset();
 }
 
