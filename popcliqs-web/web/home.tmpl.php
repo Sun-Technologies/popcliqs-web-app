@@ -1,18 +1,23 @@
 <?php 
-
   error_log("ti =  " .$_COOKIE["ti"])
-
 ?>
-
 <!DOCTYPE HTML>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=0">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
   <title>Popcliqs - Home</title>
   <link rel="stylesheet" type="text/css" href="web/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="web/css/popcliqs.css">
   <link rel="stylesheet" type="text/css" href=" http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery.ui.all.css">
- <link href='http://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
-  <meta name="viewport" content="width=device-width">
+  <link href='http://fonts.googleapis.com/css?family=Baumans' rel='stylesheet' type='text/css'>
 </head>
 <body onresize="redraw()">
 <!-- nav bar--> 
@@ -89,7 +94,7 @@
   <div class="container">
    <div class="row" style="margin-top:80px;">
     <div class="col-lg-12 visible-lg" id ="wapper-canvas-lg">
-       <canvas   width="1200" height="500" style="background:;" id="mainCanvas-lg"></canvas>     
+       <canvas height="500" width="1200" style="width:1200px;" id="mainCanvas-lg"></canvas>     
     </div>
     <div class="col-md-12 visible-md" style="" id ="wapper-canvas-md">
         <canvas   width="992" height="500" style="background:;" id="mainCanvas-md"></canvas>    
@@ -100,7 +105,7 @@
 
     </div>
     <div class="col-sm-12 visible-xs"  style="" id ="wapper-canvas-xs"> 
-      <canvas   width="480" height="500" style="background:;" id="mainCanvas-xs"></canvas>    
+      <canvas   width="480" height="400" style="background:;" id="mainCanvas-xs"></canvas>    
     </div>
           
     </div>
@@ -126,7 +131,7 @@ require 'terms.tmpl.php';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" onclick="update_screen('#history')" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel" style="text-align:center">History</h4>
+        <h4 class="modal-title" id="myModalLabel" style="text-align:center">My Cliqs</h4>
       </div>
       <div class="modal-body">
         <ul class="nav nav-tabs" id="historyTab">

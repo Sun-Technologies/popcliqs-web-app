@@ -613,7 +613,7 @@ function edit_event_success (data, textStatus, jqXHR) {
 		$('#newEvent').modal('show');
 
 		//update title.
-		$("#eventdetails_title").html("Modify CLiq");
+		$("#eventdetails_title").html("Modify Cliq");
 
 		// set values  to input boxes 
 		$("#event_id").val(data.id);
@@ -652,7 +652,7 @@ function close_event_window(){
 
 	$('#newEvent').modal('hide');
 	$('#submit_btn').html("Create");
-	$("#eventdetails_title").html("New CLiq");
+	$("#eventdetails_title").html("New Cliq");
 	document.getElementById("event_form").reset();
 }
 

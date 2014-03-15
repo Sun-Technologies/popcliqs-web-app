@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row"  style="padding-top:80px;">
-      <div class="col-md-5 col-md-offset-0">
+      <div class="col-sm-5">
           <div class="container">
             <h4>All Social... no media</h4>
           </div>
@@ -9,7 +9,7 @@
           <iframe src="//player.vimeo.com/video/81890061" width="450" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> 
           </div>
       </div>
-      <div class="col-md-6 col-md-offset-0">
+      <div class="col-sm-7 col-sm-offset-0">
         <div style="margin-bottom:20px;">
           <h4 style="display:inline;">Sign Up</h4> (Or you may never find out what XXXXX means! )
         </div>
@@ -19,10 +19,10 @@
               $has_email_err = isset($error_map) ? array_key_exists ( '#semail' , $error_map ) : false;  
             ?>
             <div class="<?php echo $has_email_err ? $form_er_class : $form_class ?>"  >
-              <div class="col-md-3">
+              <div class="col-sm-3">
                 <label for="email" class="control-label">Email</label>
               </div>
-              <div class="col-md-8">
+              <div class="col-sm-8">
                 <input type="text" id="semail"  name="semail" class="form-control" placeholder=""  value="<?php echo isset($_POST['semail']) ? $_POST['semail'] : ''; ?>"/>
                  <span class="help-block"><?php echo isset($error_map['#semail']) ?  $error_map['#semail'] : "" ?></span>
               </div>
@@ -33,10 +33,10 @@
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_reemail_err ? $form_er_class : $form_class ?>">
-              <div class="col-md-3">
+              <div class="col-sm-3">
                 <label for="reemail" class="control-label">Email again</label>
               </div>
-              <div class="col-md-8">
+              <div class="col-sm-8">
                 <input type="email" id="sreemail"  name="sreemail" class="form-control" placeholder=""  value="<?php echo isset($_POST['sreemail']) ? $_POST['sreemail'] : ''; ?>" />
                 <span class="help-block"><?php echo isset($error_map['#sreemail']) ?  $error_map['#sreemail'] : "" ?></span>
               </div>
@@ -47,10 +47,10 @@
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_password_err ? $form_er_class : $form_class ?>">
-              <div class="col-md-3">
+              <div class="col-sm-3">
                 <label for="password" class="control-label">Password</label>
               </div>
-              <div class="col-md-8">
+              <div class="col-sm-8">
                 <input type="password" id="spassword"  name="spassword" class="form-control" placeholder="" value="<?php echo isset($_POST['spassword']) ? $_POST['spassword'] : ''; ?>"/>
                 <span class="help-block"><?php echo isset($error_map['#spassword']) ?  $error_map['#spassword'] : "" ?></span>
               </div>
@@ -61,10 +61,10 @@
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_gender_err ? $form_er_class : $form_class ?>">
-              <div class="col-lg-3">
+              <div class="col-sm-3">
                 <label for="sex" class="control-label">I am</label>
               </div>
-              <div class="col-lg-8">
+              <div class="col-sm-8">
               <?php 
                 if (isset($_POST['sex']) && $_POST['sex']== 'male' ) { ?>
                  <input type="radio" name="sex" value="male" id="sex" checked="true" /> Male &nbsp;
@@ -85,12 +85,12 @@
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_dob_err ? $form_er_class : $form_class ?>">
-              <div class="col-lg-3">
+              <div class="col-sm-3">
                 <label for="dob" class="control-label">I was born</label>
               </div>
-              <div class="col-lg-8">
+              <div class="col-sm-8">
                 <select name="month" id="month"> 
-                  <option value="">Month:</option>
+                  <option value="">MMM</option>
                   <?php foreach ($month_list as $key => $value) {
                     if (isset($_POST['month']) && $key == $_POST['month']) {
                       echo " <option value='$key' selected>$value</option>";
@@ -102,7 +102,7 @@
             
                 </select>  /
                 <select name="day" id="day" >
-                  <option value="">Day:</option>
+                  <option value="">DD</option>
                   <?php 
                  
                   for ($index = 1; $index <=31 ; $index++) { 
@@ -118,7 +118,7 @@
               
                 </select> / 
                 <select name="year" id="year">
-                  <option value="">Year:</option>
+                  <option value="">YYYY</option>
                     <?php 
                  
                   for ($index = 2014; $index >=1920 ; $index-- ) { 
@@ -141,10 +141,10 @@
           ?>
           <div class="row" style="padding-bottom:10px;">
             <div class="<?php echo $has_zip_err ? $form_er_class : $form_class ?>">
-              <div class="col-lg-3">
+              <div class="col-sm-3">
                 <label for="zip" class="control-label">Home Zip</label>
               </div>
-              <div class="col-lg-8">
+              <div class="col-sm-8">
                 <input type="text" id="zip"  name="zip" class="form-control" placeholder="" value="<?php echo isset($_POST['zip']) ? $_POST['zip'] : ''; ?>" />
                 <span class="help-block"><?php echo isset($error_map['#zip']) ?  $error_map['#zip'] : "" ?></span>
               </div>
@@ -152,16 +152,16 @@
           </div>
           <div class="row" style="padding-bottom:10px;">
             <div class="form-group">
-              <div class="col-lg-3">
+              <div class="col-sm-3">
               </div>
-              <div class="col-lg-7">
+              <div class="col-sm-7">
                 By signing up, I agree to the <a data-toggle="modal" href="#myModal">Terms of Use and Privacy Policy</a>.
               </div>
             </div>
           </div>
 
           <div class="row" style="padding-left:20px;padding-top:20px;"> 
-              <button type="submit" class="btn btn-success backgroundColor1 col-lg-offset-3 col-lg-6">Sign Up</button>
+              <button type="submit" class="btn btn-success backgroundColor1 col-sm-offset-3 col-lg-6">Sign Up</button>
           </div>
         </form>
       </div>

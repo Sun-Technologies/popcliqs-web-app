@@ -1,17 +1,17 @@
 <?php  
 $month_list = array(
-1 => 'January', 
-2 => 'February',
-3 => 'March',
-4 => 'April',
-4 => 'May',
-6 => 'June',
-7 => 'July',
-8 => 'August',
-9 => 'September',
-10 => 'October',
-11 => 'November',
-12 => 'December'
+1 => 'JAN', 
+2 => 'FEB',
+3 => 'MAR',
+4 => 'APR',
+4 => 'MAY',
+6 => 'JUN',
+7 => 'JUL',
+8 => 'AUG',
+9 => 'SEP',
+10 => 'OCT',
+11 => 'NOV',
+12 => 'DEC'
 );
 
 $form_er_class ="form-group has-error has-feedback";
@@ -20,10 +20,19 @@ $form_class    ="form-group";
 <!DOCTYPE HTML>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=0">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
   <title>Popcliqs - Login</title>
   <link rel="stylesheet" type="text/css" href="web/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="web/css/popcliqs.css">
-  <meta name="viewport" content="width=device-width">
+
 </head>
 <body>
 <!-- nav bar--> 
@@ -47,11 +56,9 @@ $form_class    ="form-group";
         </div>
         <button type="submit" class="btn btn-success backgroundColor1">Sign in</button>
       </form>
-      <span  class="pull-right" id="forgot_pwd" style="">
+      <span id="forgot_pwd" style="">
        <a data-toggle="modal" href="#forgotPassword">Forgot Password</a>
       </span>          
-    </p>
-
     </div>
 </div>
 <br/>
@@ -59,13 +66,17 @@ $form_class    ="form-group";
 <?php require 'web/signup.tmpl.php' ?>
 <div class="container">
      <div class="row">
-      <div class="col-md-12">
-        <hr/>
-          <p>&copy; 2014 popcliqs, <a href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
-      </p>
+     <hr/>
+      <div class="col-sm-4">
+        
+          <p>&copy; 2014 popcliqs</p>
+      
+     </div>
+     <div class="col-sm-8">
+          <p><a href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
      </div>
     </div>
-    </div>      
+</div>      
   
   <div class="modal fade" id="errorModal">
   <div class="modal-dialog">
@@ -89,11 +100,7 @@ $form_class    ="form-group";
 <?php 
 require 'terms.tmpl.php';
 require 'forgot_password.tmpl.php';
-
-
-
-
- ?>
+?>
     
 <!--script src="js/jquery.js" ></script-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

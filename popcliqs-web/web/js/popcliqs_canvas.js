@@ -642,7 +642,7 @@ function drawWave(xp , yp, startA , endA, radius ){
 
 function popup_evt_details(evt){
     
-  console.log(evt.target.name + " Was Clicked");
+  // console.log(evt.target.name + " Was Clicked");
 
   for (var i=0; i< eventlist.length; i++){
     if(eventlist[i].id  == evt.target.name ){

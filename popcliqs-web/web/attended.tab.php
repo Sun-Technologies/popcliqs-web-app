@@ -3,7 +3,7 @@
     <tr>
       <th>Title</th>
       <th>Start</th>
-      <th>Location2</th>
+      <th>Location</th>
       <th><th>
     </tr>
   </thead>
