@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Start</th>
+      <th>Start Date and Time</th>
       <th>Location</th>
       <th><th>
     </tr>

@@ -18,12 +18,16 @@ if(!isset($_SESSION['user_id'])){
 }
 date_default_timezone_set("UTC");  
 
+
 $status_obj     = $_SUCCESS;
 $user_id		= $_SESSION['user_id']; 
 $time_interval 	= $_POST["time_interval"];
 $tz 			= isset($_POST["tz"]) ? $_POST["tz"] : 0;
-$search_term    = isset($_POST["s"]) ? $_POST["s"] : false;
+$search_term    = isset($_POST["s"]) ?  urldecode ($_POST["s"]) : false;
 $cat_id         = isset($_POST["cat_type"]) ? $_POST["cat_type"] : 0;
+
+
+// echo " $user_id : $time_interval :  $tz : $search_term  : $cat_id ";
 
 $start_t  = time();
 // $start_t  = $start_t - (60 *  $tz);

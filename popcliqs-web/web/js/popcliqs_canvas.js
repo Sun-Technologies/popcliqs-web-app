@@ -684,7 +684,7 @@ function fetchEvents(){
 }
 
 function fetch_event_success(data, textStatus, jqXHR){
-  // alert(data);
+  
   if(data.exit_cd == 0 ){
       // alert(data.events.length);
     redraw(data.events , true);

@@ -135,9 +135,9 @@ require 'terms.tmpl.php';
       </div>
       <div class="modal-body">
         <ul class="nav nav-tabs" id="historyTab">
-          <li id="history-interest" class="active" ><a href="#interest" data-toggle="tab">Interest</a></li>
+          <li id="history-interest" class="active" ><a href="#interest" data-toggle="tab">To Attend</a></li>
           <li id="history-att"><a href="#attended" data-toggle="tab">Attended</a></li>
-          <li id="history-int"><a href="#initiated" data-toggle="tab">Initiated</a></li>
+          <li id="history-int"><a href="#initiated" data-toggle="tab">Created</a></li>
         </ul>
 
         <!-- Tab panes -->
