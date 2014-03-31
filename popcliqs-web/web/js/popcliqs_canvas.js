@@ -365,7 +365,7 @@ function getTime(time){
   } else if (hour == 0) {
     timeStr = 12 + ' AM';
   } else if (hour == 12) {
-    timeStr = time + 'PM';
+    timeStr = hour + ' PM';
   } else {
     timeStr = '  ' + hour + ' AM';
   }
