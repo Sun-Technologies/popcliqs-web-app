@@ -55,11 +55,10 @@ $form_class    ="form-group";
           <input type="password" name="password" placeholder="Password" class="form-control">
         </div>
         <button type="submit" class="btn btn-success backgroundColor1">Sign in</button>
-        <span id="forgot_pwd" style="">
-            <a data-toggle="modal" href="#forgotPassword">Forgot Password</a>
-        </span> 
       </form>
-              
+      <span id="forgot_pwd" style="">
+       <a data-toggle="modal" href="#forgotPassword">Forgot Password</a>
+      </span>          
     </div>
 </div>
 <br/>
