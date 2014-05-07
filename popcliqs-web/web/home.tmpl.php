@@ -113,7 +113,7 @@
 <hr>
 <div class="container">
   <footer>
-    <p>&copy; 2014 popcliqs, <a href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
+    <p>&copy; 2014 popcliqs, <a data-toggle="modal" href="#myModalabout">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
   <?php 
 require 'terms.tmpl.php';
  ?>
@@ -247,7 +247,10 @@ require 'terms.tmpl.php';
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
- <?php require 'resetpwd.tmpl.php'; ?>
+<?php 
+    require 'resetpwd.tmpl.php'; 
+    require 'about.tmpl.php';
+?>
  
 <!--script src="js/jquery.js" ></script-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
