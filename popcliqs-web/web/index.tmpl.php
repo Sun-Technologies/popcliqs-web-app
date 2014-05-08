@@ -74,7 +74,7 @@ $form_class    ="form-group";
       
      </div>
      <div class="col-sm-8">
-          <p><a href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
+          <p><a data-toggle="modal" href="#myModalabout">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
      </div>
     </div>
 </div>      
@@ -101,6 +101,7 @@ $form_class    ="form-group";
 <?php 
 require 'terms.tmpl.php';
 require 'forgot_password.tmpl.php';
+require 'about.tmpl.php';
 ?>
     
 <!--script src="js/jquery.js" ></script-->
