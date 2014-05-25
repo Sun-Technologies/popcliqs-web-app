@@ -320,7 +320,11 @@ function open_pref(){
 }
 
 function open_newEvent(){
+
+  initialize_geo();
+
   $('#newEvent').modal('show');
+
 }
 
 function open_history(){

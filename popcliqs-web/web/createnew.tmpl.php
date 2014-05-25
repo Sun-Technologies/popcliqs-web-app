@@ -42,21 +42,23 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="location" class="col-lg-2 control-label">Location</label>
+            <label for="location" class="col-lg-2 control-label">Venu</label>
             <div class="col-lg-8">
-              <input type="text" id="location" name="location"  class="form-control" placeholder="" />
-            </div>
+             <input type="text" id="location" name="location"  class="form-control" placeholder="" />
+          </div>
           </div>
           <div class="form-group">
             <label for="address" class="col-lg-2 control-label">Address</label>
             <div class="col-lg-8">
-              <textarea class="form-control" name="address" id="address" rows="4"></textarea>
+              <textarea id="autocomplete" class="form-control" name="address" onFocus="geolocate()"  rows="4"></textarea>
             </div>
           </div>
           <div class="form-group"  id="zip_fr">
             <label for="postal_code" class="col-lg-2 control-label">Zip</label>
             <div class="col-lg-8">
               <input type="text" id="postal_code" name="postal_code" class="form-control" placeholder=""  />
+              <input type="hidden" id="lat" name="lat"   />
+              <input type="hidden" id="lon" name="lon"   />
               <span class="help-block" id="zip_sp" style="display:none">Enter a valid zip.</span>
             </div>
           </div>

@@ -34,10 +34,21 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
 	
 	$user_zip 		 = get_user_zip($conn , $user_id);
-	$distanceToEvent = round( get_distance_between_zips($conn, $event_info->postal_code, $user_zip), 0, PHP_ROUND_HALF_UP); ;
-	$rsvp_id 		 = user_event_rsvp_cd($event_id , $user_id , $conn );
 	
-	error_log("Distance : $distanceToEvent  RSVP : $rsvp_id  event id : $event_id");
+	//get user lat lon 
+	$userlatlong  = get_lat_lon_zip( $user_zip  ,  $conn );
+	
+	// get event lat lon
+	$eventlatlong  = array('lat' => $event_info->lat ,'lon' => $event_info->lon);
+
+	// distance between lat lon 
+
+	// error_log("Distance : " . $userlatlong['lat'] ." ," . $userlatlong['lon'] .":::" .  $eventlatlong['lat'] ." ," . $eventlatlong['lon'] );
+	$distanceToEvent =  round (degrees_difference($userlatlong['lat'] , $userlatlong['lon'] , 
+        $eventlatlong['lat'] , $eventlatlong['lon'] ) , 2 , PHP_ROUND_HALF_UP);
+
+	// $distanceToEvent = round( get_distance_between_zips($conn, $event_info->postal_code, $user_zip), 0, PHP_ROUND_HALF_UP); ;
+	$rsvp_id = user_event_rsvp_cd($event_id , $user_id , $conn );
 	
 	// Dump x
 	// ob_start();

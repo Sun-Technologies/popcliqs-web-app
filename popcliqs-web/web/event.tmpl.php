@@ -1,6 +1,7 @@
 <html>
 	<head>
-		<title></title>
+		<title>my title.</title>
+         <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 	</head>
 	<body>
 	<?php if(isset($status)) {?>

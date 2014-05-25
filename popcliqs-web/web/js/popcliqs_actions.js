@@ -195,7 +195,7 @@ function create_event(){
 	var $description	= $('#description').val();
 	var $category_id	= $('#category_id').val();
 	var $location		= $('#location').val();
-	var $address		= $('#address').val();
+	var $address		= $('#autocomplete').val();
 	var $postal_code	= $('#postal_code').val();
 	// var $age_limit		= $('#age_limit').val();
 	var $capacity		= $('#capacity').val();
@@ -203,6 +203,8 @@ function create_event(){
 	var $e_dt       	= $('#end_date').val();
 	var $s_tm			= $('#start_time').val();
 	var $e_tm			= $('#end_time').val();
+	var $e_lat    		= $('#lat').val();
+	var $e_lon    		= $('#lon').val();
 	
 	// alert( $title   +  " " + $description + " " + $category_id + " "  + $location  + " " +
 	// 	   $address +  " " + $postal_code + " " + $age_limit   + " "  + $capacity  + " " +
@@ -212,8 +214,8 @@ function create_event(){
 	var url = 'event.php';
 	var data =   "event_title=" + $title   +  "&description=" + $description + "&category_id=" + $category_id + "&location="  + $location  
 			   + "&address="    + $address +  "&postal_code=" + $postal_code + "&age_limit="   + $age_limit   + "&capacity="  + $capacity  
-			   + "&start_date=" + $s_dt    +  "&end_date="    + $e_dt        + "&start_time="  +  $s_tm	      + "&end_time="  +  $e_tm 
-			   + "&tz="         + $tz      +  "&event_id="    + $event_id;
+			   + "&start_date=" + $s_dt    +  "&end_date="    + $e_dt        + "&start_time="  + $s_tm	      + "&end_time="  + $e_tm 
+			   + "&tz="         + $tz      +  "&event_id="    + $event_id    + "&lat="          + $e_lat       + "&lon="        + $e_lon;
 
 	var handler = create_event_success; 
 
@@ -589,7 +591,7 @@ function delete_event_success(data, textStatus, jqXHR){
 }
 
 function edit_event(event_id){
-
+	
 	var dt = new Date();
   	var $tz = dt.getTimezoneOffset();
   	var url = 'fetch_event_details.php';
@@ -605,7 +607,7 @@ function edit_event(event_id){
 }
 
 function edit_event_success (data, textStatus, jqXHR) {
-	
+	initialize_geo();
 	// alert(data);
 	if(data.exit_cd == 0 ){
 		
@@ -621,7 +623,7 @@ function edit_event_success (data, textStatus, jqXHR) {
 		$('#description').val(data.description);
 		$('#category_id').val(data.typeid);
 		$('#location').val(data.location);
-		$('#address').val(data.address);
+		$('#autocomplete').val(data.address);
 		$('#postal_code').val(data.postal_code);
 
 		var agelimit_chkbox = '#age_limit_' + data.age_limit;
@@ -680,4 +682,72 @@ function enableTextbox()
     }
   
 }
+
+var placeSearch, autocomplete;
+var componentForm = {
+  // street_number: 'short_name',
+  // route: 'long_name',
+  // locality: 'long_name',
+  // administrative_area_level_1: 'short_name',
+  // country: 'long_name',
+  postal_code: 'short_name'
+};
+
+function initialize_geo() {
+  // Create the autocomplete object, restricting the search
+  // to geographical location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
+      { types: ['geocode'] ,
+      	componentRestrictions: {country: 'us'}
+       });
+  // When the user selects an address from the dropdown,
+  // populate the address fields in the form.
+  google.maps.event.addListener(autocomplete, 'place_changed', function() {
+    fillInAddress();
+  });
+}
+
+// [START region_fillform]
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  var place = autocomplete.getPlace();
+
+  for (var component in componentForm) {
+    document.getElementById(component).value = '';
+    document.getElementById(component).disabled = false;
+  }
+
+   //alert(place.geometry.location.lat() +  " "  +  place.geometry.location.lng() );
+
+
+   $('#lat').val(place.geometry.location.lat());
+   $('#lon').val(place.geometry.location.lng()) 
+  // Get each component of the address from the place details
+  // and fill the corresponding field on the form.
+  for (var i = 0; i < place.address_components.length; i++) {
+    var addressType = place.address_components[i].types[0];
+    var val = place.address_components[i][componentForm[addressType]];
+    if (componentForm[addressType]) {
+      var val = place.address_components[i][componentForm[addressType]];
+      document.getElementById(addressType).value = val;
+    }
+  }
+}
+
+
+// [START region_geolocation]
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = new google.maps.LatLng(
+          position.coords.latitude, position.coords.longitude);
+      autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
+          geolocation));
+    });
+  }
+}
+// [END region_geolocation]
 

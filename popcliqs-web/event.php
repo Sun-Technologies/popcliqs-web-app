@@ -41,6 +41,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
     $status         =  1;
     $tz             = isset($_POST["tz"]) ? $_POST["tz"] : 0;
     $event_id       = isset($_POST["event_id"]) ? $_POST["event_id"] : 0;
+    $lat            = isset($_POST["lat"]) ? $_POST["lat"] : 0;
+    $lon            = isset($_POST["lon"]) ? $_POST["lon"] : 0;
 
     if( empty($event_title) ){
 
@@ -84,9 +86,13 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
         	$status_obj = $_ERROR_INVALID_EVENT_TIME;
             
         }else{
-
-            $event_lat_log = get_lat_lon_zip( $zip ,  $conn);
-            
+            if( $lat != 0 && $lon != 0 ) {
+                $event_lat_log=array("lat"=>$lat ,"lon"=>$lon);
+                 error_log(" lat lon from user !!! ");
+            }else{
+                $event_lat_log = get_lat_lon_zip( $zip ,  $conn);
+                 error_log(" lat lon calculated !!! >>>> $lat  $lon " );
+            }
             $event                  = new User_Event;
             $event->id              = $event_id;
             $event->title           = $event_title;
