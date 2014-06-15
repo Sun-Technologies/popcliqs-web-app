@@ -3,7 +3,9 @@
 	require('functions/db_functions.php');
 	require('pdo/user_event_class.php');
 	require('functions/mobile.functions.php');
-	require 'functions/geo_functions.php';
+	require('functions/geo_functions.php');
+	require('functions/sessions_function.php');
+
 
 	$_ERROR_AUTH = -1001;
 	$_ERROR_ALL	 = -1000;
@@ -17,6 +19,7 @@
 	$tz   		= isset($_GET["tz"])  ? $_GET["tz"] : 0 ;
 	$size       = isset($_GET["size"])  ? $_GET["size"] : 10 ;
 	$offset     = isset($_GET["offset"])  ? $_GET["offset"] : 0 ;
+	$deviceToken = isset($_GET["deviceToken"]) ? $_GET["deviceToken"] : null ;
 	
 
 	$start_t  = time();
@@ -76,6 +79,13 @@
 			$event_data = get_event_by_id($checkin_eventid , $conn , $tz , $start_t);
 			$event_data_list[] = $event_data[0];
 			
+		}
+
+		if( $deviceToken !== null ) {
+			//update session table. 
+			$sessionType = "MOBILE";
+			$status      = 1; 
+			updateSession($conn, $key , $deviceToken , $sessionType , $status) ;
 		}
 
 	}else{

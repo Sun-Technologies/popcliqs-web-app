@@ -2,6 +2,7 @@
 	require('functions/db_functions.php');
 	require('pdo/user_event_class.php');
 	require('functions/mobile.functions.php');
+	require('functions/sessions_function.php');
 
 	$_ERROR_AUTH = -1001;
 	$_ERROR_ALL	 = -1000;
@@ -9,10 +10,10 @@
 
 	date_default_timezone_set("UTC"); 
 
-
-	$exit_cd 	= $_SUCCESS;
-	$usernm  	= isset($_GET["usernm"]) ? $_GET["usernm"] : null ;
-	$pwd  		= isset($_GET["pwd"]) ? $_GET["pwd"] : null ;
+	$exit_cd 	 = $_SUCCESS;
+	$usernm  	 = isset($_GET["usernm"]) ? $_GET["usernm"] : null ;
+	$pwd  		 = isset($_GET["pwd"]) ? $_GET["pwd"] : null ;
+	$deviceToken = isset($_GET["deviceToken"]) ? $_GET["deviceToken"] : null ;
 
 	if($usernm === null  || $pwd  === null || $usernm === ''  || $pwd === '' ){
 		$exit_cd = $_ERROR_AUTH;
@@ -23,6 +24,13 @@
 
 	if($key == null){
 		$exit_cd = $_ERROR_AUTH;
+	}else{
+		if( $deviceToken !== null ) {
+			//update session table. 
+			$sessionType = "MOBILE";
+			$status      = 1; 
+			updateSession($conn, $key , $deviceToken , $sessionType , $status) ;
+		}
 	}
 	include ('json/json.login.layout.php');
 ?>

@@ -1,4 +1,15 @@
+Local url : 
+===================================
+http://localhost:8888/checkinevents.service.php?key=5$qazwsx&tz=-330&deviceToken=0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78
 
+
+http://localhost:8888/login.service.php?usernm=tahir@popcliqs.com&pwd=qazwsx&deviceToken=0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78
+
+http://localhost:8888/logout.service.php?key=5$qazwsx&deviceToken=0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78
+
+
+
+==========================================
 DB tables
 =======================
 
@@ -74,6 +85,18 @@ CREATE TABLE popcliqs_reset(
 	create_ts DATETIME,
 	update_ts DATETIME
 	
+)
+
+
+
+CREATE TABLE mobile_session(
+	deviceToken  varchar(200),
+	sessionkey   varchar(200),
+	sessionType  varchar(200),
+	status       INT,
+	create_ts    DATETIME,
+	update_ts    DATETIME,
+	primary key(sessionkey)
 )
 
 =======================
