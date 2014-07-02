@@ -1,3 +1,13 @@
+<style type="text/css">
+#myModal {
+  padding-top: 4%;
+}
+@media screen and (max-width: 500px) {
+  #myModal {
+    padding-top: 15%;
+  }
+}
+</style>
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -20,7 +30,7 @@ This Agreement is an electronic contract that sets out the legally binding terms
 	<li>	We collect interaction event information and usage statistics to sustain high-quality member experiences and provide excellent member service. </li>
 	<li>	Some information we request from you when you join the site. Other data are gathered indirectly from website traffic, your computer hardware and Internet connection, and usage of Popcliqs websites, applications, and services. 
 	</li>
-	<li>Except under certain limited circumstances set forth here and in the Popcliqs Terms & Conditions posted in Popcliqs.com, Popcliqs does not disclose your Personal Information to any third parties without your permission. Popcliqs may disclose your Personal Information if required to do so or in the good faith belief that such action is necessary to: (a) conform to the edicts of the law or comply with legal process served on Popcliqs, the Popcliqs website or any Popcliqs member; (b) protect and defend the rights or property of Popcliqs, or (c) act in urgent circumstances to protect the personal safety of members of the Popcliqs website. In addition, if Popcliqs should ever merge with or be acquired by another company, or file for bankruptcy, Popcliqs may sell the information you provide to us on this site to a third party or share your Personal Information with any company with whom we merge. </li>
+	<li>Except under certain limited circumstances set forth here and in the Popcliqs Terms &amp; Conditions posted in Popcliqs.com, Popcliqs does not disclose your Personal Information to any third parties without your permission. Popcliqs may disclose your Personal Information if required to do so or in the good faith belief that such action is necessary to: (a) conform to the edicts of the law or comply with legal process served on Popcliqs, the Popcliqs website or any Popcliqs member; (b) protect and defend the rights or property of Popcliqs, or (c) act in urgent circumstances to protect the personal safety of members of the Popcliqs website. In addition, if Popcliqs should ever merge with or be acquired by another company, or file for bankruptcy, Popcliqs may sell the information you provide to us on this site to a third party or share your Personal Information with any company with whom we merge. </li>
 	<li>You will have the ability to update the personal data you provided to us during registration from the Popcliqs website or by contacting us at the Support Center after you sign into the Popcliqs web site. </li>
 	<li>Popcliqs will update this privacy policy in a timely fashion when any changes occur. </li>
 </ul>
