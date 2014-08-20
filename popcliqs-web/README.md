@@ -8,6 +8,15 @@ http://localhost:8888/login.service.php?usernm=tahir@popcliqs.com&pwd=qazwsx&dev
 http://localhost:8888/logout.service.php?key=5$qazwsx&deviceToken=0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78
 
 
+prod
+
+http://popcliqs.com/beta/checkinevents.service.php?key=1$123456&tz=-330&deviceToken=0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78
+
+
+http://popcliqs.com/beta/login.service.php?usernm=tahir@popcliqs.com&pwd=qazwsx&deviceToken=0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78
+
+http://popcliqs.com/beta/logout.service.php?key=5$qazwsx&deviceToken=0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78
+
 
 ==========================================
 DB tables

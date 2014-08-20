@@ -26,10 +26,11 @@ error_log($contents);
 
 
 //extract($acc_setting_array);
+$zip = $acc_setting_array[0][0];
 
-error_log(" Zip ::: " . $acc_setting_array[0][0]);
+error_log(" Zip code ::: " . $zip);
 
- include ('json/json.fetch_acc_setting_layout.php');
+include ('json/json.fetch_acc_setting_layout.php');
 
 
 

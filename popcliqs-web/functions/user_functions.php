@@ -67,7 +67,7 @@ function authenticate_user( $conn, $email, $password ){
 	if( $results ){
 		foreach( $results as $row){
 			extract($row);
-			$_SESSION['zip'] = $zip;
+			$_SESSION['zip'] = strlen ($zip) === 4 ? "0".$zip : $zip ;;
 			return $user_id;
 
 		}
@@ -128,7 +128,7 @@ function get_user($conn , $user_id ){
 			extract($row);
 			$user = new User;
 			$user->email  = $email;
-			$user->zip    = $zip;
+			$user->zip    = strlen ($zip) === 4 ? "0".$zip : $zip ;
 			$user->status = $status;
 			$user->type   = $type;
 			$user->sex    = $gender;
@@ -174,7 +174,7 @@ function fetch_acc_setting($conn,$user_id){
 	$results = query($query,$conn,$binding);
     
 	if ($results) {
-		return $results;
+		return $results; 
 	}
 	return false;
 }
@@ -186,7 +186,7 @@ function update_acc_setting( $conn , $user_id , $zip  ){
 	$binding = array( 
 		'user_id' 	=> $user_id , 
 		
-		'zip'       =>$zip
+		'zip'       =>$zip 
 	);
 
 	update_query_execute($query,$conn,$binding);
@@ -233,7 +233,7 @@ function getUserIdFromKey( $conn , $key ){
 			extract($row);
 			$_SESSION['email']   = $email; 
 			$_SESSION['user_id'] = $user_id;
-			$_SESSION['zip']     = $zip;
+			$_SESSION['zip']     = strlen ($zip) === 4 ? "0".$zip : $zip ;;
 
 			return $user_id;
 		}

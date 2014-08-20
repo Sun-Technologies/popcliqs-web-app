@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="location" class="col-lg-2 control-label">Venu</label>
+            <label for="location" class="col-lg-2 control-label">Venue</label>
             <div class="col-lg-8">
              <input type="text" id="location" name="location"  class="form-control" placeholder="" />
           </div>

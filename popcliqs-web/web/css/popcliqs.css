@@ -118,31 +118,3 @@
    		margin-left:45%;
  	}
 }
-
-/* About us css is here */
-.modal-header {
-		text-align: center;
-}
-.about-quest {
-		color: skyblue;
-}
-#myModalLabel {
-		text-transform: uppercase;
-}
-.about-img1 {
-		margin-top: 10px;
-		margin-bottom: 20px;
-}
-.about-img1 img {
-		border: 2px solid skyblue;
-		width: 75%;
-		display:block;
-    	margin: 0 auto;
-}
-
-.modal{
-    z-index: 20;   
-}
-.modal-backdrop{
-    z-index: 10;        
-}​

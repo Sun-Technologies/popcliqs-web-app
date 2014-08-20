@@ -1,0 +1,37 @@
+/* About us css is here */
+.modal-header {
+		text-align: center;
+}
+.about-quest {
+		color: skyblue;
+}
+#myModalLabel {
+		text-transform: uppercase;
+}
+.about-img1 {
+		margin-top: 10px;
+		margin-bottom: 20px;
+}
+.about-img1 img {
+		border: 2px solid skyblue;
+		width: 75%;
+		display:block;
+    	margin: 0 auto;
+}
+
+.modal{
+    z-index: 20;   
+}
+.modal-backdrop{
+    z-index: 10;        
+}​
+
+
+#myModalabout {
+	padding-top: 4%;
+}
+@media screen and (max-width: 500px) {
+	#myModalabout {
+		padding-top: 15%;
+	}
+}

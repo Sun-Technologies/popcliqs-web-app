@@ -1,3 +1,13 @@
+<style type="text/css">
+#myModalabout {
+	padding-top: 4%;
+}
+@media screen and (max-width: 500px) {
+	#myModalabout {
+		padding-top: 15%;
+	}
+}
+</style>
 <!-- Modal -->
 <div class="modal fade" id="myModalabout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
