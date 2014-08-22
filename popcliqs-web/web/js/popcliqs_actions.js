@@ -235,9 +235,12 @@ function create_event(){
 function update_event_success(data, textStatus, jqXHR){
 	
 	if(data.exit_cd == 0 ){
-		alert("Event update Successfully !!! ");
+		// alert("Event update Successfully !!! ");
 		close_event_window();
-		location.reload();
+		//display modal 
+		$('#messageTxt').html("Event update Successfully !!! ");
+		$('#msgModal').modal('show') ;
+		//location.reload();
 	}else{
 		if(data.exit_cd == "-1009"){
 			display_err("stdt");
@@ -257,9 +260,14 @@ function isNumber(n) {
 function create_event_success(data, textStatus, jqXHR){
 	
 	if(data.exit_cd == 0 ){
-		alert("You are all set to find your cliq.");
+		//alert("You are all set to find your cliq.");
+		//Modal to display sucess. 
+
 		close_event_window();
-		location.reload();
+		$('#messageTxt').html("You are all set to find your cliq.");
+		$('#msgModal').modal('show') ;
+		//location.reload();
+
 	}else{
 		if(data.exit_cd == "-1009"){
 			display_err("stdt");
@@ -645,7 +653,7 @@ function edit_event_success (data, textStatus, jqXHR) {
 
 function update_screen(modal_id){
 	$(modal_id).modal('hide');
-		location.reload();
+	location.reload();
 
 }
 
@@ -658,6 +666,11 @@ function close_event_window(){
 	document.getElementById("event_form").reset();
 }
 
+
+function closemodal(modalid){
+    $("#"+modalid).modal('hide');
+    location.reload();
+}
 
 function reset_pwd(){
 	$('#resetpwd').modal('show');
