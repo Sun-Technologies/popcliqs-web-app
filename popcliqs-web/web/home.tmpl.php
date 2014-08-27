@@ -44,7 +44,7 @@
           <span class="glyphicon glyphicon-off"></span>
         </button>
       </form>
-      &nbsp;&nbsp;&nbsp;
+      
       <form class="navbar-form navbar-right" action="javascript:fetchEvents();" >
         <div class="form-group">
           <?
