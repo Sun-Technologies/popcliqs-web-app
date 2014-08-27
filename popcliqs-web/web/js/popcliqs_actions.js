@@ -238,6 +238,8 @@ function update_event_success(data, textStatus, jqXHR){
 		// alert("Event update Successfully !!! ");
 		close_event_window();
 		//display modal 
+		
+		$('#messageTitle').html(" Cliq updated");
 		$('#messageTxt').html("Event update Successfully !!! ");
 		$('#msgModal').modal('show') ;
 		//location.reload();
@@ -264,6 +266,7 @@ function create_event_success(data, textStatus, jqXHR){
 		//Modal to display sucess. 
 
 		close_event_window();
+		$('#messageTitle').html(" Cliq created");
 		$('#messageTxt').html("You are all set to find your cliq.");
 		$('#msgModal').modal('show') ;
 		//location.reload();

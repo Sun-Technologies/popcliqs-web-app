@@ -161,7 +161,8 @@ function get_user_zip($conn , $user_id){
 	$results = query( $query, $conn , $binding);
 
 	if ($results) { 
-		return $results[0][0];
+		$zip = $results[0][0]; 
+		return strlen ($zip) === 4 ? "0".$zip : $zip ;
 	}
 	return false;
 } 

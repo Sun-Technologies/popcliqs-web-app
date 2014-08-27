@@ -112,7 +112,7 @@ function fetch_event($conn,$event_id ,$tz ){
 			$event->capacity    = $capacity_limit;
 			$event->lat		 	= $event_latitude;
 			$event->lon		 	= $event_longitude;
-			$event->postal_code = strlen ($zip) === 4 ? "0".$zip : $zip ;;
+			$event->postal_code = strlen ($zip) === 4 ? "0".$zip : $zip ;
 			$event->start_time  = $st_evt_hr . ':'. $st_evt_mn;
 			$event->end_time    = $ed_evt_hr . ':'. $ed_evt_mn;
 
