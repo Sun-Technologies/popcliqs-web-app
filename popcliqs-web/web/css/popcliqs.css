@@ -25,6 +25,10 @@
 	
 }
 
+.pac-container, .pac-item {
+    z-index: 2000;
+}
+
 
 /*.backgroundColor {
 	background-color: #49C9FE;
