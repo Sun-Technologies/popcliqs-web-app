@@ -49,6 +49,10 @@ function redraw(eventarr , redraw){
     eventlist = eventarr;
   }
   
+
+  var w = window.innerWidth;
+  var h = window.innerHeight;
+ 
   if( $("#wapper-canvas-lg").css('display') == 'block'){
       newcanvas = "mainCanvas-lg";
     
@@ -58,8 +62,14 @@ function redraw(eventarr , redraw){
    }else if( $("#wapper-canvas-sm").css('display') == 'block'){
     newcanvas = "mainCanvas-sm";
 
+
   }else{
-    newcanvas = "mainCanvas-xs";
+    if(w < 500){
+      newcanvas = "mainCanvas-mob";
+      document.getElementById("mainCanvas-xs").hidden = true;
+    }else{
+      newcanvas = "mainCanvas-xs";
+    }
   }
 
   if(canvasstr != newcanvas || redraw ){
@@ -208,8 +218,11 @@ function drawBody(canvas){
  *  alignbuf - is used to align Now string.
  */
 function displayTime(timex , msgTxt , stage , alignbuf  ){
-
-  var msg = new createjs.Text(msgTxt, '11pt Calibri', '#9F9F9F');
+  if (newcanvas ===  "mainCanvas-mob"){
+    var msg = new createjs.Text(msgTxt, '9pt Calibri', '#9F9F9F');
+  }else {  
+    var msg = new createjs.Text(msgTxt, '11pt Calibri', '#9F9F9F');
+  }
   stage.addChild(msg);
   
   if(alignbuf != null){
@@ -241,7 +254,15 @@ function drawFooter(){
   var arc = new createjs.Shape();
   arc.graphics.setStrokeStyle(2);
   arc.graphics.beginStroke("#ccc");
-  arc.graphics.beginFill("#BDCB00").arc(0, 500, 100, 0, Math.PI*2);
+
+  if(newcanvas === "mainCanvas-xs" ) {
+    arc.graphics.beginFill("#BDCB00").arc(0, 500, 70, 0, Math.PI*2);
+  } else if (newcanvas ===  "mainCanvas-mob"){
+    arc.graphics.beginFill("#BDCB00").arc(0, 400, 60, 0, Math.PI*2);
+  }else{
+    arc.graphics.beginFill("#BDCB00").arc(0, 500, 100, 0, Math.PI*2);
+  }
+  
 
   arc.onMouseOver = function(evt) { 
     evt.target.cursor = 'pointer' ;
@@ -251,9 +272,21 @@ function drawFooter(){
     archandleMouseClick() ;
   }
   
-  var pqlabel = new createjs.Text("pq", "45px Baumans", "#278AD2");
-  pqlabel.x = 15;
-  pqlabel.y = 425;
+
+  if(newcanvas == "mainCanvas-xs" ) {
+    var pqlabel = new createjs.Text("pq", "35px Baumans", "#278AD2");
+    pqlabel.x = 10;
+    pqlabel.y = 440;
+  } else if (newcanvas ===  "mainCanvas-mob"){
+    var pqlabel = new createjs.Text("pq", "30px Baumans", "#278AD2");
+    pqlabel.x = 10;
+    pqlabel.y = 350;
+  }else{
+    
+    var pqlabel = new createjs.Text("pq", "45px Baumans", "#278AD2");
+    pqlabel.x = 15;
+    pqlabel.y = 425;
+  }
 
   stage.addChild(arc , pqlabel);
   stage.update();
@@ -266,22 +299,43 @@ function drawFooter(){
   newevtcircle.graphics.setStrokeStyle(2);
   historycircle.graphics.setStrokeStyle(2);
 
-  prefcircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
-  newevtcircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
-  historycircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
-  
-  preflabel = new createjs.Text("Settings", "13px Verdana, Geneva, sans-serif", "#ffffff");
-  preflabel.x = 14;
-  preflabel.y = 348;
-  
-  
-  newevtlabel = new createjs.Text("New Cliq", "13px Verdana, Geneva, sans-serif", "#ffffff");
-  newevtlabel.x = 100;
-  newevtlabel.y = 360;
+  if (newcanvas ===  "mainCanvas-mob"){
+    prefcircle.graphics.beginFill("#1E80C4").drawCircle(0, 450, 40);
+    newevtcircle.graphics.beginFill("#1E80C4").drawCircle(0, 450, 40);
+    historycircle.graphics.beginFill("#1E80C4").drawCircle(0, 450, 40);
 
-  historylabel = new createjs.Text("My Cliqs", "13px Verdana, Geneva, sans-serif", "#ffffff");
-  historylabel.x = 115;
-  historylabel.y = 445;
+    preflabel = new createjs.Text("Settings", "13px Verdana, Geneva, sans-serif", "#ffffff");
+    preflabel.x = 14;
+    preflabel.y = 248;
+    
+    
+    newevtlabel = new createjs.Text("New Cliq", "13px Verdana, Geneva, sans-serif", "#ffffff");
+    newevtlabel.x = 100;
+    newevtlabel.y = 260;
+
+    historylabel = new createjs.Text("My Cliqs", "13px Verdana, Geneva, sans-serif", "#ffffff");
+    historylabel.x = 115;
+    historylabel.y = 345;
+  }else {
+    prefcircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
+    newevtcircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
+    historycircle.graphics.beginFill("#1E80C4").drawCircle(0, 550, 40);
+
+    preflabel = new createjs.Text("Settings", "13px Verdana, Geneva, sans-serif", "#ffffff");
+    preflabel.x = 14;
+    preflabel.y = 348;
+  
+  
+    newevtlabel = new createjs.Text("New Cliq", "13px Verdana, Geneva, sans-serif", "#ffffff");
+    newevtlabel.x = 100;
+    newevtlabel.y = 360;
+
+    historylabel = new createjs.Text("My Cliqs", "13px Verdana, Geneva, sans-serif", "#ffffff");
+    historylabel.x = 115;
+    historylabel.y = 445;
+  }
+  
+  
 
   stage.addChild(prefcircle);
   stage.addChild(newevtcircle);

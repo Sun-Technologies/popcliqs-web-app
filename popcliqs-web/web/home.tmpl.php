@@ -104,8 +104,11 @@
       <canvas   width="768" height="500" style="background:;" id="mainCanvas-sm"></canvas>    
 
     </div>
-    <div class="col-sm-12 visible-xs"  style="" id ="wapper-canvas-xs"> 
-      <canvas   width="480" height="400" style="background:;" id="mainCanvas-xs"></canvas>    
+    <div class="col-xs-12 visible-xs"  style="" id ="wapper-canvas-xs"> 
+      <canvas  width="767" height="500" style="" id="mainCanvas-xs"></canvas>    
+    </div>
+     <div class="col-xs-12 visible-xs"  style="" id ="wapper-canvas-mob"> 
+      <canvas  width="450" height="400" style="" id="mainCanvas-mob"></canvas>    
     </div>
           
     </div>
