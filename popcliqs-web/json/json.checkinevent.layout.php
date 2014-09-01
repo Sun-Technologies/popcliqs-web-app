@@ -31,7 +31,8 @@
 						"tz"   					: "<?php echo $ret_tz ?>" ,
 						"is_creator"    	 	: "<?php echo ($user_event->creator === $user_id ) ? "true" : "false" ?>" ,
 						"left_for_checkin_time" : "<?php echo $user_event->mins_left_for_checkin_time ?>",
-						"left_for_checkin_dt"   : "<?php echo $user_event->mins_left_for_checkin_dt ?>"
+						"left_for_checkin_dt"   : "<?php echo $user_event->mins_left_for_checkin_dt ?>",
+						"desc"                  : "<?php echo $user_event->description ?>"
 					}
 			<?php   
 				} 
