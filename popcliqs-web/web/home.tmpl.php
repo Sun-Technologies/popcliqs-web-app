@@ -47,7 +47,7 @@
       
       <form class="navbar-form navbar-right" action="javascript:fetchEvents();" >
         <div class="form-group">
-          <?
+          <?php
             $cat_selected = isset($_COOKIE["category"]) ? $_COOKIE["category"] : 0;
           ?>
           <select name="category" id="category" onchange="fetchEvents()" class="form-control" >
@@ -63,7 +63,7 @@
           </select>
         </div>
         <div class="form-group">
-          <?
+          <?php
             $ti_selected = isset($_COOKIE["ti"]) ? $_COOKIE["ti"] : 24;
           ?>
           <select name="ti" id="ti" onchange="fetchEvents()" class="form-control" 
