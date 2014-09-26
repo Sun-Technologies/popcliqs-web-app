@@ -240,7 +240,7 @@ function update_event_success(data, textStatus, jqXHR){
 		//display modal 
 		
 		$('#messageTitle').html(" Cliq updated");
-		$('#messageTxt').html("Event update Successfully !!! ");
+		$('#messageTxt').html("Event update Successfully");
 		$('#msgModal').modal('show') ;
 		//location.reload();
 	}else{
