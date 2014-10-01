@@ -4,7 +4,8 @@ session_start();
 require 'functions/rsvp_functions.php';
 require 'functions/db_functions.php';
 require 'functions/sessions_function.php';
-require 'functions/simplepush_functions.php';
+require 'functions/PushBots.class.php';
+require 'functions/push_notifications.php';
 require 'pdo/exit_code_class.php';
 require 'pdo/exitcode_constants.php';
 
@@ -30,8 +31,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
     error_log(" Device token $deviceToken");
     //push notification
    //$deviceToken = 'd0011f2ad22db4790c7f320c2e1f3680fde196d467c506d31e8ea41fc3a25b04';
-    
-  //  pushnotification();
+    $msg='alert message';
+   push_notification($deviceToken, $msg);
 
 }	
 require 'json/json.service.layout.php';
