@@ -29,10 +29,9 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
     
     $deviceToken = fetch_device($conn,$user_id);
     error_log(" Device token $deviceToken");
-    //push notification
-   //$deviceToken = 'd0011f2ad22db4790c7f320c2e1f3680fde196d467c506d31e8ea41fc3a25b04';
+    
     $msg='alert message';
-   push_notification($deviceToken, $msg);
+  	push_notification($deviceToken, $msg);
 
 }	
 require 'json/json.service.layout.php';
