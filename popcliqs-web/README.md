@@ -100,12 +100,12 @@ CREATE TABLE popcliqs_reset(
 
 CREATE TABLE mobile_session(
 	deviceToken  varchar(200),
-	sessionkey   varchar(200),
+	user_id   varchar(200),
 	sessionType  varchar(200),
 	status       INT,
 	create_ts    DATETIME,
 	update_ts    DATETIME,
-	primary key(sessionkey)
+	primary key(user_id)
 )
 
 =======================

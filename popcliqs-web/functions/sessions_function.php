@@ -22,3 +22,25 @@ function  updateSession($conn, $key , $deviceToken , $sessionType , $status) {
 
 	return insert_query_execute ( $query , $conn , $binding );
 }
+
+function fetch_device($conn,$user_id)
+{
+	$query = "select deviceToken from mobile_session where user_id=:user_id";
+
+	$binding = array( 
+		'user_id' => $user_id
+	);
+
+	$results = query( $query, $conn , $binding );
+		
+	if($results)
+	{
+		foreach( $results as $row)
+		{
+			extract($row);
+			return $deviceToken;
+		}
+	}
+    return null;
+}
+?>
