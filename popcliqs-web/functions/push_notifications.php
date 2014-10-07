@@ -6,7 +6,7 @@
 
 	
 
-    function push_notification($device_token , $msg){
+    function push_notification($device_token , $event_alert){
 
 		
 
@@ -19,7 +19,7 @@
 	
 		// Push to Single Device
 		// Notification Settings
-		$pb->AlertOne($msg);
+		$pb->AlertOne($event_alert);
 		$pb->PlatformOne($platforms);
 		$pb->TokenOne($device_token);
 		 

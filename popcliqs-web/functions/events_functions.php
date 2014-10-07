@@ -121,28 +121,7 @@ function fetch_event($conn,$event_id ,$tz ){
 	return $event;
 } 
 
-function fetch_event_name($conn,$event_id, $start_dt ){
 
-	
-
-	$query = "select event_title from popcliqs_events where event_id = :event_id";
-	$binding = array( 
-		'event_id' => $event_id
-		
-	);
-	$results = query( $query, $conn , $binding );
-	if($results)
-	{
-		foreach( $results as $row)
-		{
-			extract($row);
-			$event 				= new  User_Event;
-			$event->start_dt    = $start_dt;
-			$event->title       = stripslashes($event_title);
-		}
-	}
-    return $event;
-}
 
 
 function getSplashEvent($conn , $start_t  , $end_t , $latlong , $search_term , $age  , $cat_id ,$miles = 25 ){

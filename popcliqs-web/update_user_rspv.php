@@ -20,25 +20,33 @@ if(!isset($_SESSION['user_id'])){
 
 }
 
-$user_id =$_SESSION['user_id'];
+$user_id = $_SESSION['user_id'];
 
 
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
+    
+    $conn        = connect ($config);
+    $event_id    = isset($_POST['event_id']) ? trim($_POST['event_id']): null;
+    $tz          = isset($_POST["tz"]) ? $_POST["tz"] : 0;
 
-    $conn = connect ($config);
-    $event_id = isset($_POST['event_id']) ? trim($_POST['event_id']): null;
-    $start_dt       = isset($_POST["start_dt"]) ? $_POST["start_dt"] : 0;
     insert_rsvp_status( $conn , $event_id , $user_id  , 1 );
-    
-    
+        
     $deviceToken = fetch_device($conn,$user_id);
     error_log(" Device token $deviceToken");
 
-	$event_title=fetch_event_name($conn,$event_id, $start_dt);
-	error_log(" event name $event_title");
+    if($deviceToken){
 
-	$msg='alert message form event'.$event_title;
-  	push_notification($deviceToken, $msg);
+	   $event    = fetch_event($conn,$event_id,$tz);
+   
+       if($event){ 
 
-}	
+            $event_title      = $event->title;
+            $event_location   = $event->location;
+            $start_dt         = $event->start_dt ;
+
+   	        $event_alert      = 'Popped :'.$event_title .',' .$event_location .'@' .$start_dt ;
+            push_notification($deviceToken, $event_alert);
+        }
+    }	
+}
 require 'json/json.service.layout.php';

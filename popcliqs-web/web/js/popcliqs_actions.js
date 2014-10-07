@@ -210,6 +210,7 @@ function create_event(){
 	// 	   $address +  " " + $postal_code + " " + $age_limit   + " "  + $capacity  + " " +
 	// 	   $s_dt    +  " " + $e_dt        + " " +  $s_tm	   + " "  +  $e_tm
 	// 	); 	
+	
 
 	var url = 'event.php';
 	var data =   "event_title=" + $title   +  "&description=" + $description + "&category_id=" + $category_id + "&location="  + $location  
@@ -471,8 +472,12 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 function update_rspv(){
 
 	var eventid = $('#e_id').val();
-	var data    = "event_id=" + eventid ; 
+	var dt 		= new Date()
+	var $tz 	= dt.getTimezoneOffset()
+	
+	var data 	= "event_id=" + eventid + "&tz=" + $tz;  
 	var url     = 'update_user_rspv.php';
+	;
 
 	$.ajax({
 	  type: "POST",
