@@ -79,16 +79,14 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
         $end_timestamp   = ($tz * 60 ) + $end_timestamp;
 
 
-        if(   $start_timestamp  < time()){
+        if ( $start_timestamp  < time() ) {
             $status_obj = $_ERROR_INVALID_EVENT_TIME;
-        }
-
-        if( $start_timestamp >  $end_timestamp ){
-
+        
+        } else if ( $start_timestamp >  $end_timestamp ){
         	$status_obj = $_ERROR_INVALID_EVENT_TIME;
             
-        }else{
-            if( $lat != 0 && $lon != 0 ) {
+        } else {
+            if ( $lat != 0 && $lon != 0 ) {
                 $event_lat_log=array("lat"=>$lat ,"lon"=>$lon);
                  error_log(" lat lon from user !!! ");
             }else{

@@ -2,6 +2,7 @@
 
 function  updateSession($conn,  $deviceToken , $sessionType , $status , $user_id) { 
 
+	$deviceTokenStr =  str_replace( "-" , "", $deviceToken);
 	$query = "
 				insert into mobile_session 
 				( deviceToken,  sessionType , user_id , status , create_ts, update_ts ) 
@@ -12,7 +13,7 @@ function  updateSession($conn,  $deviceToken , $sessionType , $status , $user_id
 				status = :status , update_ts = :update_ts ";
 
 	$binding = array(
-	    'device_token'      => $deviceToken,
+	    'device_token'      => $deviceTokenStr,
 		'session_type'      => $sessionType,
 		'user_id' 			=> $user_id,
 		'status'			=> $status,
