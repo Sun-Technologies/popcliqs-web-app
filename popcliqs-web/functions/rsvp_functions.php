@@ -59,3 +59,25 @@ function user_event_rsvp_cd($event_id , $user_id , $conn ){
 	}
 	return 0;
 }
+
+function users_rsvp_event($event_id , $conn ){
+
+	$users 	=	array();
+	$query  = "select *  from phpfox_event_rsvp where event_id = :eid";
+
+	$binding 	= array(
+		'eid' => $event_id
+	);
+
+	$results = query( $query, $conn , $binding );
+
+	if( $results ){
+
+		foreach( $results as $row){
+			extract($row);
+			$users[] =  $user_id;
+		}
+	} 
+	return $users;
+}
+	

@@ -340,5 +340,7 @@ function delete_event( $conn , $user_id , $event_id  ){
 	);
 
 	update_query_execute($query,$conn,$binding);
+
 }
 
+?> 
