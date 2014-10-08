@@ -8,6 +8,9 @@ if(!isset($_SESSION['user_id'])){
 require 'functions/events_functions.php';
 require 'functions/db_functions.php';
 require 'pdo/user_event_class.php';
+require 'functions/sessions_function.php';
+require 'functions/PushBots.class.php';
+require 'functions/push_notifications.php';
 require 'pdo/exit_code_class.php';
 require 'pdo/exitcode_constants.php';
 require 'functions/geo_functions.php';
@@ -27,8 +30,6 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$description    =  isset($_POST['description'])    ? trim($_POST['description']):null;
 	$location		=  isset($_POST['location'])       ? trim($_POST['location']):null;
 	$address    	=  isset($_POST['address'])        ? trim($_POST['address']):null;
-	// $city    	=  isset($_POST['city'])           ? trim($_POST['city']):null;
-	// $state      	=  isset($_POST['state'])          ? trim($_POST['state']):null;
 	$zip       		=  isset($_POST['postal_code'])    ? trim($_POST['postal_code']):null;
     $start_date		=  isset($_POST['start_date'])     ? trim($_POST['start_date']):null;
     $end_date		=  isset($_POST['end_date'])       ? trim($_POST['end_date']):null;
@@ -63,9 +64,10 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
    
     	$status = $_ERROR_INVALID_EVENT_END_TIME;
     }else if (empty($start_date)) {
-   
+            
+
     	$status = $_ERROR_INVALID_EVENT_START_TIME;
-   }else if (empty($end_date)){
+    }else if (empty($end_date)){
     	
         $status = $_ERROR_INVALID_EVENT_END_TIME;
     } else{
@@ -76,11 +78,11 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
         $start_timestamp = ($tz * 60 ) + $start_timestamp;
         $end_timestamp   = ($tz * 60 ) + $end_timestamp;
 
+
         if(   $start_timestamp  < time()){
             $status_obj = $_ERROR_INVALID_EVENT_TIME;
         }
 
-        // error_log(" $start_timestamp $end_timestamp ", 0);
         if( $start_timestamp >  $end_timestamp ){
 
         	$status_obj = $_ERROR_INVALID_EVENT_TIME;
@@ -93,15 +95,18 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
                 $event_lat_log = get_lat_lon_zip( $zip ,  $conn);
                  error_log(" lat lon calculated !!! >>>> $lat  $lon " );
             }
+           
+            $evt_st = date( 'm/d/Y h:i a', $start_timestamp ); 
+
             $event                  = new User_Event;
             $event->id              = $event_id;
             $event->title           = $event_title;
             $event->category_id     = $category_id;
+            $event->start_dt        = $evt_st;
             $event->description 	= $description;
             $event->location 		= $location;
             $event->address 		= $address;
-            // $event->city 			= $city;
-            // $event->state 			= $state;
+            $event->start_date      = $start_date;
             $event->postal_code 	= $zip;
             $event->start_time 	    = $start_timestamp;
             $event->capacity 		= $capacity;
@@ -111,11 +116,23 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
             $event->creator         = $_SESSION['user_id'];
             $event->lat             = $event_lat_log['lat'];
             $event->lon             = $event_lat_log['lon'];
-
-
+     
             if($event_id ){
                 error_log("It is update event..... $event_id $age_limit ");
+               
                 update_event( $conn , $event, $user_id);
+                $users = users_rsvp_event($event_id , $conn );
+                
+                $event_title    = $event->title;
+                $event_location = $event->location;
+                $start_dt       = $event->start_dt ;
+                $event_alert    = 'Event :'.$event_title .' has been modified,' .$event_location .'@' .$start_dt ;
+
+                foreach ($users as $user_id ) {
+                    $deviceToken  = fetch_device($conn,$user_id);
+                    error_log("device token for each user $deviceToken");
+                    push_notification( $deviceToken, $event_alert);
+                }
             }else{
 
                 $event_id  = add_event( $conn ,$event);
