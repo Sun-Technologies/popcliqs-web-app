@@ -29,7 +29,12 @@
 			//update session table. 
 			$sessionType = "MOBILE";
 			$status      = 1; 
-			updateSession($conn, $key , $deviceToken , $sessionType , $status) ;
+
+			//get user id from keys.
+			$keys 		= explode("$",$key);
+			$user_id 	= $keys[0];
+
+			updateSession($conn,  $deviceToken , $sessionType , $status , $user_id) ;
 		}
 	}
 	include ('json/json.login.layout.php');

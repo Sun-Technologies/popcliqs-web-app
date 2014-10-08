@@ -85,7 +85,7 @@
 			//update session table. 
 			$sessionType = "MOBILE";
 			$status      = 1; 
-			updateSession($conn, $key , $deviceToken , $sessionType , $status) ;
+			updateSession($conn, $deviceToken , $sessionType , $status ,$user_id) ;
 		}
 
 	}else{
