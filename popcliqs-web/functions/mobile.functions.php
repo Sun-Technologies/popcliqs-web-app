@@ -161,34 +161,17 @@ function setHash($sPassword, $sSalt )
 	return md5(md5($sPassword) . md5($sSalt));
 }
 
-function update_rsvp_status($conn ,$user_id , $event_id , $resp_cd){
+
+
+function update_event_status($conn ,$user_id , $event_id , $rsvp_cd){
 
 	$query = " 
-				update phpfox_event_rsvp set rsvp_cd = :resp_cd , update_ts = :time
+				update popcliqs_events set status = :rsvp_cd , update_ts = :time
 				where user_id = :user_id and event_id = :event_id 
 			";
 
 	$binding = array( 
-		'resp_cd' 	  => $resp_cd  , 
-		'user_id' 	  => $user_id  , 
-		'event_id'    => $event_id ,
-		'time'        => time()
-	);
-
-	update_query_execute ($query , $conn , $binding);
-
-}
-
-
-function update_event_status($conn ,$user_id , $event_id , $resp_cd){
-
-	$query = " 
-				update popcliqs_events set status = :resp_cd , update_ts = :time
-				where user_id = :user_id and event_id = :event_id 
-			";
-
-	$binding = array( 
-		'resp_cd' 	  => $resp_cd  ,
+		'rsvp_cd'	  => $rsvp_cd  ,
 		'user_id' 	  => $user_id  ,  
 		'event_id'    => $event_id ,
 		'time'        => time()
@@ -202,10 +185,8 @@ function add_new_event($conn , $user_id ,  $zip , $cat_cd , $st_time , $end_time
 
 	error_log( "  $user_id ,  $zip , $cat_cd , $st_time , $end_time " );
 
-	//add event 
 	$evt_id = add_event($conn , $user_id ,  $zip , $st_time , $end_time , $cat_cd , $event_lat_log);
 
-	//add event invite
 	add_event_invite($conn , $user_id  , $evt_id );
 }
 
@@ -229,7 +210,7 @@ function add_event_invite($conn , $user_id  , $evt_id ){
 	insert_query_execute ($query , $conn , $binding);
 }
 
-function add_event($conn , $user_id ,  $zip , $st_time , $end_time , $cat_cd , $event_lat_log){
+function add_event_lat_lon($conn , $user_id ,  $zip , $st_time , $end_time , $cat_cd , $event_lat_log){
 
 	$query = " 
 				insert into popcliqs_events  ( 

@@ -1,8 +1,13 @@
 <?php 
 	
-	require('functions/db_functions.php');
-	require('pdo/user_event_class.php');
-	require('functions/mobile.functions.php');
+require	'functions/mobile.functions.php';
+require 'functions/rsvp_functions.php';
+require 'functions/events_functions.php';
+require 'functions/db_functions.php';
+require 'functions/sessions_function.php';
+require 'functions/PushBots.class.php';
+require 'pdo/user_event_class.php';
+require 'functions/push_notifications.php';
 	
 	$_SUCCESS    				= 0;
 	$_ERROR_ALL	 				= -1000;
@@ -18,7 +23,7 @@
 	$key  		= isset($_GET["key"]) ? $_GET["key"] : null ;
 	$tz   		= isset($_GET["tz"]) ? $_GET["tz"] : 0 ;
 	$event_id   = isset($_GET["evtid"]) ? $_GET["evtid"] : null ;
-	$resp_cd    = isset($_GET["rspcd"]) ? $_GET["rspcd"] : null ;
+	$rsvp_cd    = isset($_GET["rspcd"]) ? $_GET["rspcd"] : null ;
 
 	if($key === null  || $key === '' ){
 
@@ -45,7 +50,7 @@
 	}
 
 
-	if($resp_cd === null  || ($resp_cd  !== '2' &&  $resp_cd  !== '-1' ) ){
+	if($rsvp_cd === null  || ($rsvp_cd  !== '2' &&  $rsvp_cd  !== '-1' ) ){
 
 		$exit_cd = $_ERROR_INVALID_RSP_CD;
 		include ('json/json.login.layout.php');
@@ -55,16 +60,36 @@
 	$user_id = $keys[0];
 	$pwd 	 = $keys[1];
 
-	$conn = connect ($config);
-	$is_authorized =is_operation_authorised($conn ,$user_id, $pwd);
+	$conn  = connect ($config);
+
+	$is_authorized = is_operation_authorised($conn ,$user_id, $pwd);
 
 	if( $is_authorized ){
 
-		// if resp_cd == 2 ; update the rspv table as checked in.
-		if($resp_cd  == '2' ){
-			update_rsvp_status($conn ,$user_id , $event_id  , $resp_cd); 
+		if($rsvp_cd  == '2' ){
+			update_rsvp_status($conn, $user_id, $event_id, $rsvp_cd); 
+						
+			$deviceToken = fetch_device($conn,$user_id);
+			error_log("device token for current user $deviceToken");
+			
+			if($deviceToken){
+
+				$event=fetch_event($conn, $event_id, $tz);
+								
+				if($event){
+
+			 		$event_title    = $event->title;
+           			$event_location = $event->location;
+            		$start_dt       = $event->start_dt;
+            		$address		= $event->address;
+
+   	        		$event_alert = 'Event: '.$event_title ."\n" .'Location: '.$event_location."\n".'Address: '.$address."\n".'@ ' .$start_dt ;
+            		push_notification($deviceToken, $event_alert);
+       			}
+       		}
+			
 		}else{
-			update_event_status($conn ,$user_id , $event_id  , $resp_cd); 
+			update_event_status($conn ,$user_id , $event_id  , $rsvp_cd); 
 		}
 	} else {
 		$exit_cd = $_ERROR_AUTH;
