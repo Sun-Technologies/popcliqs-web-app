@@ -26,15 +26,15 @@
 			<li>
 				<label for="category_id">category:</label>
 				<select name="category_id" id="category_id" > 
-		<option value="">category</option>
-			<option value="1">sports</option>
-			<option value="2">professional</option>
-			<option value="3">education</option>
-			<option value="4">support group</option>
-			<option value="5">Arts</option>
-			<option value="6">Outdoor</option>
-			<option value="7">Party</option>
-			</select>
+        		    <option value="">category</option>
+        			<option value="1">sports</option>
+        			<option value="2">professional</option>
+        			<option value="3">education</option>
+        			<option value="4">support group</option>
+        			<option value="5">Arts</option>
+        			<option value="6">Outdoor</option>
+        			<option value="7">Party</option>
+        		</select>
 			</li>
 
 			<li>

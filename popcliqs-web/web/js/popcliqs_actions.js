@@ -205,10 +205,17 @@ function create_event(){
 	var $e_tm			= $('#end_time').val();
 	var $e_lat    		= $('#lat').val();
 	var $e_lon    		= $('#lon').val();
+	var $geozip         = $('#geozip').val();
 	
+	if( $geozip !== null && $geozip.trim().length > 0 && $geozip  !=  $postal_code) { 
+
+		$e_lat  = null;
+		$e_lon  = null;
+	}
+
 	// alert( $title   +  " " + $description + " " + $category_id + " "  + $location  + " " +
 	// 	   $address +  " " + $postal_code + " " + $age_limit   + " "  + $capacity  + " " +
-	// 	   $s_dt    +  " " + $e_dt        + " " +  $s_tm	   + " "  +  $e_tm
+	// 	   $s_dt    +  " " + $e_dt        + " " +  $s_tm	   + " "  +  $e_tm     
 	// 	); 	
 	
 
@@ -711,7 +718,8 @@ var componentForm = {
   // locality: 'long_name',
   // administrative_area_level_1: 'short_name',
   // country: 'long_name',
-  postal_code: 'short_name'
+  postal_code: 'short_name',
+  
 };
 
 function initialize_geo() {
@@ -739,21 +747,25 @@ function fillInAddress() {
     document.getElementById(component).disabled = false;
   }
 
-   //alert(place.geometry.location.lat() +  " "  +  place.geometry.location.lng() );
+   	//alert(place.geometry.location.lat() +  " "  +  place.geometry.location.lng() );
 
 
-   $('#lat').val(place.geometry.location.lat());
-   $('#lon').val(place.geometry.location.lng()) 
-  // Get each component of the address from the place details
-  // and fill the corresponding field on the form.
-  for (var i = 0; i < place.address_components.length; i++) {
-    var addressType = place.address_components[i].types[0];
-    var val = place.address_components[i][componentForm[addressType]];
-    if (componentForm[addressType]) {
-      var val = place.address_components[i][componentForm[addressType]];
-      document.getElementById(addressType).value = val;
-    }
-  }
+   	$('#lat').val(place.geometry.location.lat());
+   	$('#lon').val(place.geometry.location.lng()) 
+  	// Get each component of the address from the place details
+  	// and fill the corresponding field on the form.
+  	for (var i = 0; i < place.address_components.length; i++) {
+	    var addressType = place.address_components[i].types[0];
+	    var val = place.address_components[i][componentForm[addressType]];
+	    if (componentForm[addressType]) {
+	      var val = place.address_components[i][componentForm[addressType]];
+	      
+	      document.getElementById(addressType).value = val;
+	      if(  addressType  === 'postal_code' ){
+	      	document.getElementById("geozip").value = val;
+	  	  }
+	    }
+	}
 }
 
 

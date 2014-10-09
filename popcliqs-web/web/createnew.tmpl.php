@@ -59,6 +59,7 @@
               <input type="text" id="postal_code" name="postal_code" class="form-control" placeholder=""  />
               <input type="hidden" id="lat" name="lat"   />
               <input type="hidden" id="lon" name="lon"   />
+              <input type="hidden" id="geozip" name="geozip"   />
               <span class="help-block" id="zip_sp" style="display:none">Enter a valid zip.</span>
             </div>
           </div>

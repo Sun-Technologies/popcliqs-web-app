@@ -173,73 +173,65 @@ require 'terms.tmpl.php';
       </div>
       <input type="hidden" id="e_id" />
       <div class="modal-body">
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Title</label>
-          <div class="col-lg-8">
-            <P id="e_title"></P>
-          </div>
-        </div><br>
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Description</label>
-          <div class="col-lg-8">
-            <P id="e_desc"></P>
+        <div class="row" style="padding-bottom:2px;">
+        <div class="col-md-2 "><strong>Title</strong></div>
+          <div class="col-md-8">
+              <span id="e_title"></span>
           </div>
         </div>
-        <br/>
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Category</label>
-          <div class="col-lg-8">
-            <P id="e_cat"></P>
+        <div class="row" style="padding-bottom:2px;">
+        <div class="col-md-2"><strong>Description</strong></div>
+          <div class="col-md-8">
+              <span id="e_desc"></span>
           </div>
         </div>
-        <br/>
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Start</label>
-          <div class="col-lg-8">
-            <P id="e_start"></P>
+        <div class="row" style="padding-bottom:2px;">
+        <div class="col-md-2"><strong>Category</strong></div>
+          <div class="col-md-8">
+              <span id="e_cat"></span>
           </div>
         </div>
-        <br/>
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">End</label>
-          <div class="col-lg-8">
-            <P id="e_end"></P>
+        <div class="row" style="padding-bottom:2px;">
+        <div class="col-md-2"><strong>Start</strong></div>
+          <div class="col-md-8">
+              <span id="e_start"></span>
           </div>
         </div>
-        <br>
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Location</label>
-          <div class="col-lg-8">
-            <P id="e_loc"></P>
-          </div>
+        <div class="row" style="padding-bottom:2px;">
+          <div class="col-md-2"><strong>End</strong></div>
+            <div class="col-md-8">
+              <span id="e_end"></span>
+            </div>
         </div>
-        <br/>
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Address</label>
-          <div class="col-lg-8">
-            <P id="e_add"></P>
-          </div>
+        <div class="row" style="padding-bottom:2px;">
+          <div class="col-md-2"><strong>Location</strong></div>
+            <div class="col-md-8">
+              <span id="e_loc"></span>
+            </div>
         </div>
-        <br/>
-         <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Zip</label>
-          <div class="col-lg-8">
-            <P id="e_zip"></P>
-          </div>
+        <div class="row" style="padding-bottom:2px;">
+          <div class="col-md-2"><strong>Address</strong></div>
+            <div class="col-md-8">
+              <span id="e_add"></span>
+            </div>
         </div>
-        <br/>
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Distance</label>
-          <div class="col-lg-8">
-           <P id="e_dist"></P>
-          </div>
+        <div class="row" style="padding-bottom:2px;">
+          <div class="col-md-2"><strong>Zip</strong></div>
+            <div class="col-md-8">
+              <span id="e_zip"></span>
+            </div>
         </div>
-        <br/>
-        <div class="form-group">
-          <label for="title" class="col-lg-2 control-label">Age Limit</label>
-          <div class="col-lg-8">
-            <P id="e_alimit"></P>
-          </div>
+        <div class="row" style="padding-bottom:2px;">
+          <div class="col-md-2"><strong>Distance</strong></div>
+            <div class="col-md-8">
+              <span id="e_dist"></span>
+            </div>
+        </div>
+        <div class="row" style="padding-bottom:2px;">
+          <div class="col-md-2"><strong>Age Limit</strong></div>
+            <div class="col-md-8">
+              <span id="e_alimit"></span>
+            </div>
         </div>
       </div>
       <div class="modal-footer">
