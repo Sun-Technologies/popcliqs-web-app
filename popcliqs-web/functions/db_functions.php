@@ -3,7 +3,7 @@
 //Local configuration
 $config =  array(
 		'username' => 'root'	 	,
-		'password' => ''		,
+		'password' => 'root'		,
 		'hostname' => 'localhost'	,
 		'dbname'   => 'popcliqs_web' 
 );
