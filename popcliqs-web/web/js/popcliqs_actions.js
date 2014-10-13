@@ -482,7 +482,8 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 function update_rspv(){
 
 	myApp.showPleaseWait();
-
+	$('#eventdetails').modal('hide');
+	
 	var eventid = $('#e_id').val();
 	var dt 		= new Date()
 	var $tz 	= dt.getTimezoneOffset()
@@ -506,7 +507,6 @@ function update_rspv_success(data, textStatus, jqXHR){
 
 	if(data.exit_cd == 0 ){
 		
-		$('#eventdetails').modal('hide');
 	}else { 
 
 		alert(data.msg);
