@@ -185,7 +185,7 @@ function add_new_event($conn , $user_id ,  $zip , $cat_cd , $st_time , $end_time
 
 	error_log( "  $user_id ,  $zip , $cat_cd , $st_time , $end_time " );
 
-	$evt_id = add_event($conn , $user_id ,  $zip , $st_time , $end_time , $cat_cd , $event_lat_log);
+	$evt_id = add_event_lat_lon($conn , $user_id ,  $zip , $st_time , $end_time , $cat_cd , $event_lat_log);
 
 	add_event_invite($conn , $user_id  , $evt_id );
 }
@@ -212,19 +212,78 @@ function add_event_invite($conn , $user_id  , $evt_id ){
 
 function add_event_lat_lon($conn , $user_id ,  $zip , $st_time , $end_time , $cat_cd , $event_lat_log){
 
+	$event_title	= "New Event";
+	$event_decs  	= "New Desc";
+	$event_location = "World Center";
+	$event_address  = " New Blvd";
+
+
+
+	if( $cat_cd == "1"){ //SPORTS 
+		$event_title 	= "Rise Up & Run 5K";
+		$event_decs 	= "Join the Falcons for the Rise Up & Run 5K presented by  Track Club. This family friendly event offers something for the whole family including a One Mile Fun Run and Play 60 Fun Run. All 5K and One Mile Fun Run participants will have the opportunity to finish on the  Falcons 50-yard line inside the Dome while the Play 60 Fun Run will be an end zone to end zone dash.";
+		$event_location = "World Sports Center";
+		$event_address  =  "285 Andrew Young International Blvd NW";
+	
+	}else if( $cat_cd == "2"){ //Professional 
+		$event_title 	= "Ecthical Hacker Halted Conference";
+		$event_decs 	= "The EC-Council will host its premier security conference, Hacker Halted USA, at the  World Congress Center on Oct. 16 and 17. Business leaders and computer and information security professionals across multiple industries worldwide will come together and discuss the biggest threats to cybersecurity. This year's theme, Technology and the Zombie Apocalypse, plays off the current preoccupation with zombies, while tying in how technology would hurt and more importantly help in a disaster scenario.";
+		$event_location = "International Ecthical Hacking ";
+		$event_address  =  "190 Marry Street Northwest";
+	
+
+	}else if( $cat_cd == "3"){ //Education 
+		$event_title 	= "Space Activity";
+		$event_decs 	= "The Centre National d'Etudes Spatiales (CNES), the French Space Agency, is a pivotal player in Europe's space program and a major source of initiatives and proposals that aim to maintain France and Europe's competitive edge. Mr. Philippe Hazane, Space Attaché and CNES Representative at the French Embassy in the United States, will discuss recent French and European space activities.";
+		$event_location = " State Tech Library";
+		$event_address  =  "285 Andrew Young International Blvd NW";
+	
+
+	}else if( $cat_cd == "4"){ //Support Group 
+		$event_title 	= "A Holistic Approach to Loss & Grief";
+		$event_decs 	= "In this class for woman and children, Certified Ayurvedic Lifestyle Consultant, Gedalia Genin, discusses natural alternatives to Prozac and the unique and simple practices to transform your energy.";
+		$event_location = "Center For Holistic & Integrative Medicine";
+		$event_address  =  "1401 Dresden Dr";
+	
+
+	}else if( $cat_cd == "5"){ //Arts 
+		$event_title 	= "Art on the State BeltLine";
+		$event_decs 	= "The shows take place at the Historic Fourth Ward Outdoor Theater beginning at 1 p.m., with performances suitable for all ages. Expect to see performances from Esther de Monteflores, Kollaboration.";
+		$event_location = "Historic Fourth Ward Park";
+		$event_address  = "800 Dallas St NE";
+	
+
+	}else if( $cat_cd == "6"){ //Outdoor 
+		$event_title 	= "Fan Days at the World of Coca-Cola";
+		$event_decs 	= "With the Chick-fil-A Kickoff Games coming up Aug. 28 and Aug. 30, the World of Coca-Cola is hosting Fan Days for football fans. Now through Oct. 15, fans can text WOCC to 66937 to get two tickets for $25 - a total savings of $7 from regular adult admission.";
+		$event_location = "World of Coca Cola";
+		$event_address  =  "121 Baker St NW";
+	
+
+	}else if( $cat_cd == "7"){ //Party 
+		$event_title 	= "Latin Nights Dance Party";
+		$event_decs 	= "Looking for a place to dance Salsa, Bachata & Merengue, check out Noche Caliente Tropical Salsa Saturdays! MC Lexx will be playing the best mix of Tropical Latin music, with a nice mix of international flair.";
+		$event_location = "Thirsty Bar & Grill";
+		$event_address  =  "3907 Burns Rd";
+	
+
+	}else if( $cat_cd == "8"){ //Social 
+		$event_title 	= "The Book Of Life Halloween Carnival";
+		$event_decs 	= "Children in their Halloween costume can win $1,000 gift certificate for a mall shopping spree! But the fun doesn't stop there! There will be face painting, photo booth, balloon artists, cookies, arts & crafts.";
+		$event_location = "Perimeter Mall";
+		$event_address  =  "4400 Ashford Dunwoody Rd";
+	}
+
 	$query = " 
 				insert into popcliqs_events  ( 
-
 					user_id, event_title , description ,
 					category , event_location , event_address ,
 					zip , event_start , event_end , create_ts ,
 					update_ts, status , event_latitude , event_longitude , age_limit
-
 				)
 				VALUES (
-
-					:uid , 'Simple title' , 'Simple description'  , 
-					:cat_id , 'Park' , '660 1st Street Northcross' ,
+					:uid , :event_title , :event_decs  , 
+					:cat_id , :event_location ,  :event_address ,
 					:zip  , :st_time , :end_time, :time , 
 					:time , 1 , :lat ,:lon , 1
 				) 
@@ -234,15 +293,18 @@ function add_event_lat_lon($conn , $user_id ,  $zip , $st_time , $end_time , $ca
 	$lon = $event_lat_log[1];
 
 	$binding = array( 
-		'uid' 	  	=> $user_id  , 
-		'cat_id' 	=> $cat_cd  , 
-		'zip' 	  	=> $zip      , 
-		'time'   	=> date( "Y-m-d H:i:s" ) ,
-		'st_time'   => date( "Y-m-d H:i:s", $st_time ),
-		'end_time'	=> date( "Y-m-d H:i:s", $end_time ), 
-		'lat'		=> $lat , 
-		'lon'		=> $lon 
-
+		'uid' 	  			=> $user_id  , 
+		'cat_id' 			=> $cat_cd  , 
+		'zip' 	  			=> $zip      , 
+		'time'   			=> date( "Y-m-d H:i:s" ) ,
+		'st_time'   		=> date( "Y-m-d H:i:s", $st_time ),
+		'end_time'			=> date( "Y-m-d H:i:s", $end_time ), 
+		'lat'				=> $lat , 
+		'lon'				=> $lon ,
+		'event_title' 		=> $event_title , 
+		'event_decs'  		=> $event_decs , 
+		'event_location' 	=> $event_location , 
+		'event_address'     => $event_address 
 	);
 
 	return insert_query_execute ($query , $conn , $binding);

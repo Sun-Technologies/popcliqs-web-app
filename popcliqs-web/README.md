@@ -18,6 +18,22 @@ http://popcliqs.com/beta/login.service.php?usernm=tahir@popcliqs.com&pwd=qazwsx&
 http://popcliqs.com/beta/logout.service.php?key=5$qazwsx&deviceToken=0f744707bebcf74f9b7c25d48e3358945f6aa01da5ddb387462c7eaf61bbad78
 
 
+
+http://localhost:8888/createevent.service.post.php
+
+
+
+http://popcliqs.com/beta/zipgeo/zipimport.php?cd=US
+http://popcliqs.com/beta/zipgeo/zipimport.php?cd=IN
+
+//zip code url 
+
+//US 
+http://localhost:8888/zipgeo/zipimport.php?cd=US
+
+//IN
+http://localhost:8888/zipgeo/zipimport.php?cd=IN
+
 ==========================================
 DB tables
 =======================
@@ -69,12 +85,14 @@ CREATE TABLE user_cat_pref(
 
 
 CREATE TABLE  `zipgeo` (
-  `zip5` char(5) NOT NULL,
+  `zip5` char(6) NOT NULL,
   `city` varchar(250) NOT NULL,
   `state` varchar(250) NOT NULL,
   `lat` double NOT NULL,
   `lon` double NOT NULL,
-  `county` varchar(250) NOT NULL
+  `county` varchar(250) NOT NULL,
+  country varchar(250) NOT NULL ,
+  primary key(zip5)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
