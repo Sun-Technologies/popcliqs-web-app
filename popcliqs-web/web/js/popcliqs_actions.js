@@ -420,24 +420,28 @@ function update_user_pref_success(data, textStatus, jqXHR){
 
 function fetch_event_details(eventid){
 
+	myApp.showPleaseWait();
+	
 	var dt = new Date()
   	var $tz = dt.getTimezoneOffset();
 
 	var data = "event_id=" + eventid + "&tz=" + $tz; 
 	var url = 'fetch_event_details.php';
-
-	$.ajax({
+	
+ 	$.ajax({
 	  type: "POST",
 	  dataType: "json",
 	  url: url,
 	  data: data,
 	  success: fetch_event_details_success
 	});
+	return;
 }
 
 function fetch_event_details_success (data, textStatus, jqXHR) {
 	
-	// alert(data);
+	myApp.hidePleaseWait();
+
 	if(data.exit_cd == 0 ){
 
 		$('#e_title').html(data.title) ;
@@ -446,7 +450,6 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 		$('#e_loc').html(data.location) ;
 		$('#e_add').html(data.address) ;
 		$('#e_zip').html(data.postal_code) ;
-
 
 		age_limit_desc = "No age limit";
 		if(data.age_limit == 18) {
@@ -478,6 +481,8 @@ function fetch_event_details_success (data, textStatus, jqXHR) {
 
 function update_rspv(){
 
+	myApp.showPleaseWait();
+
 	var eventid = $('#e_id').val();
 	var dt 		= new Date()
 	var $tz 	= dt.getTimezoneOffset()
@@ -497,6 +502,8 @@ function update_rspv(){
 
 function update_rspv_success(data, textStatus, jqXHR){
 	
+	myApp.hidePleaseWait();
+
 	if(data.exit_cd == 0 ){
 		
 		$('#eventdetails').modal('hide');

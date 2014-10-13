@@ -241,7 +241,6 @@ require 'terms.tmpl.php';
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
 <!-- message modal start --> 
 <div class="modal fade" id="msgModal">
   <div class="modal-dialog">
@@ -265,12 +264,12 @@ require 'terms.tmpl.php';
     require 'resetpwd.tmpl.php'; 
     require 'about.tmpl.php';
 ?>
- 
 <!--script src="js/jquery.js" ></script-->
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript" src="web/js/easeljs-0.6.0.min.js"></script>
 <script type="text/javascript" src="web/js/tweenjs-0.4.0.min.js"></script>
 <script src="web/js/bootstrap.js" ></script>
+<script src="web/js/myApp.js"></script>
 <script src="web/js/popcliqs_canvas.js" ></script>
 <script src="web/js/popcliqs_actions.js" ></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -304,8 +303,6 @@ require 'terms.tmpl.php';
   $(function() {
     $( "#end_date" ).datepicker();
   });
-
-  
 
 </script>
 </body>
