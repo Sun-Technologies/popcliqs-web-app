@@ -2,9 +2,7 @@
 if( $rows ){ 
 	$index = 0;
 	foreach( $rows as $row ) { 
-		if( $index > 5){
-	 		break;
-	 	}
+				
 	 	$index++ ;
 	 	extract($row);
 

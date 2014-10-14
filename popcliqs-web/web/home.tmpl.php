@@ -142,14 +142,17 @@ require 'terms.tmpl.php';
           <li id="history-att"><a href="#attended" data-toggle="tab">Attended</a></li>
           <li id="history-int"><a href="#initiated" data-toggle="tab">Created</a></li>
         </ul>
-
+              
         <!-- Tab panes -->
+     
+        <td colspan="5"></td>
+      <div class="scrollit">
         <div class="tab-content">
-            <div class="tab-pane active" id="interest">
-               <?php require 'interested.tab.php'; ?>
-            </div>
+          <div class="tab-pane active" id="interest">
+            <?php require 'interested.tab.php'; ?>
+          </div>
           <div class="tab-pane" id="attended">
-              <?php require 'attended.tab.php'; ?>
+            <?php require 'attended.tab.php'; ?>
           </div>
           <div class="tab-pane" id="initiated">
             <?php require 'initiated.tab.php'; ?>
@@ -162,7 +165,8 @@ require 'terms.tmpl.php';
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
+ 
+       
 <!-- Modal -->
 <div class="modal fade" id="eventdetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -260,6 +264,7 @@ require 'terms.tmpl.php';
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->  
 <!-- message modal end --> 
+
 <?php 
     require 'resetpwd.tmpl.php'; 
     require 'about.tmpl.php';

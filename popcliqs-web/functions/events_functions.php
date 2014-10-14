@@ -293,7 +293,7 @@ function get_user_event_preffered( $evt_cat_id, $user_cat_prefs ) {
 
 function fetch_init_events( $conn , $user_id ){
 
-	$query = "select * from popcliqs_events where user_id = :user_id and status = 1 order by event_start desc ";
+	$query = "select * from popcliqs_events where user_id = :user_id and status = 1 order by event_start desc  ";
 
 	$binding = array( 
 		'user_id' => $user_id
@@ -307,7 +307,7 @@ function fetch_rsvp_events($conn , $user_id  , $action){
 	$query = "select * from phpfox_event_rsvp as rsvp , popcliqs_events as evnt where 
 			rsvp.user_id = :user_id and rsvp_cd = :action  
 			and rsvp.event_id = evnt.event_id and status = 1 
-			order by event_start desc limit 10 ";
+			order by event_start asc limit 25 ";
 	
 	$binding = array( 
 		'user_id' => $user_id ,
