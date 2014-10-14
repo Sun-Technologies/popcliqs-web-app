@@ -306,7 +306,7 @@ function fetch_rsvp_events($conn , $user_id  , $action){
 
 	$query = "select * from phpfox_event_rsvp as rsvp , popcliqs_events as evnt where 
 			rsvp.user_id = :user_id and rsvp_cd = :action  
-			and rsvp.event_id = evnt.event_id and status = 1 
+			and rsvp.event_id = evnt.event_id and status = 1 and evnt.event_start > now() 
 			order by event_start asc limit 25 ";
 	
 	$binding = array( 
@@ -319,7 +319,7 @@ function fetch_rsvp_events($conn , $user_id  , $action){
 
 function update_rsvp_events($conn , $user_id  , $event_id){
 	$query = "update  phpfox_event_rsvp set rsvp_cd = 0 where
-			user_id = :user_id and event_id = :event_id ";
+			user_id = :user_id and event_id = :event_id  ";
 	
 	$binding = array( 
 		'user_id'   => $user_id ,
