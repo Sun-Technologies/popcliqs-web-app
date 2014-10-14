@@ -19,7 +19,13 @@ error_log(" action $action");
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
   $conn = connect ($config);
-  $rows = fetch_rsvp_events( $conn , $user_id  , $action );
+  
+  date_default_timezone_set("UTC");  
+
+  $now_ts  = time();
+  $now_utc = date( "Y-m-d H:i:s", $now_ts) ;
+
+  $rows = fetch_rsvp_events( $conn , $user_id  , $action  , $now_utc );
 
   // Dump x
   // ob_start();

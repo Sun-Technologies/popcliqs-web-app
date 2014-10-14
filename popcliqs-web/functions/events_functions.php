@@ -302,16 +302,17 @@ function fetch_init_events( $conn , $user_id ){
 	return query( $query, $conn , $binding );
 }
 
-function fetch_rsvp_events($conn , $user_id  , $action){
+function fetch_rsvp_events($conn , $user_id  , $action , $now_utc ){
 
 	$query = "select * from phpfox_event_rsvp as rsvp , popcliqs_events as evnt where 
 			rsvp.user_id = :user_id and rsvp_cd = :action  
-			and rsvp.event_id = evnt.event_id and status = 1 and evnt.event_start > now() 
+			and rsvp.event_id = evnt.event_id and status = 1 and evnt.event_start > :now_utc
 			order by event_start asc limit 25 ";
 	
 	$binding = array( 
 		'user_id' => $user_id ,
-		'action'  => $action
+		'action'  => $action  , 
+		'now_utc' => $now_utc
 	);
 	return query( $query, $conn , $binding );
 
