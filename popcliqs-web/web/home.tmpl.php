@@ -165,6 +165,7 @@ require 'terms.tmpl.php';
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
+</div>
  
        
 <!-- Modal -->
