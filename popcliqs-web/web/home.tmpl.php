@@ -38,7 +38,7 @@
             <a class="brand" href="home.php"> <span  style="position:relative;top:6px;" ><img src="./web/img/3.png"/></span></a>
       </div>
     </div>
-    <div class="navbar-collapse collapse backgroundColor" style="height:1px;">
+    <div class="navbar-collapse collapse backgroundColor" id="navbar_id" style="height:1px;">
       <form class="navbar-form navbar-right" method="post" action="logout.php">
         <button type="submit" class="btn backgroundColor1"> 
           <span class="glyphicon glyphicon-off"></span>
@@ -79,7 +79,7 @@
         <button type="button" class="btn backgroundColor1" onclick="fetchEvents()">
           <span class="glyphicon glyphicon-search"></span>
         </button>
-        <br><span  class="pull-right" style="margin-top:5px;cursor:pointer;position:relative;right:-70px;">
+        <br><span  class="pull-right" style="margin-top:5px;cursor:pointer;">
         <a href"#" onclick="fetch_acc_setting()">
           <?php
               echo $_SESSION['email'] . '<span style="color:#818181"> 
