@@ -74,8 +74,8 @@
           <div class="form-group" id="capacity_fr">
             <label for="capacity" class="col-lg-2 control-label">Capacity</label>
             <div class="col-lg-8">
-              <input type="text" id="capacity" name=="capacity" value="" class="form-control" placeholder="" />
-               <span class="help-block" id="capacity_sp" style="display:none">Enter a valid numberic value.</span>
+              <input type="text" id="capacity" name="capacity" class="form-control" placeholder="" />
+               <span class="help-block" id="capacity_sp" style="display:none">Enter a valid numberic value between 1-1000.</span>
             </div>
           </div>
            <div class="form-group" id="stdt_fr">

@@ -168,7 +168,9 @@ function create_event(){
 		hide_err("endt");
 	}
 
-	if( $('#capacity').val() != null && $('#capacity').val() != ""  && !isNumber($('#capacity').val()) ){
+	if( $('#capacity').val() != null && $('#capacity').val() != "" && 
+		 ( $('#capacity').val()<=0 || $('#capacity').val() >=1001 || !isNumber($('#capacity').val())) ) {
+		
 		display_err("capacity");
 		is_error = true;
 
