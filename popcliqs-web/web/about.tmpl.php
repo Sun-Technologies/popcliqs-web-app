@@ -16,7 +16,7 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title-center" id="myModalLabel">About Us</h4>
       </div>
-      <div class="modal-body" id="about-body">
+      <div class="modal-body" style="width: 100%; height: 400px; overflow-y: scroll" ; id="about-body">
         <p><b>Now that you’re here, let’s go over the basics….</b></p>
 		<p class="about-quest"><b>Why “popcliqs”?</b></p>
 		<p>“Pop” – Spontaneous; “Cliq” – A group of people with a shared interest. You get the idea….</p>

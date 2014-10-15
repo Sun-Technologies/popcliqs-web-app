@@ -116,7 +116,7 @@
 <hr>
 <div class="container">
   <footer>
-    <p>&copy; 2014 popcliqs, <a data-toggle="modal" href="#myModalabout">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
+    <p>&copy; 2014 popcliqs, <a data-toggle="modal" href="#myModalabout">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModalabout">Help</a></p>
   <?php 
 require 'terms.tmpl.php';
  ?>

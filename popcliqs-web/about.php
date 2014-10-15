@@ -58,7 +58,7 @@
       
      </div>
      <div class="col-sm-8">
-          <p><a data-toggle="modal" href="#myModalabout">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
+          <p><a data-toggle="modal" href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModalabout">Help</a></p>
      </div>
     </div>
 </div>      

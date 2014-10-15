@@ -53,7 +53,7 @@
      <div class="row">
       <div class="col-md-12">
         <hr/>
-          <p>&copy; 2014 popcliqs, <a href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModal">Help</a></p>
+          <p>&copy; 2014 popcliqs, <a href="#">About</a> | <a data-toggle="modal" href="#myModal">Terms & Privacy</a> | <a data-toggle="modal" href="#myModalabout">Help</a></p>
       </p>
      </div>
     </div>
