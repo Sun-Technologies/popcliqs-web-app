@@ -640,11 +640,11 @@ function drawEvent(  event , time_inc  ){
   } else if ( event.type ==  "2"){
     eventtypeimg.src = './web/img/prof.png'; 
   } else if ( event.type ==  "3"){
-    eventtypeimg.src = './web/img/arts.png'; 
+    eventtypeimg.src = './web/img/education.png'; 
   } else if ( event.type ==  "4"){
-    eventtypeimg.src = './web/img/education.png';  
+    eventtypeimg.src = './web/img/help.png';  
   } else if ( event.type ==  "5"){
-    eventtypeimg.src = './web/img/help.png'; 
+    eventtypeimg.src = './web/img/arts.png'; 
   } else if ( event.type ==  "6"){
     eventtypeimg.src = './web/img/adventure.png';  
   } else if ( event.type ==  "7"){
