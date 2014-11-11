@@ -67,7 +67,8 @@ require 'functions/push_notifications.php';
 	if( $is_authorized ){
 
 		if($rsvp_cd  == '2' ){
-			update_rsvp_status($conn, $user_id, $event_id, $rsvp_cd); 
+
+			update_rsvp_status($conn, $event_id, $user_id,  $rsvp_cd); 
 						
 			$deviceToken = fetch_device($conn,$user_id);
 			error_log("device token for current user $deviceToken");

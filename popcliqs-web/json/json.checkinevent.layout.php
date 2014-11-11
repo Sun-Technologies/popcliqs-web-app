@@ -21,9 +21,9 @@
 						"ed_time" 				: "<?php echo $user_event->end_time ?>:00" ,
 						"st_dt" 				: "<?php echo $user_event->start_dt ?>" ,
 						"ed_dt" 				: "<?php echo $user_event->end_dt ?>" ,
-						"title" 				: "<?php echo $user_event->title?>" ,
-						"location" 				: "<?php echo $user_event->location ?>" ,
-						"address" 				: "<?php echo $user_event->address ?>" ,
+						"title" 				: "<?php echo str_replace( '\\' , '' , $user_event->title) ?>" ,
+						"location" 				: "<?php echo str_replace( '\\' , '' , $user_event->location) ?>" ,
+						"address" 				: "<?php echo str_replace( '\\' , '' , $user_event->address) ?>" ,
 						"city" 					: "<?php echo $user_event->city ?>" ,
 						"postal_code" 			: "<?php echo $user_event->postal_code ?>" ,
 						"lat"   				: "<?php echo $user_event->lat ?>" ,
@@ -32,7 +32,7 @@
 						"is_creator"    	 	: "<?php echo ($user_event->creator === $user_id ) ? "true" : "false" ?>" ,
 						"left_for_checkin_time" : "<?php echo $user_event->mins_left_for_checkin_time ?>",
 						"left_for_checkin_dt"   : "<?php echo $user_event->mins_left_for_checkin_dt ?>",
-						"desc"                  : "<?php echo $user_event->description ?>"
+						"desc"                  : "<?php echo str_replace( '\\' , '' , $user_event->description) ?>"
 					}
 			<?php   
 				} 
