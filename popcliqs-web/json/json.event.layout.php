@@ -7,7 +7,7 @@
 		"id"          : <?php echo $event_info->event_id ?> ,
 		"size"        : "S" ,
 		"typeid"      : <?php echo $event_info->category_id ?> ,
-		"type"        : "<?php echo $cat_list[$event_info->category_id]  ?>" ,
+		"type"        : "<?php echo $cat_list[($event_info->category_id  - 1)]  ?>" ,
 		"st_time"     : "<?php echo $event_info->start_time ?>" ,
 		"ed_time"     : "<?php echo $event_info->end_time ?>" ,
 		"st_dt"       : "<?php echo $event_info->start_dt ?>" ,
