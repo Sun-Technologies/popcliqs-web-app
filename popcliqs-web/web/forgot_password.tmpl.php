@@ -18,8 +18,8 @@
            </div>
 
                 <div class="modal-footer">
-                   <button type="button" class="btn btn-default" onclick="reset_forgot_password()" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary"  onclick="send_password()">Submit</button>
+                   <button type="button" class="btn btn-default" onclick="reset_forgot_password()" data-dismiss="modal">close</button>
+                  <button type="button" class="btn btn-primary"  onclick="send_password()">submit</button>
                 </div>
         </div>
     </div>

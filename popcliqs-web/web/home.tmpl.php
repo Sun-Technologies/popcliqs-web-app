@@ -134,7 +134,7 @@ require 'terms.tmpl.php';
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" onclick="update_screen('#history')" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel" style="text-align:center">My Cliqs</h4>
+        <h4 class="modal-title" id="myModalLabel" style="text-align:left">My Cliqs</h4>
       </div>
       <div class="modal-body">
         <ul class="nav nav-tabs" id="historyTab">
@@ -160,7 +160,7 @@ require 'terms.tmpl.php';
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" onclick="update_screen('#history')" >Close</button>
+        <button type="button" class="btn btn-default" onclick="update_screen('#history')" >close</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -240,8 +240,8 @@ require 'terms.tmpl.php';
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="save_btn" class="btn btn-primary" onclick="update_rspv()">Pop It!</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        <button type="button" id="save_btn" class="btn btn-primary" onclick="update_rspv()">pop it!</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
@@ -259,7 +259,7 @@ require 'terms.tmpl.php';
         <h4 id="messageTxt"></h4>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" onclick="closemodal('msgModal')">Close</button>
+        <button type="button" class="btn btn-default" onclick="closemodal('msgModal')">close</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

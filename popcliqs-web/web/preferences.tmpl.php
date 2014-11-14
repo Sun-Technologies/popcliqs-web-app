@@ -17,7 +17,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel" style="text-align:center">Settings</h4>
+        <h4 class="modal-title" id="myModalLabel" style="text-align:left">Settings</h4>
       </div>
       <div class="modal-body">
         <table>
@@ -74,8 +74,8 @@
       </table>
       </div> <!-- modal-body -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary"  onclick="update_user_pref();">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">close</button>
+        <button type="button" class="btn btn-primary"  onclick="update_user_pref();">save</button>
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->

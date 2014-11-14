@@ -680,13 +680,13 @@ function getTime(time){
 	minutes   = parts[1];
 	
 	if (hour > 12) {
-		timeStr = (hour - 12) + ' PM';
+		timeStr = (hour - 12) + ' pm';
 	} else if (hour == 0) {
-		timeStr = 12 + ' AM';
+		timeStr = 12 + ' am';
 	} else if (hour == 12) {
-		timeStr = time + 'PM';
+		timeStr = time + 'pm';
 	} else {
-		timeStr = '  ' + hour + ' AM';
+		timeStr = '  ' + hour + ' am';
 	}
 	return timeStr;
 }

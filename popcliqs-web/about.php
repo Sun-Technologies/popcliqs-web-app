@@ -40,7 +40,7 @@
     <p>Popcliqs is all about living in the moment. That’s what bubbles do. Each bubble represents an activity. The icon in the bubble shows the kind of activity it is. The water level in the bubble rises as more people actually attend the event and check in via the mobile app. </p>
     <p class="about-quest"><b>The ‘Activity Map’</b></p>
     <p>It’s real simple. Time and interest are the two biggest factors that determine what activities we do. We’ve got you covered on both! Bubbles are arranged along a horizontal timeline so they move from right to left as time goes by. Also, activities that are high on your preferences are closer to the bottom of the screen. If you see an activity you like, just click on the bubble.</p>
-    <div class="about-img1"><img src="web/img/about-1.png" alt="about1-images" /></div>
+    <div class="about-img1" ><img src="web/img/about-1.png" alt="about1-images" img style="padding-top:20px;padding-bottom:20px;border:none" /></div>
     <p class="about-quest"><b>We’re in Beta…And will always be!</b></p>
     <p>Our website is pretty basic by design. Because we believe that the best user interface is no interface at all. We also believe that suggestions should come from you to us, not the other way around! Don’t hesitate to hit us up at <a href="#">bustourbubble@popcliqs.com</a></p>
     <p class="about-quest"><b>And most important…</b></p>
