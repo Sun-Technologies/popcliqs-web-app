@@ -13,7 +13,7 @@
 		<UL>
 
 			<li>
-				<label for="event_title">EVENT NamE</label>
+				<label for="event_title">EVENT NAME</label>
 				<textarea name="event_title" id="event_title"></textarea>
 			</li>
 
