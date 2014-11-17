@@ -793,3 +793,42 @@ function geolocate() {
 }
 // [END region_geolocation]
 
+function set_enddate_endtime(){
+	
+	var start_date = document.getElementById("start_date").value;
+	var start_time = document.getElementById("start_time").value;
+	alert(start_time);
+	var end_date = document.getElementById("end_date").value =start_date;
+
+	var parts =start_time.split(':');
+	hour = parts[0],
+  	minutes = parts[1];
+  	hour =  parseInt( hour ) + 2;
+  	alert(hour);
+  	var timeStr =hour +":"+ minutes;
+  	alert(timeStr);
+
+ /* 	if (hour > 12) {
+    timeStr = (hour - 12) + ' pm';
+  } else if (hour == 0) {
+    timeStr = 12 + ' am';
+  } else if (hour == 12) {
+    timeStr = hour + ' pm';
+  } else {
+    timeStr = '  ' + hour + ' am';
+  }*/
+
+ 
+
+ 	/*var parts2 = end_time.split(':');
+ 	hour = parts[0],
+  	minutes = parts[1];*/
+ 	//alert(new_time);
+ 	$('#end_time').val(timeStr);
+ 	//var end_time = document.getElementById("end_time").value =time_interval;
+ //	alert(end_time);
+
+
+
+return true;
+}	

@@ -81,8 +81,8 @@
            <div class="form-group" id="stdt_fr">
             <label for="start_date" class="col-lg-2 control-label" style="padding-left:0px;">Start time</label>
             <div class="col-lg-8">
-              <input type="text" id="start_date" name="start_date" class="form-control" placeholder="" style="width:192px;display:inline-block;" />
-              <select id="start_time" name="start_time" class="form-control" style="width:140px;display:inline-block;">
+              <input type="text" id="start_date" name="start_date" class="form-control" onChange="set_enddate_endtime()" placeholder="" style="width:192px;display:inline-block;" />
+              <select id="start_time" name="start_time" onChange="set_enddate_endtime()" class="form-control" style="width:140px;display:inline-block;">
                   <option value="00:00">12:00 am</option>
                   <option value="00:30">12:30 am</option>
                   <option value="01:00">1:00 am</option>
