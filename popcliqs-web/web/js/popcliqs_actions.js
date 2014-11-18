@@ -821,24 +821,23 @@ function set_enddate_endtime(){
 	var date    = new Date(start_date);
  	var newDate = new Date(date);
 	newDate.setDate(newDate.getDate());
-	var nd = new Date(newDate);
+	var new_end_date = new Date(newDate);
 
 	// set end date to selected date
-	var month = nd.getMonth();
- 	var day   = nd.getDate();
- 	var year  = nd.getFullYear();
-
+	var month = new_end_date.getMonth()+1;
+ 	var day   = new_end_date.getDate();
+ 	var year  = new_end_date.getFullYear();
  	new_date = month + "/" + day + "/" + year;
-	$('#end_date').val(nd);
+	$('#end_date').val(new_date);
 
 	var new_date;
  	if (hour > 24){
 
  		//incrementing date by 1 and updated getting day, month & year
- 		nd.setDate(nd.getDate() + 1);
- 		var month = nd.getMonth();
- 		var day   = nd.getDate();
- 		var year  = nd.getFullYear();
+ 		new_end_date.setDate(new_end_date.getDate() + 1);
+ 		var month = new_end_date.getMonth()+1;
+ 		var day   = new_end_date.getDate();
+ 		var year  = new_end_date.getFullYear();
  		
  		new_date = month + "/" + day + "/" + year;
  	}
