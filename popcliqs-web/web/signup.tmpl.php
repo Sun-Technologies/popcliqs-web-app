@@ -67,14 +67,14 @@
               <div class="col-sm-8">
               <?php 
                 if (isset($_POST['sex']) && $_POST['sex']== 'male' ) { ?>
-                 <input type="radio" name="sex" value="male" id="sex" checked="true" /> Male &nbsp;
-                  <input type="radio" name="sex" value="female"> Female 
+                 <input type="radio" name="sex" value="1" id="sex" checked="true" /> Male &nbsp;
+                  <input type="radio" name="sex" value="2"> Female 
                <?php   } elseif (isset($_POST['sex']) && $_POST['sex'] == 'female') { ?>
-                 <input type="radio" name="sex" value="male" id="sex" /> Male &nbsp;
-                  <input type="radio" name="sex" value="female" checked="true"> Female 
+                 <input type="radio" name="sex" value="1" id="sex" /> Male &nbsp;
+                  <input type="radio" name="sex" value="2" checked="true"> Female 
               <?php   } else {?>
-               <input type="radio" name="sex" value="male" id="sex"  /> Male &nbsp;
-                  <input type="radio" name="sex" value="female" > Female 
+               <input type="radio" name="sex" value="1" id="sex"  /> Male &nbsp;
+                  <input type="radio" name="sex" value="2" > Female 
               <?php  }?> 
                    <span class="help-block"><?php echo isset($error_map['#sex']) ?  $error_map['#sex'] :"" ?></span>
               </div>
