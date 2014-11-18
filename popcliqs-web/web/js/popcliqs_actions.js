@@ -795,40 +795,43 @@ function geolocate() {
 
 function set_enddate_endtime(){
 	
-	var start_date = document.getElementById("start_date").value;
-	var start_time = document.getElementById("start_time").value;
-	alert(start_time);
-	var end_date = document.getElementById("end_date").value =start_date;
+	//to get selected item vlues
+	var start_time = $('#start_time').val();
+	var start_date = $('#start_date').val();
+	
+	//incrementing time by 2 hours in end_time box
+	var timeStr;
+	var parts = start_time.split(':');
+	hour 	  = parts[0],
+  	minutes	  = parts[1];
+  	hour 	  = parseInt( hour ) + 2;
 
-	var parts =start_time.split(':');
-	hour = parts[0],
-  	minutes = parts[1];
-  	hour =  parseInt( hour ) + 2;
-  	alert(hour);
-  	var timeStr =hour +":"+ minutes;
-  	alert(timeStr);
+  	if (hour >= 24){
+		timeStr = '0' + (hour - 24) + ':' + minutes;
+	} else if (hour < 10 ) {
+		timeStr = '0' + hour + ':' + minutes;
+	} else {
+		timeStr = hour + ':' + minutes;
+	} 
+  	$('#end_time').val(timeStr);
 
- /* 	if (hour > 12) {
-    timeStr = (hour - 12) + ' pm';
-  } else if (hour == 0) {
-    timeStr = 12 + ' am';
-  } else if (hour == 12) {
-    timeStr = hour + ' pm';
-  } else {
-    timeStr = '  ' + hour + ' am';
-  }*/
+	//incrementing day after 24 hours
+	var date    = new Date(start_date);
+ 	var newDate = new Date(date);
+	newDate.setDate(newDate.getDate());
+	var nd = new Date(newDate);
+	var new_date;
+ 	if (hour > 24){
 
- 
-
- 	/*var parts2 = end_time.split(':');
- 	hour = parts[0],
-  	minutes = parts[1];*/
- 	//alert(new_time);
- 	$('#end_time').val(timeStr);
- 	//var end_time = document.getElementById("end_time").value =time_interval;
- //	alert(end_time);
-
-
+ 		//incrementing date by 1 and updated getting day, month & year
+ 		nd.setDate(nd.getDate() + 1);
+ 		var month    = nd.getMonth();
+ 		var day      = nd.getDate();
+ 		var year  	 = nd.getFullYear();
+ 		
+ 		new_date = month + "/" + day + "/" + year;
+ 	}
+	$('#end_date').val(new_date);
 
 return true;
 }	
