@@ -798,7 +798,7 @@ function set_enddate_endtime(){
 	//to get selected item vlues
 	var start_time = $('#start_time').val();
 	var start_date = $('#start_date').val();
-	
+
 	//incrementing time by 2 hours in end_time box
 	var timeStr;
 	var parts = start_time.split(':');
@@ -814,20 +814,31 @@ function set_enddate_endtime(){
 		timeStr = hour + ':' + minutes;
 	} 
   	$('#end_time').val(timeStr);
+	
+
 
 	//incrementing day after 24 hours
 	var date    = new Date(start_date);
  	var newDate = new Date(date);
 	newDate.setDate(newDate.getDate());
 	var nd = new Date(newDate);
+
+	// set end date to selected date
+	var month = nd.getMonth();
+ 	var day   = nd.getDate();
+ 	var year  = nd.getFullYear();
+
+ 	new_date = month + "/" + day + "/" + year;
+	$('#end_date').val(nd);
+
 	var new_date;
  	if (hour > 24){
 
  		//incrementing date by 1 and updated getting day, month & year
  		nd.setDate(nd.getDate() + 1);
- 		var month    = nd.getMonth();
- 		var day      = nd.getDate();
- 		var year  	 = nd.getFullYear();
+ 		var month = nd.getMonth();
+ 		var day   = nd.getDate();
+ 		var year  = nd.getFullYear();
  		
  		new_date = month + "/" + day + "/" + year;
  	}
