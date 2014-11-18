@@ -49,7 +49,8 @@ function redraw(eventarr , redraw){
     eventlist = eventarr;
   }
   
-
+ var canvas = document.getElementsByTagName('canvas')[0];
+ 
   var w = window.innerWidth;
   var h = window.innerHeight;
  
@@ -61,15 +62,11 @@ function redraw(eventarr , redraw){
 
    }else if( $("#wapper-canvas-sm").css('display') == 'block'){
     newcanvas = "mainCanvas-sm";
+    
+  }else {
 
-
-  }else{
-    if(w < 500){
-      newcanvas = "mainCanvas-mob";
-      document.getElementById("mainCanvas-xs").hidden = true;
-    }else{
-      newcanvas = "mainCanvas-xs";
-    }
+    newcanvas = "mainCanvas-mob";
+    document.getElementById("mainCanvas-xs").hidden = true;
   }
 
   if(canvasstr != newcanvas || redraw ){
@@ -116,8 +113,9 @@ function drawBody(canvas){
   var dt = new Date();
   now = dt.getHours() + ":00"  ;
   linewd = canvas.width/10;
-  var timex = linewd;
-  
+
+  var timex = linewd + 20;
+ 
   var time_inc = 1;
   if($time_interval == 24){
     time_inc = 3;
@@ -132,10 +130,17 @@ function drawBody(canvas){
   stage.enableMouseOver();
   bg.graphics.beginStroke("#9F9F9F");
 
+ var nowstr = "now"; 
+ var alingbuff = 10; 
+ if(newcanvas == "mainCanvas-mob" ) {
+    nowstr = "now";
+    alingbuff = 0;
+ }
+
   if($time_interval != 72){
-    displayTime(timex , 'Now' , stage , 10 );
+    displayTime(timex , nowstr , stage , alingbuff );
   } else{
-    displayTime(timex , 'Now' , stage , 10 );
+    displayTime(timex , nowstr , stage , alingbuff );
   }
   drawVertTimeLine( timex , canvas ,bg );
   
@@ -545,7 +550,7 @@ function drawEvent(  event , time_inc  ){
     radius = 70;
     logoradius = 40;
   }
-  var distance = maxL - (  event.rank * 10 * maxL ) /100 ;
+  var distance = maxL - (  event.rank * 10 * maxL ) /100 + 20 ;
 
   
   var arc = new createjs.Shape();

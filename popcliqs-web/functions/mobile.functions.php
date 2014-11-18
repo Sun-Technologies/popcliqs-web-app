@@ -311,5 +311,35 @@ function add_event_lat_lon($conn , $user_id ,  $zip , $st_time , $end_time , $ca
 
 }
 
+function get_user($conn , $user_id ){
+
+	$query = "select * from popcliqs_users where user_id = :user_id";
+
+	$binding = array( 
+		'user_id'    => $user_id
+	);
+
+	$results = query( $query, $conn , $binding );
+
+	if( $results ){
+		
+		foreach( $results as $row){
+			extract($row);
+			$user = new User;
+			$user->email  = $email;
+			$user->zip    = strlen ($zip) === 4 ? "0".$zip : $zip ;
+			$user->status = $status;
+			$user->type   = $type;
+			$user->sex    = $gender;
+			$user->dob    = $dob;
+
+			return $user;
+		}
+
+	} else{
+		return false;
+	}
+}
+
 ?>
 

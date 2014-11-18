@@ -108,7 +108,7 @@
       <canvas  width="767" height="500" style="" id="mainCanvas-xs"></canvas>    
     </div>
      <div class="col-xs-12 visible-xs"  style="" id ="wapper-canvas-mob"> 
-      <canvas  width="450" height="400" style="" id="mainCanvas-mob"></canvas>    
+      <canvas  width="500" height="400" style="" id="mainCanvas-mob"></canvas>    
     </div>
           
     </div>

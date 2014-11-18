@@ -1,14 +1,14 @@
 <?php 
-	
+require 'pdo/user_event_class.php';
+require 'pdo/user_class.php';
 require	'functions/mobile.functions.php';
 require 'functions/rsvp_functions.php';
 require 'functions/events_functions.php';
 require 'functions/db_functions.php';
 require 'functions/sessions_function.php';
 require 'functions/PushBots.class.php';
-require 'pdo/user_event_class.php';
 require 'functions/push_notifications.php';
-	
+
 	$_SUCCESS    				= 0;
 	$_ERROR_ALL	 				= -1000;
 	$_ERROR_AUTH 				= -1001;
@@ -86,6 +86,15 @@ require 'functions/push_notifications.php';
 
    	        		$event_alert = 'Event: '.$event_title ."\n" .'Location: '.$event_location."\n".'Address: '.$address."\n".'@ ' .$start_dt ;
             		push_notification($deviceToken, $event_alert);
+
+            		// trigger email with the address 
+            		$user_info 	= get_user($conn , $user_id );
+            		if($user_info) { 
+            			$email 		= $user_info->email;
+            			$subject 	= "You have checked-in to a event.";
+            			mail($email, $subject,$event_alert);
+            		}
+
        			}
        		}
 			
