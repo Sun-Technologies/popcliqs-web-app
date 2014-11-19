@@ -19,7 +19,7 @@
 				"size"      : "<?php echo $user_event->size ?>"  ,
 				"type"      : <?php echo $user_event->category_id ?> ,
 				"time"      : "<?php echo $hour ?>" ,
-				"fillPCent" : 0 ,
+				"fillPCent" : <?php echo $user_event->fillPCent ?> ,
 				"rank"      : <?php echo $user_event->rank ?> ,
 				"mratio"    : <?php echo $user_event->mratio ?>,
 				"time_diff" : <?php echo $user_event->time_diff ?>

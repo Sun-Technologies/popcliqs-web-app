@@ -41,7 +41,7 @@ function update_rsvp_status( $conn , $event_id , $user_id , $rsvp_cd ) {
 
 function user_event_rsvp_cd($event_id , $user_id , $conn ){
 
-	$query = "select *  from phpfox_event_rsvp 
+	$query = "select * from phpfox_event_rsvp 
 				where  event_id = :eid and user_id = :uid
 			";
 
@@ -80,9 +80,9 @@ function user_event_rsvp_count($event_id , $conn ){
 function users_rsvp_event($event_id , $conn ){
 
 	$users 	=	array();
-	$query  = "select *  from phpfox_event_rsvp where event_id = :eid";
+	$query  = "select * from phpfox_event_rsvp where event_id = :eid";
 
-	$binding 	= array(
+	$binding = array(
 		'eid' => $event_id
 	);
 
@@ -100,9 +100,6 @@ function users_rsvp_event($event_id , $conn ){
 	
 function rsvp_event_male_count($event_id , $conn ){
 
-	error_log (" Event id $event_id");
-
-	$users 	=	array();
 	$query  = "select * from phpfox_event_rsvp  
 			   INNER JOIN popcliqs_users
  			   ON phpfox_event_rsvp.user_id = popcliqs_users.user_id 
@@ -113,6 +110,22 @@ function rsvp_event_male_count($event_id , $conn ){
 	);
 
 	$results = query( $query, $conn , $binding );
+	if($results){
+		return sizeof($results);
+	}
+	return 0;
+}
+
+function rsvp_checked_in_users_count($event_id , $conn ){
+
+	$query  = "select * from phpfox_event_rsvp where event_id = :eid and rsvp_cd = '2'";
+
+	$binding = array(
+		'eid' => $event_id
+	);
+
+	$results = query( $query, $conn , $binding );
+
 	if($results){
 		return sizeof($results);
 	}

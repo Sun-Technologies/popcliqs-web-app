@@ -56,14 +56,20 @@ if($user != null){
 
 	foreach ($ranked_events as $event) {
 		
-		// to get user count attaneding particular event
+		// to get total user attending particular event
 		$total_no_of_rsvp =  user_event_rsvp_count( $event->event_id , $conn );
 
-		// get to no male attend 
+		// to get to no male attend 
 		$total_no_of_male_rsvp = rsvp_event_male_count($event->event_id , $conn);
 		
 		// to get ratio of male users a,omg total users
 		$event->mratio = $total_no_of_male_rsvp/$total_no_of_rsvp*2;
+
+		// to get count of checked-in users
+		$total_no_of_checked_in_users = rsvp_checked_in_users_count($event->event_id , $conn );
+
+		//to get percentage of checked-in users
+		$event->fillPCent = $total_no_of_checked_in_users/$total_no_of_rsvp*100;
 	}
 
 	// getNoOfMaybeAttendeeInfo($user_events , $conn);
