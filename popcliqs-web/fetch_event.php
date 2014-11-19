@@ -10,6 +10,7 @@ require 'pdo/user_event_class.php';
 require 'functions/geo_functions.php';
 require 'pdo/exit_code_class.php';
 require 'pdo/exitcode_constants.php';
+require 'functions/rsvp_functions.php';
 
 if(!isset($_SESSION['user_id'])){
 	header('Location:index.php');
@@ -22,10 +23,10 @@ date_default_timezone_set("UTC");
 $status_obj     = $_SUCCESS;
 $user_id		= $_SESSION['user_id']; 
 $time_interval 	= $_POST["time_interval"];
+
 $tz 			= isset($_POST["tz"]) ? $_POST["tz"] : 0;
 $search_term    = isset($_POST["s"]) ?  urldecode ($_POST["s"]) : false;
 $cat_id         = isset($_POST["cat_type"]) ? $_POST["cat_type"] : 0;
-
 
 // echo " $user_id : $time_interval :  $tz : $search_term  : $cat_id ";
 
@@ -52,6 +53,18 @@ if($user != null){
 
 	$ranked_events  = assign_rank_to_events($user_events , 
 						$user_cat_pref , $user_lat_log, $start_t, $end_t, $miles);
+
+	foreach ($ranked_events as $event) {
+		
+		// to get user count attaneding particular event
+		$total_no_of_rsvp =  user_event_rsvp_count( $event->event_id , $conn );
+
+		// get to no male attend 
+		$total_no_of_male_rsvp = rsvp_event_male_count($event->event_id , $conn);
+		
+		// to get ratio of male users a,omg total users
+		$event->mratio = $total_no_of_male_rsvp/$total_no_of_rsvp*2;
+	}
 
 	// getNoOfMaybeAttendeeInfo($user_events , $conn);
 

@@ -60,6 +60,23 @@ function user_event_rsvp_cd($event_id , $user_id , $conn ){
 	return 0;
 }
 
+function user_event_rsvp_count($event_id , $conn ){
+
+	$query = "select * from phpfox_event_rsvp 
+				where  event_id = :eid";
+
+	$binding = array(
+		'eid' => $event_id  
+		
+	);
+	$results = query( $query, $conn , $binding );
+
+	if($results){
+		return sizeof($results);
+	}
+	return 0;
+}
+
 function users_rsvp_event($event_id , $conn ){
 
 	$users 	=	array();
@@ -81,3 +98,23 @@ function users_rsvp_event($event_id , $conn ){
 	return $users;
 }
 	
+function rsvp_event_male_count($event_id , $conn ){
+
+	error_log (" Event id $event_id");
+
+	$users 	=	array();
+	$query  = "select * from phpfox_event_rsvp  
+			   INNER JOIN popcliqs_users
+ 			   ON phpfox_event_rsvp.user_id = popcliqs_users.user_id 
+ 			   where popcliqs_users.gender='1' and phpfox_event_rsvp.event_id=:eid";
+
+	$binding = array(
+		'eid' => $event_id
+	);
+
+	$results = query( $query, $conn , $binding );
+	if($results){
+		return sizeof($results);
+	}
+	return 0;
+}
