@@ -550,8 +550,7 @@ function drawEvent(  event , time_inc  ){
     radius = 70;
     logoradius = 40;
   }
-  var distance = maxL - (  event.rank * 10 * maxL ) /100 + 20 ;
-
+  var distance = maxL - (  event.rank * 10 * maxL ) /100 - 4 ;
   
   var arc = new createjs.Shape();
   arc.graphics.beginFill("#fff");

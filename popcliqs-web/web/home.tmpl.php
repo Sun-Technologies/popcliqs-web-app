@@ -276,7 +276,7 @@ require 'terms.tmpl.php';
 <script type="text/javascript" src="web/js/tweenjs-0.4.0.min.js"></script>
 <script src="web/js/bootstrap.js" ></script>
 <script src="web/js/myApp.js"></script>
-<script src="web/js/popcliqs_canvas.js" ></script>
+<script src="web/js/popcliqs_canvas.js?<?php  echo rand() ?>" ></script>
 <script src="web/js/popcliqs_actions.js" ></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
