@@ -1,10 +1,10 @@
 <?php 
 	
-	require('functions/db_functions.php');
-	require('pdo/user_event_class.php');
-	require('functions/mobile.functions.php');
-	require('functions/geo_functions.php');
-	require('functions/sessions_function.php');
+	require_once('functions/db_functions.php');
+	require_once('pdo/user_event_class.php');
+	require_once('functions/mobile.functions.php');
+	require_once('functions/geo_functions.php');
+	require_once('functions/sessions_function.php');
 
 
 	$_ERROR_AUTH = -1001;
@@ -91,6 +91,7 @@
 	}else{
 		$exit_cd = $_ERROR_AUTH;
 	} 
+	$conn = null;
 	//var_dump($event_data_list);
 	include ('json/json.checkinevent.layout.php');
 

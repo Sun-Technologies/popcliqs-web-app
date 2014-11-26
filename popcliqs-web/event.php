@@ -5,16 +5,16 @@ if(!isset($_SESSION['user_id'])){
 	header('Location:index.php');
 	die();
 }
-require 'functions/events_functions.php';
-require 'functions/db_functions.php';
-require 'pdo/user_event_class.php';
-require 'functions/sessions_function.php';
-require 'functions/PushBots.class.php';
-require 'functions/push_notifications.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
-require 'functions/geo_functions.php';
-require 'functions/rsvp_functions.php';
+require_once 'functions/events_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'pdo/user_event_class.php';
+require_once 'functions/sessions_function.php';
+require_once 'functions/PushBots.class.php';
+require_once 'functions/push_notifications.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
+require_once 'functions/geo_functions.php';
+require_once 'functions/rsvp_functions.php';
 
 date_default_timezone_set("UTC");
 
@@ -139,5 +139,6 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
         }
     }
-    require 'json/json.service.layout.php';
+    require_once 'json/json.service.layout.php';
+    $conn = null;
 }

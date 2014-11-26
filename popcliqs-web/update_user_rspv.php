@@ -1,15 +1,15 @@
 <?php
 session_start();
 
-require 'functions/rsvp_functions.php';
-require 'functions/events_functions.php';
-require 'functions/db_functions.php';
-require 'functions/sessions_function.php';
-require 'functions/PushBots.class.php';
-require 'pdo/user_event_class.php';
-require 'functions/push_notifications.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
+require_once 'functions/rsvp_functions.php';
+require_once 'functions/events_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'functions/sessions_function.php';
+require_once 'functions/PushBots.class.php';
+require_once 'pdo/user_event_class.php';
+require_once 'functions/push_notifications.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
 
 
 $status_obj = $_SUCCESS;
@@ -47,6 +47,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
    	        $event_alert      = 'Popped :'.$event_title .',' .$event_location .'@' .$start_dt ;
             push_notification($deviceToken, $event_alert);
         }
-    }	
+    }
+    $conn = null;	
 }
-require 'json/json.service.layout.php';
+require_once 'json/json.service.layout.php';

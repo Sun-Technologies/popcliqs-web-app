@@ -5,10 +5,10 @@ if(!isset($_SESSION['user_id'])){
   header('Location:index.php');
   die();
 }
-require 'functions/events_functions.php';
-require 'functions/db_functions.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
+require_once 'functions/events_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
 
 $status_obj = $_SUCCESS;
 $user_id    = $_SESSION['user_id'];
@@ -26,5 +26,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
   //error_log($contents);
 
   $event_info = fetch_event($conn,$event_id , $tz);
+  $conn = null;
+  
 }
-require 'json/json.service.layout.php';
+require_once 'json/json.service.layout.php';

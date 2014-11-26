@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require 'functions/user_functions.php';
-require 'functions/db_functions.php';
+require_once 'functions/user_functions.php';
+require_once 'functions/db_functions.php';
 
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	
@@ -23,18 +23,19 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	
 	if(isset($erro_msg)){
 
-		require 'web/reset.tmpl.php';
+		require_once 'web/reset.tmpl.php';
 	}else{
 
 		$conn    = connect ( $config );
 		$user_id = getUserIdFromKey($conn,$key);
 		update_user_password( $conn, $user_id, $new_password );
 
+		$conn = null;
 		header('Location:home.php');
 	}
 }else{
 
 	$key  =  isset($_GET['key'])? trim($_GET['key']): null;
-	require 'web/reset.tmpl.php';
+	require_once 'web/reset.tmpl.php';
 
 }

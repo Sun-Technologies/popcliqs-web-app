@@ -13,4 +13,4 @@ if(!isset($_SESSION['email'])){
 	}
 
 } 
- require 'web/home.tmpl.php';
+ require_once 'web/home.tmpl.php';

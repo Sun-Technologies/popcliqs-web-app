@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-require 'functions/db_functions.php';
-require 'functions/user_functions.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
+require_once 'functions/db_functions.php';
+require_once 'functions/user_functions.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
 
 $status_obj     = $_SUCCESS;
 
@@ -25,15 +25,20 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
     error_log(' old_password '.$old_password.' new_password '.$new_password);
     if( $old_password != null &&  $new_password != null ) {
     	if(authenticate_user($conn, $email, $old_password)){
-    		//update password 
+    	  //update password 
     	  update_user_password($conn, $user_id,$new_password);
-    	}
-    }
 
+          update_acc_setting($conn,$user_id,$zip);
+          $_SESSION['zip'] = $zip;
+          $conn = null;
+
+    	}else{
+            $status_obj = $_ERROR_INVALID_OLD_PWD;
+        }
+    }    
 }
 
 
-update_acc_setting($conn,$user_id,$zip);
-$_SESSION['zip'] = $zip;
 
-include ('json/json.service.layout.php');
+
+include_once ('json/json.service.layout.php');

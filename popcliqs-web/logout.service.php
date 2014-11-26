@@ -1,10 +1,10 @@
 <?php 
-	require('functions/db_functions.php');
-	require('pdo/user_event_class.php');
-	require('functions/mobile.functions.php');
-	require('functions/sessions_function.php');
-	require 'pdo/exit_code_class.php';
-	require 'pdo/exitcode_constants.php';
+	require_once('functions/db_functions.php');
+	require_once('pdo/user_event_class.php');
+	require_once('functions/mobile.functions.php');
+	require_once('functions/sessions_function.php');
+	require_once 'pdo/exit_code_class.php';
+	require_once 'pdo/exitcode_constants.php';
 
 	
 
@@ -46,6 +46,8 @@
 	}else{
 		$status_obj = $_ERROR_AUTH;
 	}
-	include ('json/json.service.layout.php');
+
+	$conn = null;
+	include_once ('json/json.service.layout.php');
 ?>
 

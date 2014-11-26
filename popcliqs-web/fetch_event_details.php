@@ -1,17 +1,19 @@
 <?php
 session_start();
 
-require 'functions/db_functions.php';
-require 'functions/user_functions.php';
-require 'pdo/user_class.php';
-require 'functions/pref_functions.php';
-require 'functions/events_functions.php';
-require 'pdo/user_event_class.php';
-require 'functions/geo_functions.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
-require 'functions/rsvp_functions.php';
-require 'json/cat.list.php';
+// $time = microtime(true);
+
+require_once 'functions/db_functions.php';
+require_once 'functions/user_functions.php';
+require_once 'pdo/user_class.php';
+require_once 'functions/pref_functions.php';
+require_once 'functions/events_functions.php';
+require_once 'pdo/user_event_class.php';
+require_once 'functions/geo_functions.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
+require_once 'functions/rsvp_functions.php';
+require_once 'json/cat.list.php';
 
 if(!isset($_SESSION['user_id'])){
 	header('Location:index.php');
@@ -29,7 +31,9 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$event_id = isset($_POST['event_id']) ? trim($_POST['event_id']): null;
 	$tz 	  = isset($_POST["tz"]) ? $_POST["tz"] : 0;
 
+	// echo  " 1. " . (round ( (microtime(true)) - $time , 4 ) ) . ' elapsed';
 	$conn 		= connect ($config);
+	
 	$event_info = fetch_event($conn,$event_id , $tz);
 	
 	$user_zip 	= get_user_zip($conn , $user_id);
@@ -56,5 +60,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	// ob_end_clean();
 	// error_log($contents);
 
+	$conn = null;
+
 }
-require 'json/json.event.layout.php';
+require_once 'json/json.event.layout.php';

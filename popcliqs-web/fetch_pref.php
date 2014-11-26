@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-require 'functions/pref_functions.php';
-require 'functions/db_functions.php';
-require 'pdo/user_preferences_class.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
+require_once 'functions/pref_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'pdo/user_preferences_class.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
 
 $status_obj     = $_SUCCESS;
 
@@ -26,9 +26,9 @@ $pref_array = fetch_pref($conn,$user_id);
 // ob_end_clean();
 // error_log($contents);
 
+$conn = null;
 
-
-include ('json/json.fetchpref.layout.php');
+include_once ('json/json.fetchpref.layout.php');
 
 
 

@@ -5,10 +5,10 @@ if(!isset($_SESSION['user_id'])){
 	header('Location:index.php');
 	die();
 }
-require 'functions/pref_functions.php';
-require 'functions/db_functions.php';
+require_once 'functions/pref_functions.php';
+require_once 'functions/db_functions.php';
 
-require 'pdo/user_preferences_class.php';
+require_once 'pdo/user_preferences_class.php';
 
 
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
@@ -86,9 +86,9 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
           add_pref($conn,$pref_list,$user_id );
           header('location:home.php');
 
+     }
+     $conn = null;
 }
 
-}
-
-require 'web/preferences.tmpl.php';
+require_once 'web/preferences.tmpl.php';
 

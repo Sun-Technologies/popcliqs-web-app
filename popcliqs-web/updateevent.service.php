@@ -1,13 +1,13 @@
 <?php 
-require 'pdo/user_event_class.php';
-require 'pdo/user_class.php';
-require	'functions/mobile.functions.php';
-require 'functions/rsvp_functions.php';
-require 'functions/events_functions.php';
-require 'functions/db_functions.php';
-require 'functions/sessions_function.php';
-require 'functions/PushBots.class.php';
-require 'functions/push_notifications.php';
+require_once 'pdo/user_event_class.php';
+require_once 'pdo/user_class.php';
+require_once 'functions/mobile.functions.php';
+require_once 'functions/rsvp_functions.php';
+require_once 'functions/events_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'functions/sessions_function.php';
+require_once 'functions/PushBots.class.php';
+require_once 'functions/push_notifications.php';
 
 	$_SUCCESS    				= 0;
 	$_ERROR_ALL	 				= -1000;
@@ -28,7 +28,7 @@ require 'functions/push_notifications.php';
 	if($key === null  || $key === '' ){
 
 		$exit_cd = $_ERROR_AUTH;
-		include ('json/json.login.layout.php');
+		include_once ('json/json.login.layout.php');
 		return;
 	}
 
@@ -37,7 +37,7 @@ require 'functions/push_notifications.php';
 	if(sizeof($keys)  < 2  ){
 	
 		$exit_cd = $_ERROR_AUTH;
-		include ('json/json.login.layout.php');
+		include_once ('json/json.login.layout.php');
 		return;
 	}
 
@@ -45,7 +45,7 @@ require 'functions/push_notifications.php';
 	if($event_id === null  || $event_id === '' ){
 
 		$exit_cd = $_ERROR_INVALID_EVENT_ID;
-		include ('json/json.login.layout.php');
+		include_once ('json/json.login.layout.php');
 		return;
 	}
 
@@ -53,7 +53,7 @@ require 'functions/push_notifications.php';
 	if($rsvp_cd === null  || ($rsvp_cd  !== '2' &&  $rsvp_cd  !== '-1' ) ){
 
 		$exit_cd = $_ERROR_INVALID_RSP_CD;
-		include ('json/json.login.layout.php');
+		include_once ('json/json.login.layout.php');
 		return;
 	}
 
@@ -104,5 +104,7 @@ require 'functions/push_notifications.php';
 	} else {
 		$exit_cd = $_ERROR_AUTH;
 	}
-	include ('json/json.login.layout.php');
+
+	$conn = null;
+	include_once ('json/json.login.layout.php');
 ?>

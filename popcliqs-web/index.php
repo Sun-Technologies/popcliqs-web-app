@@ -1,10 +1,10 @@
 <?php
 session_start();
-require 'functions/user_functions.php';
-require 'functions/db_functions.php';
-require 'functions/pref_functions.php';
-require 'pdo/user_class.php';
-require 'pdo/user_preferences_class.php';
+require_once 'functions/user_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'functions/pref_functions.php';
+require_once 'pdo/user_class.php';
+require_once 'pdo/user_preferences_class.php';
 
 if(isset($_SESSION['user_id'])){
 	header('Location:home.php');
@@ -113,5 +113,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 		insert_default_pref( $conn  , $user_id);
 		header('Location:home.php');
 	}
+
+	$conn  = null;
 }
-require 'web/index.tmpl.php';
+require_once 'web/index.tmpl.php';

@@ -1,9 +1,9 @@
 <?php
 session_start();
-require 'functions/user_functions.php';
-require 'functions/db_functions.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
+require_once 'functions/user_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
 
 $status_obj = $_SUCCESS;
 if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
@@ -29,5 +29,6 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
         	error_log("Email Address does not exists");
           }
 	}
+	$conn  = null;
  } 
-include ('json/json.service.layout.php');
+include_once ('json/json.service.layout.php');

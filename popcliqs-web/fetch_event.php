@@ -1,16 +1,16 @@
 <?php
 session_start();
 
-require 'functions/db_functions.php';
-require 'functions/user_functions.php';
-require 'pdo/user_class.php';
-require 'functions/pref_functions.php';
-require 'functions/events_functions.php';
-require 'pdo/user_event_class.php';
-require 'functions/geo_functions.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
-require 'functions/rsvp_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'functions/user_functions.php';
+require_once 'pdo/user_class.php';
+require_once 'functions/pref_functions.php';
+require_once 'functions/events_functions.php';
+require_once 'pdo/user_event_class.php';
+require_once 'functions/geo_functions.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
+require_once 'functions/rsvp_functions.php';
 
 if(!isset($_SESSION['user_id'])){
 	header('Location:index.php');
@@ -80,8 +80,9 @@ if($user != null){
 	// $contents = ob_get_contents();
 	// ob_end_clean();
 	// error_log($contents);
-	include ('json/json.fetchevent.layout.php');
+	include_once ('json/json.fetchevent.layout.php');
 }
 
+$conn = null;
 
 

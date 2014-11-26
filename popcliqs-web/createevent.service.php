@@ -1,9 +1,9 @@
 <?php 
 	
-	require('functions/db_functions.php');
-	require('pdo/user_event_class.php');
-	require('functions/mobile.functions.php');
-	require('functions/geo_functions.php');
+	require_once('functions/db_functions.php');
+	require_once('pdo/user_event_class.php');
+	require_once('functions/mobile.functions.php');
+	require_once('functions/geo_functions.php');
 	
 	$_SUCCESS    				=  0;
 	$_ERROR_ALL	 				= -1000;
@@ -63,6 +63,6 @@
 		$event_lat_log 	= get_lat_lon_zip( $zip ,  $conn);
 		add_new_event($conn , $user_id ,  $zip , $cat_cd , $st_time , $end_time  , $event_lat_log);
 	}
-
+	$conn = null;
 
 	include ('json/json.login.layout.php');

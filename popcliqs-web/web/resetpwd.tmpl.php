@@ -25,7 +25,7 @@ $month_list = array(
               <h4 style="text-align:center" style="text-align:left;">Account Settings</h4>
             </div>
             <div class="modal-body">
-             <form class="form-horizontal">
+             <form class="form-horizontal" id="resetpwdfrm">
               <div class="form-group">
                     <label for="password" class="col-sm-4 control-label">Change Password</label>
                     <div class="col-sm-6">

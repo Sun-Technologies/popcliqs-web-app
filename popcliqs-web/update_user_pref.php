@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-require 'functions/pref_functions.php';
-require 'functions/db_functions.php';
-require 'pdo/user_preferences_class.php';
-require 'pdo/exit_code_class.php';
-require 'pdo/exitcode_constants.php';
+require_once 'functions/pref_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'pdo/user_preferences_class.php';
+require_once 'pdo/exit_code_class.php';
+require_once 'pdo/exitcode_constants.php';
 
 $status_obj = $_SUCCESS;
 
@@ -91,5 +91,6 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 	$user_id = $_SESSION['user_id'];
     update_pref($conn,$pref_list,$user_id );
 
-    require 'json/json.service.layout.php';
+    $conn = null;
+    require_once 'json/json.service.layout.php';
 }

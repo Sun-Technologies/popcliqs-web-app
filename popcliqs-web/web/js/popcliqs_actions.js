@@ -45,36 +45,38 @@ function save_acc_setting(){
         if ($('#pwd1').val() == null || $('#pwd1').val() == ""){
     		alert("Enter old Password");
     		return; 
+    
+    	} else if ( $('#pwd2').val() == null || $('#pwd2').val() == "" ){
+    		alert("Enter New Password");
+    		return;
+   		
+    	} else if ( $('#pwd3').val() == null || $('#pwd3').val() == "" ){
+    		alert("Re Enter New Password");
+    		return;
+
+    	} else if ( $('#pwd2').val().length  < 6 || $('#pwd3').val().length  < 6 ){
+	 	
+			alert("Password length Should be greater than six" );
+	 		return;
+
+    	} else if ( $('#pwd2').val() !== $('#pwd3').val() ){
+    		alert("Password Miss Match");
+    		return;
+    	} else if ( $('#pwd1').val() == $('#pwd2').val() ){
+    		alert("Old password cannot be reused.");
+    		return;
     	}
 
-    	else if ( $('#pwd2').val() == null || $('#pwd2').val() == "" ){
-    	alert("Enter New Password");
-    	return;
-
-   	}
-    	 else if ( $('#pwd3').val() == null || $('#pwd3').val() == "" ){
-    	alert("Re Enter New Password");
-    	return;
-
-    }
-   		else if ( $('#pwd2').val().length  < 6 || $('#pwd3').val().length  < 6 ){
-	 	
-		alert("Password length Should be greater than six" );
-	 	return;
-
-    }
-    	else if ( $('#pwd2').val() !== $('#pwd3').val() ){
-    	alert("Password Miss Match");
-    }
-
-		else if ($('#zip').val() == null || $('#zip').val() == ""  
-			|| $('#zip').val().length  != 5 || !isNumber($('#zip').val()) ){
+	}
+	if ($('#zip').val() == null 
+			 || $('#zip').val() == ""  
+			 || !isNumber($('#zip').val())  
+			 || $('#zip').val().length  > 7){
 	 	
 		alert(" Invalid Zip" );
 	 	return;
 	 }
 
-}
    		var $old_password = $('#pwd1').val();
    		var $new_password = $('#pwd3').val();
         
@@ -96,10 +98,11 @@ function save_acc_setting(){
 
 function save_acc_setting_success(data, textStatus, jqXHR){
 	
-	
+
 	if(data.exit_cd == 0 ){
+		document.getElementById("resetpwdfrm").reset();
 		$('#resetpwd').modal('hide');
-		 fetchEvents();
+		fetchEvents();
 		
 	}else{
 

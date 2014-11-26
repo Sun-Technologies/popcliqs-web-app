@@ -1,8 +1,8 @@
 <?php 
-	require('functions/db_functions.php');
-	require('pdo/user_event_class.php');
-	require('functions/mobile.functions.php');
-	require('functions/sessions_function.php');
+	require_once('functions/db_functions.php');
+	require_once('pdo/user_event_class.php');
+	require_once('functions/mobile.functions.php');
+	require_once('functions/sessions_function.php');
 
 	$_ERROR_AUTH = -1001;
 	$_ERROR_ALL	 = -1000;
@@ -37,6 +37,8 @@
 			updateSession($conn,  $deviceToken , $sessionType , $status , $user_id) ;
 		}
 	}
-	include ('json/json.login.layout.php');
+
+	$conn = null;
+	include_once ('json/json.login.layout.php');
 ?>
 

@@ -1,8 +1,8 @@
 <?php
 session_start();
-require 'functions/user_functions.php';
-require 'functions/db_functions.php';
-require 'pdo/user_class.php';
+require_once 'functions/user_functions.php';
+require_once 'functions/db_functions.php';
+require_once 'pdo/user_class.php';
 
 $login_status = NULL;
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	if( empty($email) || empty($password)  ){
 
 		$login_status = "Invalid user name or  password login";
-		require 'web/index.tmpl.php';
+		require_once 'web/index.tmpl.php';
 		die();	
     }
 	
@@ -27,8 +27,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 		$login_status = "Invalid email or password, please try again.";
 		// header('Location:index.php');
-		require 'web/index.tmpl.php';
+		require_once 'web/index.tmpl.php';
 	}
+
+	$conn = null;
 }
 else {
 	header('Location:index.php');

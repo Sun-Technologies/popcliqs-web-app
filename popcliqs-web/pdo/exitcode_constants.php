@@ -53,3 +53,8 @@ $_ERROR_INVALID_USER_EMAIL 				=  new Exit_Code_Class;
 $_ERROR_INVALID_USER_EMAIL->exit_cd   	= "-1010";
 $_ERROR_INVALID_USER_EMAIL->exit_msg	= "There is no account with this email address.";
 
+$_ERROR_INVALID_OLD_PWD 				=  new Exit_Code_Class;
+$_ERROR_INVALID_OLD_PWD->exit_cd   	= "-1010";
+$_ERROR_INVALID_OLD_PWD->exit_msg	= "Old Password is not correct";
+
+
