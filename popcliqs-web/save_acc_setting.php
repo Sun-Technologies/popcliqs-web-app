@@ -30,15 +30,17 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
 
           update_acc_setting($conn,$user_id,$zip);
           $_SESSION['zip'] = $zip;
-          $conn = null;
-
+         
     	}else{
             $status_obj = $_ERROR_INVALID_OLD_PWD;
         }
-    }    
+    }  else {
+
+        update_acc_setting($conn,$user_id,$zip);
+        $_SESSION['zip'] = $zip;
+          
+    }  
+    $conn = null;
+
 }
-
-
-
-
 include_once ('json/json.service.layout.php');

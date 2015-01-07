@@ -44,7 +44,8 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
             $event_location   = $event->location;
             $start_dt         = $event->start_dt ;
 
-   	        $event_alert      = 'Popped :'.$event_title .',' .$event_location .'@' .$start_dt ;
+   	        $event_alert      = 'You have popped the following Cliq \n Cliq Name:'.$event_title .'\nLocation:' .$event_location .'\nStarts @' .$start_dt ;
+
             push_notification($deviceToken, $event_alert);
         }
     }
