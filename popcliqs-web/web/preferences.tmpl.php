@@ -26,17 +26,17 @@
 
         </td>
         <td>
-        <div class="col-lg-12">
+        <div class="col-md-12">
           Not for me
           </div>
         </td>
         <td>
-        <div class="col-lg-12">
+        <div class="col-md-12">
           Why not
           </div>
         </td>
         <td>
-        <div class="col-lg-12">
+        <div class="col-md-12">
         Won't miss
         </div>
         </td>
@@ -48,8 +48,7 @@
         <tr>
           <td nowrap>
               <!-- <div class="form-group"> -->
-              <img src="<?php echo $log_url?>"  class="col-lg-2 control-label" style="width:60px;" /> 
-              <label for="1" class="col-lg-3 control-label"><?php echo $cat?></label>
+              <img src="<?php echo $log_url?>" title="<?php echo $cat?>" class="col-md-3 control-label" style="width:60px;" />
           </td> 
           <td style="border-right: 1px solid #1186D8;">
           <div align="center">
