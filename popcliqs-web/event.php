@@ -124,7 +124,7 @@ if( $_SERVER['REQUEST_METHOD'] === 'POST' ){
                 $event_title    = $event->title;
                 $event_location = $event->location;
                 $start_dt       = $event->start_dt ;
-                $event_alert    = 'Event :'.$event_title .' has been modified,' .$event_location .'@' .$start_dt ;
+                $event_alert    = 'Event :'.$event_title .' has been modified,' .$event_location .'@' .$start_dt . '(GMT)';
 
                 foreach ($users as $user_id ) {
                     $deviceToken  = fetch_device($conn,$user_id);

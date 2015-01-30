@@ -11,8 +11,8 @@
 		
 
 		$pb 			= new PushBots();
-		$appID 			= '5434f0471d0ab1f8038b459e';
-		$appSecret 		= '5be640235894689333cb4b234b6b6c5f';
+		$appID 			= '54afb4b01d0ab1b55e8b4646';
+		$appSecret 		= 'bc292cf7788242005cb3eeadb282993f';
 		$platforms 		= '0';
 	
 		$pb->App($appID, $appSecret);

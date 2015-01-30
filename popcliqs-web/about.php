@@ -31,7 +31,7 @@
 </div>
 <br/>
 
-<div class="container">
+<div class="container" style="padding-top:60px" >
     <div class="row">
      <p><b>Now that you’re here, let’s go over the basics….</b></p>
     <p class="about-quest"><b>Why “popcliqs”?</b></p>
