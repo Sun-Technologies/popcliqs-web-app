@@ -25,7 +25,7 @@
 						"location" 				: "<?php echo str_replace( '\\' , '' , $user_event->location) ?>" ,
 						"address" 				: "<?php echo str_replace( '\\' , '' , $user_event->address) ?>" ,
 						"city" 					: "<?php echo $user_event->city ?>" ,
-						"postal_code" 			: "<?php echo $user_event->postal_code ?>" ,
+						"postal_code" 			: "<?php echo strlen($user_event->postal_code) == 4 ? "0".$user_event->postal_code : $user_event->postal_code ?>" ,
 						"lat"   				: "<?php echo $user_event->lat ?>" ,
 						"lon"   				: "<?php echo $user_event->lon ?>" ,
 						"tz"   					: "<?php echo $ret_tz ?>" ,

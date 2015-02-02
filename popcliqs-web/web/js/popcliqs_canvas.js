@@ -84,6 +84,11 @@ function draw() {
 
   var canvas = document.getElementById(canvasstr);
   stage = new createjs.Stage(canvas);
+
+  
+  if(canvas.height == 400 ){
+    maxL = 365;
+  }
   
   // stage.clear();
   //stage.update();
@@ -607,6 +612,8 @@ function drawEvent(  event , time_inc  ){
     bubble.scaleY = .333;
   }
   
+
+
   
   bubble.gotoAndStop('stand');
   
